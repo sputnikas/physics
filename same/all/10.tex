@@ -1,0 +1,44 @@
+\section{Решение линейных уравнений второго порядка при известном частном решении}
+
+Пусть дано уравнение:
+\[
+	y'' + f(x) y' + g(x) y = 0
+\]
+и $\varphi(x)$ -- его частное решение. Будем искать его второе решение в виде: $\psi \varphi$. При этом начальные условия перейдут в
+\[
+	y(x_0) = \psi (x_0)\varphi(x_0) = y_0
+\] 
+\[
+	y'(x_0) = \psi' (x_0) \varphi (x_0) + \psi (x_0) \varphi' (x_0) = y'_0
+\]
+\[
+	\psi (x_0) = \frac{y_0}{\varphi(x_0)}
+\]
+\[
+	\psi' (x_0) \varphi^2 (x_0) = \varphi (x_0) y_0' - y_0 \varphi' (x_0)
+\]
+Тогда
+\[
+	\psi'' \varphi + 2 \psi' \varphi' + f \psi' \varphi = 0
+\]
+\[
+	\frac{\psi''}{\psi'} = - 2 \frac{\varphi'}{\varphi} - f
+\]
+\[
+	\psi' = \psi'(x_0) \frac{\varphi^2(x_0)}{\varphi^2(x)} \exp \left( - \int\limits_{x_0}^{x} f\,dx\right)
+\]
+\[
+	\psi = \psi' (x_0) \varphi^2 (x_0) \int\limits_{x_0}^{x} \frac{1}{\varphi^2(x)} \exp \left( - \int\limits_{x_0}^{x} f\,dx\right) dx + \psi (x_0)
+\]
+\[
+	y = \frac{\varphi(x)}{\varphi(x_0)} \left[\varphi (x_0) ( \varphi (x_0) y_0' - y_0 \varphi' (x_0)) \int\limits_{x_0}^{x} \frac{1}{\varphi^2(x)} \exp \left( - \int\limits_{x_0}^{x} f\,dx\right) dx + y_0 \right]
+\]
+Определитель Вронского:
+\[
+	\begin{vmatrix}
+		\varphi & \varphi \psi \\
+		\varphi' & \varphi' \psi + \psi' \varphi
+	\end{vmatrix} = \psi' \varphi^2 = 
+	\psi'(x_0) \varphi^2(x_0) \exp \left( - \int\limits_{x_0}^{x} f\,dx\right) \ne 0, \text{ если } \psi'(x_0) \varphi^2(x_0) \ne 0
+\]
+То есть решения, полученные таким методом, линейно независимы, если $\psi'(x_0)\ne 0$ и $\varphi(x_0) \ne 0$

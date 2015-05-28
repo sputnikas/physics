@@ -1,0 +1,45 @@
+\section{Определение и некоторые свойства функций Эйри}
+
+Функциями Эйри называют:
+\[
+	\mathrm{Ai\,}(x) = \frac{1}{\pi} \int\limits_0^\infty \cos \left( \frac{t^3}{3} + xt\right) dt
+\]
+\[
+	\mathrm{Bi\,}(x) = \frac{1}{\pi} \int\limits_0^\infty \left[e^{-\frac{1}{3}t^3 - xt} + \sin \left( \frac{t^3}{3} + xt\right)\right] dt
+\]
+Асимптотика (можно найти, проинтегрировав методом перевала в комплексной плоскости):
+\[
+	\mathrm{Ai\,}(x) \underset{x \to \infty}{\approx} \frac{1}{2\sqrt{\pi} x^{1/4}} \exp \left( -\frac{2}{3} x^{3/2}\right)
+\]
+\[
+	\mathrm{Bi\,}(x) \underset{x \to \infty}{\approx} \frac{1}{\sqrt{\pi} x^{1/4}} \exp \left( \frac{2}{3} x^{3/2}\right)
+\]
+\[
+	\mathrm{Ai\,}(x) \underset{x \to -\infty}{\approx} \frac{1}{\sqrt{\pi} x^{1/4}} \sin \left( \frac{2}{3} |x|^{3/2} + \frac{\pi}{4}\right)
+\]
+\[
+	\mathrm{Bi\,}(x) \underset{x \to -\infty}{\approx} \frac{1}{\sqrt{\pi} x^{1/4}} \cos \left( \frac{2}{3} |x|^{3/2}+ \frac{\pi}{4}\right)
+\]
+Интеграл (легко находится с использованием дельта функции)
+\[
+	\int\limits_{-\infty}^{\infty} \mathrm{Ai\,}(x)\, dx = 1
+\]
+Функции Эйри удовлетворяют уравнению Эйри:
+\[
+	u'' - xu = 0
+\]
+Рассмотрим интеграл:
+\[
+	\int\limits_{a}^{\infty}\mathrm{\,Ai\,}'(x) \mathrm{\,Ai\,}''(x) dx= 
+	\int\limits_{a}^{\infty} x \mathrm{\,Ai\,}'(x) \mathrm{\,Ai\,}(x) dx
+\]
+\[
+	\Rightarrow \frac{\left[\mathrm{\,Ai\,}'(x) \right]^2}{2} \Bigg|_{a}^{\infty} =
+	x \frac{\left[\mathrm{\,Ai\,}(x) \right]^2}{2} \Bigg|_{a}^{\infty} - 
+	\int\limits_{a}^{\infty} \frac{\left[\mathrm{\,Ai\,}(x) \right]^2}{2} dx
+\]
+Откуда следует весьма важный интеграл:
+\[
+	\int\limits_{a}^{\infty} \left[\mathrm{\,Ai\,}(x) \right]^2 dx =
+	\left[\mathrm{\,Ai\,}'(a) \right]^2  - a \left[\mathrm{\,Ai\,}(a) \right]^2
+\]

@@ -1,0 +1,151 @@
+\section{Две частицы в поле Гука}
+\[
+	- \frac{\hbar^2}{2 m_1} \frac{\partial^2 \psi}{\partial x_1^2} 
+	- \frac{\hbar^2}{2 m_2} \frac{\partial^2 \psi}{\partial x_2^2}
+	+ \frac{\kappa(x_1 - x_2)^2}{2}\psi =
+	i\hbar \frac{\partial \psi}{\partial t}
+\]
+Введём координаты:
+\[
+	\eta = x_1 - x_2
+\]
+\[
+	\xi = \frac{m_1 x_1 + m_2 x_2}{m_1 + m_2}
+\]
+\[
+	x_1 = \xi + \frac{m_2}{m_1 + m_2} \eta
+\]
+\[
+	x_2 = \xi - \frac{m_1}{m_1 + m_2} \eta
+\]
+\[
+	\frac{\partial \psi}{\partial x_1} =
+	\frac{\partial \psi}{\partial \eta} \frac{\partial \eta}{\partial x_1} +
+	\frac{\partial \psi}{\partial \xi} \frac{\partial \xi}{\partial x_1} =
+	\frac{\partial \psi}{\partial \eta} + \frac{m_1}{m_1 + m_2} \frac{\partial \psi}{\partial \xi}
+\]
+\[
+	\frac{\partial \psi}{\partial x_2} =
+	\frac{\partial \psi}{\partial \eta} \frac{\partial \eta}{\partial x_2} +
+	\frac{\partial \psi}{\partial \xi} \frac{\partial \xi}{\partial x_2} =
+	- \frac{\partial \psi}{\partial \eta} + \frac{m_2}{m_1 + m_2} \frac{\partial \psi}{\partial \xi}
+\]
+\[
+	\frac{1}{m_1}\frac{\partial^2 \psi}{\partial x_1^2} =
+	\frac{1}{m_1}\frac{\partial^2 \psi}{\partial \eta^2} + 
+	\frac{2}{m_1 + m_2} \frac{\partial^2 \psi}{\partial \xi \partial \eta} +
+	\frac{m_1}{(m_1 + m_2)^2} \frac{\partial^2 \psi}{\partial \xi^2}
+\]
+\[
+	\frac{1}{m_2}\frac{\partial^2 \psi}{\partial x_2^2} =
+	\frac{1}{m_2}\frac{\partial^2 \psi}{\partial \eta^2} - 
+	\frac{2}{m_1 + m_2} \frac{\partial^2 \psi}{\partial \xi \partial \eta} +
+	\frac{m_2}{(m_1 + m_2)^2} \frac{\partial^2 \psi}{\partial \xi^2}
+\]
+\[
+	\frac{1}{m_1}\frac{\partial^2 \psi}{\partial x_1^2} +
+	\frac{1}{m_2}\frac{\partial^2 \psi}{\partial x_2^2} =
+	\frac{m_1 + m_2}{m_1 m_2} \frac{\partial^2 \psi}{\partial \eta^2} +
+	\frac{1}{m_1 + m_2}\frac{\partial^2 \psi}{\partial \xi^2}
+\]
+Вводим
+\[
+	M = \frac{m_1 m_2}{m_1 + m_2} \quad \kappa = M \omega^2
+\]
+Отсюда следует:
+\[
+\begin{gathered}
+	\psi =
+	\sum_{n = 0}^{\infty} 
+	\int\limits_{-\infty}^{\infty} A_n(p_\xi) e^{\frac{i}{\hbar}\left(\frac{p_\xi^2}{2(m_1 +m_2)} t - p_\xi \xi\right)} dp_\xi \cdot
+	H_n \left( \sqrt{\frac{M\omega}{\hbar}} \eta\right)
+	\exp \left(- \frac{M \omega \eta^2}{2\hbar}\right)
+	e^{i\omega \left(n + \frac{1}{2}\right) t}
+\end{gathered}
+\]
+
+\section{Нормальные координаты. Классический случай}
+
+Гамильтониан:
+\[
+	H = \sum_{i=1}^{N} \frac{p_i'^2}{2m_i} + \sum_{i,j} \frac{A_{ij}' q_i' q_j'}{2}
+\]
+Вводим новые обозначения:
+\[
+	q_i = \sqrt{m_i} q_i' 
+\]
+\[
+	A_{ij} = \frac{A_{ij}'}{\sqrt{m_i m_j}}
+\]
+\[
+	p_i = \frac{\partial L}{\partial \dot{q}_i} = \frac{p_i'}{\sqrt{m_i}}
+\]
+Гамильтониан в новых координатах:
+\[
+	H = \sum_{i=1}^{N} \frac{p_i^2}{2} + \sum_{i,j} \frac{A_{ij} q_i q_j}{2}
+\]
+Уравнения движения (всегда можно выбрать $A_{ij}$ так, что$A_{ij} = A_{ji}$):
+\[
+	\dot{p}_k = -\sum_{i,j} \frac{A_{ij} \delta_{ik} q_j + A_{ij} q_i \delta_{jk}}{2} = -\sum_i A_{ki} q_i 
+\]
+\[
+	\dot{q}_k = p_k
+\]
+Подставляем второе в первое и получаем:
+\[
+	\ddot{q}_k = -\sum_i A_{ki} q_i 
+\]
+Приводим систему к нормальным координатам. Для этого находим собственные числа $-\omega_n^2$ и матрицу собственных векторов $C$($c_{in}$), матрицы $-A$:
+\[
+	\det (- \omega^2 \delta_{ij} + A_{ij}) = 0
+\]
+\[
+	\sum_{i} A_{ki} c_{in} = \omega_n^2 c_{kn}
+\]
+Матрица собственных векторов в силу симметричности $A$, можно выбрать такую, что она будет ортогональна:
+\[
+	C^{-1} = C^T
+\]
+\[
+	\sum_i c_{ik} c_{in} = \sum_i c_{ki} c_{ni} = \delta_{kn}
+\]
+Вводим новые переменные:
+\[
+	P_i = p_i
+\]
+\[
+	Q_i = \sum_j c_{ij} q_j
+\]
+Получаем для гамильтониана:
+\[
+	H = 
+	\sum_{i=1}^{N} \frac{P_i^2}{2} + \sum_{k,n}\sum_{i,j} \frac{1}{2} c_{ik} A_{ij} c_{jn} Q_k Q_n = 
+	\sum_{i=1}^{N} \frac{P_i^2}{2} + \sum_{k,n} \frac{1}{2} \omega_n^2 \delta_{nk} Q_k Q_n
+\]
+\[
+	H = \sum_{i=1}^{N} \frac{P_i^2}{2} + \frac{\omega_i^2 Q_i^2}{2}
+\]
+
+\section{Нормальные координаты. Квантовый случай}
+В квантовом случае импульс в декартовых координатах:
+\[
+	\hat{p}_i' = - i\hbar \frac{\partial}{\partial q_i'}
+\]
+При первом преобразовании координат, как легко видеть:
+\[
+	\hat{p}_i = - i\hbar \frac{\partial}{\partial q_i}
+\]
+Поэтому гамильтониан:
+\[
+	\begin{gathered}
+	\hat{H} = 
+	\sum_{i} - \frac{\hbar^2}{2} \frac{\partial}{\partial q_i} \frac{\partial}{\partial q_i} + \frac{\omega_i^2 Q_i^2}{2} = 
+	\sum_{i} - \frac{\hbar^2}{2} \sum_n\frac{\partial Q_n}{\partial q_i} \frac{\partial}{\partial Q_n} \sum_k\frac{\partial Q_k}{\partial q_i} \frac{\partial}{\partial Q_k}  + \frac{\omega_i^2 Q_i^2}{2} =
+	\\ =
+	\sum_{i} - \frac{\hbar^2}{2} \sum_n c_{ni} \frac{\partial}{\partial Q_n} \sum_k c_{ki} \frac{\partial}{\partial Q_k}  + \frac{\omega_i^2 Q_i^2}{2} =
+	\sum_{k, n} - \frac{\hbar^2}{2} \sum_{i} c_{ni} c_{ki} \frac{\partial^2}{\partial Q_n \partial Q_k} +
+	\sum_{i} \frac{\omega_i^2 Q_i^2}{2} =
+	\\ =
+	\sum_{i} - \frac{\hbar^2}{2} \frac{\partial^2}{\partial Q_i^2} + \frac{\omega_i^2 Q_i^2}{2}
+	\end{gathered}
+\]

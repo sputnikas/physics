@@ -1,0 +1,63 @@
+\section{Решение линейных уравнений}
+
+Поставим следующую задачу:
+\[
+	L\left[y\right] = \frac{\partial y}{\partial t} 
+\]
+\[
+	y(x, t)\Big|_{t = 0} = y(x, 0) 
+\]
+$L$ -- произвольный линейный оператор.
+Пусть собственные значения $Y(x, \lambda)$ удовлетворяет уравнению:
+\[
+	L\left[Y\right] = \lambda Y
+\]
+и если спектр $\lambda$ сплошной, существует функция $Y^{-1}(x, \lambda')$, такая что:
+\[
+	\int\limits_{-\infty}^{\infty} Y^{-1}(x, \lambda') Y(x, \lambda) dx = \delta(\lambda - \lambda')
+\]
+Будем искать $y$ в виде:
+\[
+	y = \int\limits_{-\infty}^{\infty} A(\lambda) e^{\lambda t} Y(x, \lambda)\, d\lambda
+\]
+Простой подстановкой можно проверить, что это выражение в самом деле является решением уравнения. $A(\lambda)$ определим из начальных условий:
+\[
+	y(x, 0) = \int\limits_{-\infty}^{\infty} A(\lambda) Y(x, \lambda)\, d\lambda
+\]
+\[
+	A(\lambda) = \int\limits_{-\infty}^{\infty} y(x, 0) Y^{-1}(x, \lambda)\, dx
+\]
+Подставляем в решение и получаем:
+\[
+	y(x, t) = \int\limits_{-\infty}^{\infty} y(x', 0) \int\limits_{-\infty}^{\infty} e^{\lambda t}Y^{-1}(x', \lambda) Y(x, \lambda)\, d\lambda\, dx'
+\]
+
+\section{Решение линейных уравнений в случае дискретного спектра}
+
+В случае дискретного спектра у нас есть система функций:
+\[
+	Y_1(x), Y_2(x), \ldots, Y_n(x), \ldots
+\]
+и соответствующая ей последовательность чисел:
+\[
+	\lambda_1, \lambda_2, \ldots
+\]
+Если удалось построить дополнительную систему функций
+\[
+	Y_1^{-1}(x), Y_2^{-1}(x), \ldots, Y_n^{-1}(x), \ldots
+\]
+такую что
+\[
+	\int\limits_{-\infty}^{\infty} Y_k^{-1}(x) Y_n(x) dx = \delta_{kn}
+\]
+То решение уравнения можно найти в виде:
+\[
+	y = \sum_{k=1}^{\infty} A_k e^{\lambda_k t} Y_k(x)
+\]
+\[
+	A_k = \int\limits_{-\infty}^{\infty} Y_k^{-1}(x) y(x, 0) dx
+\]
+Получаем окончательно решение:
+\[
+	y(x, t) = \int\limits_{-\infty}^{\infty} y(x', 0) \sum_{k=1}^{\infty} e^{\lambda_k t} Y_k^{-1}(x') Y_k(x) dx'
+\]

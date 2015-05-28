@@ -1,0 +1,118 @@
+\section{Волновые функции в $p$ и $x$ представлениях}
+
+Для описания квантовых процессов вводят волновые функции, которые являются суперпозициями волн д'Бройля. Для одной частицы:
+\[
+	\psi(\vec{r}, t) = A \int C_(\vec{p}, t) \exp \left(\frac{i}{\hbar} \vec{p} \cdot \vec{r}\right) d^3p
+\]
+\[
+	C(\vec{p}, t) = B \int \psi(\vec{r}, t) \exp \left(-\frac{i}{\hbar} \vec{p} \cdot \vec{r}\right) d^3r
+\]
+$\psi(\vec{r}, t)$ -- волновая функция в $x$ представлении. $C(\vec{p}, t)$ -- волновая функция в $p$ представлении. $A$ и $B$ -- действительные числа, которые можно найти из условия нормировки. Нормировка:
+\[
+	\int \psi^*(\vec{r}, t) \psi(\vec{r}, t) d^3r = \int C^*(\vec{p}, t) C(\vec{p}, t) d^3p = 1
+\]
+\[
+	\begin{gathered}
+		A^2\iint C^*(\vec{p'}, t) C(\vec{p}, t) \exp \left(\frac{i}{\hbar} (\vec{p'} - \vec{p}) \cdot \vec{r}\right) d^3p\, d^3p'\, d^3r 
+		= \\
+		=
+		A^2\int C^*(\vec{p'}, t) C(\vec{p}, t) (2\pi \hbar)^3 \delta(\vec{p'} - \vec{p}) d^3p\, d^3p'
+		= \\
+		=
+		A^2 (2\pi \hbar)^3 \int C^*(\vec{p}, t) C(\vec{p}, t) d^3p = A^2 (2\pi \hbar)^3 = 1
+	\end{gathered}
+\]
+\[
+	\begin{gathered}
+		B^2\iint \psi^*(\vec{r'}, t) \psi(\vec{r}, t) \exp \left(\frac{i}{\hbar} \vec{p} \cdot (\vec{r'} - \vec{r})\right) d^3p \, d^3r \, d^3r'
+		= \\
+		=
+		B^2 (2\pi\hbar)^3 \iint \psi^*(\vec{r'}, t) \psi(\vec{r}, t) \delta(\vec{r'} - \vec{r}) d^3r \, d^3r' = B^2 (2\pi\hbar)^3 \iint \psi^*(\vec{r}, t) \psi(\vec{r}, t) d^3r 
+		= \\
+		=
+		B^2 (2\pi\hbar)^3 = 1
+	\end{gathered}
+\]
+\[
+	A = B =\frac{1}{(2\pi\hbar)^{3/2}}
+\]
+Обратимость непосредственно следует из обратимости преобразования Фурье.
+
+\section{Оператор импульса в $x$ представлении}
+Оператор импульса в $p$ представлении, просто вектор $\vec{p}$. 
+По определению оператор импульса $\hat{\vec{p}}$ в $x$ представлении:
+\[
+	\langle \vec{p} \,\rangle = \int \psi^*(\vec{r}, t) \hat{\vec{p}} \psi(\vec{r}, t) d^3r
+\]
+Средний импульс:
+\[
+	\begin{gathered}
+	\langle \vec{p} \,\rangle = 
+	\int C^*(\vec{p}, t) \vec{p} C(\vec{p}, t) d^3p = \\ =
+	\frac{1}{(2\pi\hbar)^{3}} \iiint \vec{p} \psi^*(\vec{r'}, t) \psi(\vec{r}, t) \exp \left(\frac{i}{\hbar} \vec{p} \cdot (\vec{r'} - \vec{r})\right) d^3r'\, d^3r\, d^3p = \\ =
+	\frac{1}{(2\pi\hbar)^{3}} \iint \psi^*(\vec{r'}, t) \psi(\vec{r}, t) \frac{\hbar}{i}\frac{\partial}{\partial \vec{r'}}\int\exp \left(\frac{i}{\hbar} \vec{p} \cdot (\vec{r'} - \vec{r})\right) d^3p\, d^3r'\, d^3r = \\ =
+	\iint \psi^*(\vec{r'}, t) \psi(\vec{r}, t) \frac{\hbar}{i} \frac{\partial}{\partial \vec{r'}} \delta(\vec{r'} - \vec{r}) d^3r'\, d^3r = \\ =
+	[\text{интегрируем по частям и учитываем, что $\psi = 0$ на $\infty$}] =
+	\end{gathered}
+\]
+\[
+	\begin{gathered}
+	= - \frac{\hbar}{i} \iint \delta(\vec{r'} - \vec{r}) \frac{\partial}{\partial \vec{r'}} \psi^*(\vec{r'}, t) \psi(\vec{r}, t) d^3r'\, d^3r = \\ =
+	- \frac{\hbar}{i} \int \psi(\vec{r}, t) \frac{\partial}{\partial \vec{r}} \psi^*(\vec{r}, t) d^3r = \\ =
+	[\text{ещё одно интегрирование по частям}] = \\ =
+	\frac{\hbar}{i} \int \psi^*(\vec{r}, t) \frac{\partial}{\partial \vec{r}} \psi(\vec{r}, t) d^3r
+	\end{gathered}
+\]
+\[
+	\hat{\vec{p}} = \frac{\hbar}{i} \frac{\partial}{\partial \vec{r}} = - i \hbar \frac{\partial}{\partial \vec{r}}
+\]
+
+\section{Оператор координаты в $p$ представлении}
+Оператор координаты в $x$ представлении $\vec{r}$. В $p$ представлении по определению:
+\[
+	\langle \vec{r}\,\rangle = \int C^*(\vec{p}, t) \hat{\vec{r}} C(\vec{p}, t) d^3p	
+\]
+Итак:
+\[
+	\begin{gathered}
+	\langle \vec{r}\,\rangle = \int \psi^*(\vec{r}, t) \vec{r} \psi(\vec{r}, t) d^3 r = \\ =
+	\frac{1}{(2\pi\hbar)^{3}} \iiint C^*(\vec{p'}, t) C(\vec{p}, t) \vec{r} 
+	\exp 
+	\left(
+		-\frac{i}{\hbar}
+			(\vec{p'} - \vec{p})\cdot \vec{r}
+	\right) d^3r\,d^3p\,d^3p' =
+	\\ =
+	\frac{1}{(2\pi\hbar)^{3}} \iint C^*(\vec{p'}, t) C(\vec{p}, t)
+	\frac{\hbar}{i}
+	\frac{\partial}{\partial \vec{p}}
+	\int
+	\exp 
+	\left(
+		\frac{i}{\hbar}
+		(\vec{p} - \vec{p'})\cdot \vec{r}
+	\right) d^3r\,d^3p\,d^3p' = 
+	\\ =
+	\frac{\hbar}{i}\iint C^*(\vec{p'}, t) C(\vec{p}, t)
+	\frac{\partial}{\partial \vec{p}}
+	\delta(\vec{p} - \vec{p'}) d^3p\, d^3p'
+	= \\ =
+	[\text{интегрируем по частям и учитываем, что $C = 0$ на $\infty$}] = \\ =
+	-\frac{\hbar}{i}
+	\iint 
+	C^*(\vec{p}, t)
+	\frac{\partial}{\partial \vec{p}}
+	C(\vec{p}, t)
+	d^3p
+	\end{gathered}
+\]
+В результате:
+\[
+	\hat{\vec{r}} = 
+	-\frac{\hbar}{i} \frac{\partial}{\partial \vec{p}} =
+	i\hbar \frac{\partial}{\partial \vec{p}} 
+\]
+Уравнение Шрёдингера сохраняет свою форму:
+\[
+	\sum_{i=1}^N\frac{p_i^2}{2m_i} C + \hat{U}\left(i \hbar \frac{\partial}{\partial p_1}, \ldots, i \hbar \frac{\partial}{\partial p_N}\right) C = i\hbar \frac{\partial C}{\partial t}
+\]

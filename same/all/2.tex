@@ -1,0 +1,62 @@
+\section{Сферические координаты}
+
+Связь декартовых $(x, y, z)$ и сферических координат $(r, \theta, \alpha)$ даётся выражениями:
+\[
+	\begin{aligned}
+		& x = r \sin \theta \cos \alpha \\
+		& y = r \sin \theta \sin \alpha \\
+		& z = r \cos \theta 
+	\end{aligned}
+\]
+Орты сферической системы координат найдём из соотношений:
+\[
+	\begin{aligned}
+	& \left|\frac{\partial \vec{r}}{\partial r}\right| \vec{e}_r = \frac{\partial \vec{r}}{\partial r} =  \sin \theta \cos \alpha\, \vec{e}_x + \sin \theta \sin \alpha\, \vec{e}_y + \cos \theta\, \vec{e}_z \\
+	& \left|\frac{\partial \vec{r}}{\partial \theta}\right| \vec{e}_\theta = \frac{\partial \vec{r}}{\partial \theta} =  r \cos \theta \cos \alpha\, \vec{e}_x + r \cos \theta \sin \alpha\, \vec{e}_y - r \sin \theta\, \vec{e}_z \\
+	& \left|\frac{\partial \vec{r}}{\partial \alpha}\right| \vec{e}_\alpha = \frac{\partial \vec{r}}{\partial \alpha} = - r \sin \theta \sin \alpha\, \vec{e}_x + r \sin \theta \cos \alpha\, \vec{e}_y
+	\end{aligned}
+\]
+Коэффициенты Ламе:
+\[
+	\begin{aligned}
+		& H_r =  \left|\frac{\partial \vec{r}}{\partial r}\right| = 1 \\
+		& H_\theta = \left|\frac{\partial \vec{r}}{\partial \theta}\right| = r \\
+		& H_\alpha = \left|\frac{\partial \vec{r}}{\partial \alpha}\right| = r \sin \theta
+	\end{aligned}
+\]
+Орты
+\[
+	\begin{aligned}
+	& \vec{e}_r = \sin \theta \cos \alpha\, \vec{e}_x + \sin \theta \sin \alpha\, \vec{e}_y + \cos \theta\, \vec{e}_z \\
+	& \vec{e}_\theta = \cos \theta \cos \alpha\, \vec{e}_x + \cos \theta \sin \alpha\, \vec{e}_y - \sin \theta\, \vec{e}_z \\
+	& \vec{e}_\alpha = -\sin \alpha\, \vec{e}_x + \cos \alpha\, \vec{e}_y
+	\end{aligned}
+\]
+Орты декартовой системы, выраженные через орты сферической системы:
+\[
+	\begin{aligned}
+	& \vec{e}_x = \sin \theta \cos \alpha\, \vec{e}_r + \cos \theta \cos \alpha\, \vec{e}_\theta -\sin \alpha\,  \vec{e}_\alpha \\
+	& \vec{e}_y = \sin \theta \sin \alpha\, \vec{e}_r + \cos \theta \sin \alpha\, \vec{e}_\theta + \cos \alpha\, \vec{e}_\alpha \\
+	& \vec{e}_z = \cos \theta\,\vec{e}_r - \sin \theta\, \vec{e}_\theta
+	\end{aligned}
+\]
+Немного о производных от ортов (для вывода нужно помнить, что орты декартовой системы образуют базис, не зависящий от его положения, в то время как орты сферической системы образуют базис, который меняется от точки к точке):
+\[
+	\begin{aligned}
+	& \frac{\partial \vec{e}_r}{\partial r} = 0 \\
+	& \frac{\partial \vec{e}_r}{\partial \theta} = \vec{e}_\theta \\
+	& \frac{\partial \vec{e}_r}{\partial \alpha} = \sin \theta\, \vec{e}_\alpha
+	\end{aligned}
+	\quad
+	\begin{aligned}
+	& \frac{\partial \vec{e}_\theta}{\partial r} = 0 \\
+	& \frac{\partial \vec{e}_\theta}{\partial \theta} = -\vec{e}_r \\
+	& \frac{\partial \vec{e}_\theta}{\partial \alpha} = \cos \theta\, \vec{e}_\alpha
+	\end{aligned}
+	\quad
+	\begin{aligned}
+	& \frac{\partial \vec{e}_\alpha}{\partial r} = 0 \\
+	& \frac{\partial \vec{e}_\alpha}{\partial \theta} = 0 \\
+	& \frac{\partial \vec{e}_\alpha}{\partial \alpha} = -\sin\theta \, \vec{e}_r -\cos \theta\, \vec{e}_\theta
+	\end{aligned}
+\]
