@@ -1,0 +1,26 @@
+\section{Весёлые интегралы}
+
+\begin{enumerate}
+	\item 
+	\[
+		\int \frac{dx}{\sqrt{x^2 + 1}} = \mathrm{arsh\,}x = \ln |x + \sqrt{x^2 + 1}|
+	\]
+	\item
+	\[
+		\int \sqrt{x^2 + 1} dx = 
+		x \sqrt{x^2 + 1} - \int \frac{x^2}{\sqrt{x^2 + 1}}dx =
+		x \sqrt{x^2 + 1} - \int \sqrt{x^2 + 1}dx + \int \frac{dx}{\sqrt{x^2 + 1}}
+	\]
+	\[
+		\Rightarrow \quad
+		\int \sqrt{x^2 + 1} dx = \frac{x \sqrt{x^2 + 1} + \ln |x + \sqrt{x^2 + 1}|}{2}
+	\]
+	\item
+	\[
+		\int \frac{\sqrt{x}}{\sqrt{x-1}} dx = 
+		\int 2 \sqrt{x} d\sqrt{x-1} =
+		[\sqrt{x - 1} = p]
+		= 2 \int \sqrt{p^2 + 1} dp = 
+		\sqrt{x} \sqrt{x-1}+ \ln |\sqrt{x - 1} + \sqrt{x}|
+	\]
+\end{enumerate}
