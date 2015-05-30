@@ -126,8 +126,8 @@ sympy-plots-for-*.tex/
 *.sav
 
 #TikzEdt
-.tex.preview.aux
-.tex.preview.log
-.tex.preview.pdf
-.tex.preview.tex
-.tex.preview_BB.txt
+*.tex.preview.aux
+*.tex.preview.log
+*.tex.preview.pdf
+*.tex.preview.tex
+*.tex.preview_BB.txt
