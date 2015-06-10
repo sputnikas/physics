@@ -11,6 +11,55 @@
 \usepackage{tikz}
 \allowdisplaybreaks
 
+\newcommand{\D}{\mathrm{d}}
+% Производные
+\newcommand{\dsl}[2]{{\partial #1}/{\partial #2}}
+\newcommand{\df}[1]{\cfrac{\partial}{\partial #1}}
+\newcommand{\dff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dfs}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\dfss}[3]{\frac{\partial^2 #1}{\partial #2\, \partial #3}}
+\newcommand{\Df}[1]{\frac{d}{d #1}}
+\newcommand{\Dff}[2]{\frac{d #1}{d #2}}
+\newcommand{\Dfs}[2]{\frac{d^2 #1}{d #2^2}}
+\newcommand{\cDf}[1]{\cfrac{d}{d #1}}
+\newcommand{\cDff}[2]{\cfrac{d #1}{d #2}}
+\newcommand{\cDfs}[2]{\cfrac{d^2 #1}{d #2^2}}
+\newcommand{\dfn}[3]{\frac{\partial^#1 #2}{\partial #3^#1}}
+% Векторы
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\ort}[1]{\,\boldsymbol{\mathrm{e}}_#1}
+% Векторный анализ
+\renewcommand{\div}{\,\mathrm{div}\,}
+\newcommand{\rot}{\,\mathrm{rot}\,}
+\newcommand{\grad}{\,\mathrm{grad}\,}
+\newcommand{\laplas}[4]{\dfs{#1}{#2}+\dfs{#1}{#3}+\dfs{#1}{#4}}
+\newcommand{\laplasxyz}[1]{\dfs{#1}{x}+\dfs{#1}{y}+\dfs{#1}{z}}
+\newcommand{\rotc}[4]{\dff{#1}{#2} - \dff{#3}{#4}}
+\newcommand{\rotcx}[3]{\dff{#1\vphantom{E}_#3}{#2} - \dff{#1\vphantom{E}_#2}{#3}}
+% Функции
+\renewcommand{\cosh}{\,\mathrm{ch}\,}
+\renewcommand{\sinh}{\,\mathrm{sh}\,}
+\renewcommand{\tanh}{\,\mathrm{th}\,}
+\newcommand{\sign}{\mathrm{\,sgn}\,}
+\renewcommand{\Im}{\,\mathrm{Im}\,}
+\renewcommand{\Re}{\,\mathrm{Re}\,}
+\renewcommand{\det}[4]{#1 #4 - #2 #3}
+\renewcommand{\matrix}[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix}}
+\newcommand{\matrixw}[5]{\begin{#5matrix}#1 & #2 \\ #3 & #4\end{#5matrix}} % #5 = b p s v V
+\newcommand{\col}[2]{\begin{pmatrix}#1 & #2\end{pmatrix}}
+\newcommand{\colw}[3]{\begin{#3matrix}#1 & #2 \end{#3matrix}} % #3 = b p s v V
+\newcommand{\row}[2]{\begin{pmatrix}#1 \\ #2\end{pmatrix}}
+\newcommand{\roww}[3]{\begin{#3matrix}#1 \\ #2 \end{#3matrix}} % #3 = b p s v V
+\newcommand{\matrixt}[2]{\begin{#1matrix} #2\end{#1matrix}}
+\newcommand{\matrixrotr}[7]{\begin{#1matrix} \ort{#2} & \ort{#3} & \ort{#4} \\ \df{#2} & \df{#3} & \df{#4} \\ #5 & #6 & #7 \end{#1matrix}}
+\newcommand{\matrixrotd}[4]{\begin{#1matrix} \ort{x} & \ort{y} & \ort{z} \\ \df{x} & \df{y} & \df{z} \\ #2 & #3 & #4 \end{#1matrix}}
+\newcommand{\matrixrotdv}[2]{\begin{#1matrix} \ort{x} & \ort{y} & \ort{z} \\ \df{x} & \df{y} & \df{z} \\ #2_x & #2_y & #2_z \end{#1matrix}}
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+
+\newcommand{\shtr}{\mathop{\!\vphantom{E}'}}
+\newcommand{\ind}[1]{\mathop{\!\vphantom{E}_{#1}}}
+
 \setlength{\parindent}{0cm}
 \begin{document}
 \tableofcontents
@@ -28,5 +77,6 @@
 %\input{all/10.tex}
 \input{all/11.tex}
 \input{all/int.tex}
+\input{all/diff.tex}
 
 \end{document}
