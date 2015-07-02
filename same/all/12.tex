@@ -1,0 +1,117 @@
+\section{Движение заряженной частицы в скрещенных полях}
+Рассмотрим движение частицы массой $m$, зарядом $q$ в скрещенном поле $\vec{E} = -\vec{u}\times\vec{B}$. Уравнения движения:
+\[
+	\Dff{\vec{p}}{t} = q (\vec{E} + \vec{v} \times \vec{B}) =
+	q (\vec{v} - \vec{u})\times\vec{B}
+\]
+Вводим собственное время $\tau$:
+\[
+	\Dff{\tau}{t} = \sqrt{1 - v^2/c^2} = \frac{mc^2}{W}
+\]
+Тогда:
+\[
+	\Dff{\vec{p}}{\tau} =
+	\frac{q}{m} (\vec{p} - \vec{u}W/c^2)\times\vec{B}
+\]
+Вводим циклотронную частоту:
+\[
+	\vec{\omega}_0 = \frac{q}{m}\vec{B}
+\]
+\[
+	\Dff{\vec{p}}{\tau} =
+	- \vec{\omega}_0\times(\vec{p} - \vec{u}W/c^2)
+\]
+Рассмотрим также энергию:
+\[
+	W = \sqrt{p^2c^2 + m^2 c^4}
+\]
+\[
+	\Dff{W}{\tau} = \frac{c^2}{W} \vec{p}\cdot\Dff{\vec{p}}{\tau} = 
+	\vec{p}\cdot(\vec{\omega}_0\times\vec{u})
+\]
+Заметим теперь, что:
+\[
+	\vec{\omega}_0 \cdot \vec{p} = \vec\omega_0 \cdot \vec{p}_0
+\]
+\[
+	\Dff{\vec{u}\cdot\vec{p}}{\tau} = - \vec{u}\cdot(\vec{\omega}_0\times\vec{p}) = \vec{p}\cdot(\vec{\omega}_0\times\vec{u}) = \Dff{W}{\tau} 
+\]
+В результате:
+\[	
+	W - \vec{u}\cdot\vec{p} = const = W_0 - \vec{u}\cdot\vec{p}_0 = W_0'
+\]
+\[
+	\Dff{\vec{p}}{\tau} =
+	- \vec{\omega}_0\times(\vec{p} - \vec{u}(\vec{u}\cdot\vec{p})/c^2 - W_0'/c^2)
+\]
+Введём правую тройку ортов:
+\[
+	\vec{e}_\omega = \frac{\vec\omega_0}{\omega_0} \quad
+	\vec{e}_t = \frac{\vec{e}_\omega \times \vec{u}}{|\vec{e}_\omega \times \vec{u}|} = \frac{\vec{e}_\omega \times \vec{u}}{u\sin \theta} \quad
+	\vec{e}_s = \vec{e}_\omega\times\vec{e}_t = \frac{\vec{e}_\omega u \cos \theta - \vec{u}}{u\sin \theta} = \frac{\vec{e}_\omega \cos \theta - \vec{u}/u}{\sin \theta}
+\]
+\[
+	\vec{u} = u \cos \theta \vec{e}_\omega - u \sin \theta \vec{e}_s
+\]
+\[
+	\Dff{p_s}{\tau} \vec{e}_s + \Dff{p_t}{\tau} \vec{e}_t =
+	\omega_0 p_s \vec{e}_t - 
+	\omega_0 p_t \vec{e}_s - 
+	\omega_0 u^2 \sin^2 \theta p_s/c^2 \vec{e}_t + 
+	\omega_0 u^2 \cos \theta \sin \theta p_\omega /c^2 \vec{e}_t +
+	\omega_0 u \sin \theta W_0'/c^2 \vec{e}_t
+\]
+\[	
+	\begin{aligned}
+	& p_\omega = p_{0\omega} \\
+	& \Dff{p_s}{\tau} = - \omega_0 p_t \\
+	& \Dff{p_t}{\tau} = \omega_0 (1 - u^2 \sin^2 \theta/c^2) p_s + \omega_0 u \sin \theta W_0'/c^2 + \omega_0 u^2 \cos \theta \sin \theta p_{0\omega} /c^2 =
+	\omega_0 (1 - u^2 \sin^2 \theta/c^2) p_s + \omega_0 u \sin \theta (W_0 + u \sin \theta p_{0s})/c^2
+	\end{aligned}
+\]
+\[	
+	\Dfs{p_t}{\tau} = \omega_0^2 (u^2 \sin^2 \theta/c^2 - 1) p_\tau
+\]
+Введём обозначения:
+\[
+	k = \omega_0 \sqrt{u^2 \sin^2 \theta/c^2 - 1}
+\]
+\[
+	\begin{aligned}
+	& m\Dff{x_t}{\tau} = p_t = A \sinh (k\tau) + p_{0t} \cosh(k\tau) \\
+	& m\Dff{x_s}{\tau} = p_s = - \frac{\omega_0}{k} (A \cosh (k\tau) + p_{0t} \sinh (k\tau)) + \frac{\omega_0^2 u \sin \theta (W_0 + u \sin \theta p_{0s})}{k^2 c^2} \\
+	& \Rightarrow A = \frac{\omega_0 u \sin \theta (W_0 + u \sin \theta p_{0s})}{k c^2} - \frac{k}{\omega_0} p_{0s}  = 
+	\frac{\omega_0 (u \sin \theta W_0/c^2 + p_{0s})}{k} \\
+	& \Rightarrow p_s = - \frac{\omega_0}{k} (A (\cosh (k\tau) - 1) + p_{0t} \sinh (k\tau)) + p_{0s} \\
+	& m\Dff{x_\omega}{\tau} = p_\omega = p_{0\omega} \\
+	& m c^2\Dff{t}{\tau} = W = W_0 + u \sin \theta (p_s - p_{0s})
+	\end{aligned}
+\]
+\[
+	\begin{aligned}
+	& x_t = \frac{1}{mk} (A (\cosh (k\tau) - 1) + p_{0t} \sinh(k\tau)) + x_{0t} \\
+	& x_s = - \frac{\omega_0}{k^2m} (A (\sinh (k\tau) - k\tau) + p_{0t} (\cosh (k\tau) - 1)) + \frac{p_{0s} \tau}{m} + x_{0s} \\
+	& x_\omega = \frac{p_{0\omega} \tau}{m} + x_{0\omega} \\
+	& t = \frac{1}{mc^2} (W_0 \tau + u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
+	\end{aligned}
+\]
+Если $u \sin \theta = c$:
+\[
+	\begin{aligned}
+	& \qquad A = A'/k = \frac{\omega_0 (W_0/c + p_{0s})}{k}\\
+	& x_t = \frac{1}{m} (A'\frac{\tau^2}{2} + p_{0t} \tau) + x_{0t} \\
+	& x_s = - \frac{\omega_0}{m} (A' \frac{\tau^3}{6} + p_{0t} \frac{\tau^2}{2} + \frac{p_{0s} \tau}{m} + x_{0s} \\
+	& x_\omega = \frac{p_{0\omega} \tau}{m} + x_{0\omega} \\
+	& t = \frac{1}{mc^2} (W_0 \tau + u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
+	\end{aligned}
+\]
+Если $u \sin \theta < c$:
+\[
+	\begin{aligned}
+	& \qquad k = i \omega \qquad A = - i A'\\
+	& x_t = \frac{1}{m\omega} (- A' (\cos (\omega\tau) - 1) + p_{0t} \sin(\omega\tau)) + x_{0t} \\
+	& x_s = \frac{\omega_0}{\omega^2m} (A (\sin (\omega \tau) - \omega \tau) + p_{0t} (\cos (\omega \tau) - 1)) + \frac{p_{0s} \tau}{m} + x_{0s} \\
+	& x_\omega = \frac{p_{0\omega} \tau}{m} + x_{0\omega} \\
+	& t = \frac{1}{mc^2} (W_0 \tau + u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
+	\end{aligned}
+\]
