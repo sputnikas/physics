@@ -42,7 +42,7 @@
 \]
 \[
 	\Dff{\vec{p}}{\tau} =
-	- \vec{\omega}_0\times(\vec{p} - \vec{u}(\vec{u}\cdot\vec{p})/c^2 - W_0'/c^2)
+	- \vec{\omega}_0\times(\vec{p} - \vec{u}(\vec{u}\cdot\vec{p})/c^2 -\vec{u} W_0'/c^2)
 \]
 Введём правую тройку ортов:
 \[
@@ -84,7 +84,7 @@
 	\frac{\omega_0 (u \sin \theta W_0/c^2 + p_{0s})}{k} \\
 	& \Rightarrow p_s = - \frac{\omega_0}{k} (A (\cosh (k\tau) - 1) + p_{0t} \sinh (k\tau)) + p_{0s} \\
 	& m\Dff{x_\omega}{\tau} = p_\omega = p_{0\omega} \\
-	& m c^2\Dff{t}{\tau} = W = W_0 + u \sin \theta (p_s - p_{0s})
+	& m c^2\Dff{t}{\tau} = W = W_0 - u \sin \theta (p_s - p_{0s})
 	\end{aligned}
 \]
 \[
@@ -92,7 +92,7 @@
 	& x_t = \frac{1}{mk} (A (\cosh (k\tau) - 1) + p_{0t} \sinh(k\tau)) + x_{0t} \\
 	& x_s = - \frac{\omega_0}{k^2m} (A (\sinh (k\tau) - k\tau) + p_{0t} (\cosh (k\tau) - 1)) + \frac{p_{0s} \tau}{m} + x_{0s} \\
 	& x_\omega = \frac{p_{0\omega} \tau}{m} + x_{0\omega} \\
-	& t = \frac{1}{mc^2} (W_0 \tau + u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
+	& t = \frac{1}{mc^2} (W_0 \tau - u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
 	\end{aligned}
 \]
 Если $u \sin \theta = c$:
@@ -100,9 +100,9 @@
 	\begin{aligned}
 	& \qquad A = A'/k = \frac{\omega_0 (W_0/c + p_{0s})}{k}\\
 	& x_t = \frac{1}{m} (A'\frac{\tau^2}{2} + p_{0t} \tau) + x_{0t} \\
-	& x_s = - \frac{\omega_0}{m} (A' \frac{\tau^3}{6} + p_{0t} \frac{\tau^2}{2} + \frac{p_{0s} \tau}{m} + x_{0s} \\
+	& x_s = - \frac{\omega_0}{m} \left(A' \frac{\tau^3}{6} + p_{0t} \frac{\tau^2}{2}\right) + \frac{p_{0s} \tau}{m} + x_{0s} \\
 	& x_\omega = \frac{p_{0\omega} \tau}{m} + x_{0\omega} \\
-	& t = \frac{1}{mc^2} (W_0 \tau + u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
+	& t = \frac{1}{mc^2} (W_0 \tau - u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
 	\end{aligned}
 \]
 Если $u \sin \theta < c$:
@@ -110,8 +110,8 @@
 	\begin{aligned}
 	& \qquad k = i \omega \qquad A = - i A'\\
 	& x_t = \frac{1}{m\omega} (- A' (\cos (\omega\tau) - 1) + p_{0t} \sin(\omega\tau)) + x_{0t} \\
-	& x_s = \frac{\omega_0}{\omega^2m} (A (\sin (\omega \tau) - \omega \tau) + p_{0t} (\cos (\omega \tau) - 1)) + \frac{p_{0s} \tau}{m} + x_{0s} \\
+	& x_s = \frac{\omega_0}{\omega^2m} (A' (\sin (\omega \tau) - \omega \tau) + p_{0t} (\cos (\omega \tau) - 1)) + \frac{p_{0s} \tau}{m} + x_{0s} \\
 	& x_\omega = \frac{p_{0\omega} \tau}{m} + x_{0\omega} \\
-	& t = \frac{1}{mc^2} (W_0 \tau + u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
+	& t = \frac{1}{mc^2} (W_0 \tau - u \sin \theta (m (x_s - x_{0s}) - p_{0s} \tau))
 	\end{aligned}
 \]

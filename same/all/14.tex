@@ -1,0 +1,160 @@
+\section{Волновые уравнения}
+\subsection{Однородное одномерное волновое уравнение в неограниченной среде с заданными начальными условиями}
+
+Как оно выглядит? Да, вот так:
+\[
+	\dfs{u}{x} - \frac{1}{v^2} \dfs{u}{t} = 0
+\]
+В обычном случае $v = const$. Начальные условия:
+\[
+	\begin{aligned}
+		& u(0, x) = f(x) \\
+		& \dff{u}{t} \Big|_{(0, x)} = g(x)
+	\end{aligned}
+\]
+Его очень легко решить, если воспользоваться заменой координат:
+\[
+	\begin{aligned}
+	& \eta = x + v t \\
+	& \xi = x - v t
+	\end{aligned}	
+\]
+\[
+	\begin{aligned}
+		& \dff{u}{x} = \dff{u}{\eta} \dff{\eta}{x} + \dff{u}{\xi} \dff{\xi}{x} =
+			\dff{u}{\eta} + \dff{u}{\xi} \\
+		& \dfs{u}{x} = \dfs{u}{\eta} \dff{\eta}{x} + \dfss{u}{\xi}{\eta} \dff{\xi}{x} + \dfss{u}{\eta}{\xi} \dff{\eta}{x} +  \dfs{u}{\xi} \dff{\xi}{x} =
+			\dfs{u}{\eta} +  \dfs{u}{\xi} + 2 \dfss{u}{\xi}{\eta} \\
+		& \dff{u}{t} = \dff{u}{\eta} \dff{\eta}{t} + \dff{u}{\xi} \dff{\xi}{t} =
+			v \left(\dff{u}{\eta} - \dff{u}{\xi}\right) \\
+		& \dfs{u}{t} = v\dfs{u}{\eta} \dff{\eta}{t} + v\dfss{u}{\xi}{\eta} \dff{\xi}{t} - v\dfss{u}{\eta}{\xi} \dff{\eta}{t} -  v\dfs{u}{\xi} \dff{\xi}{t} =
+		v^2\left(\dfs{u}{\eta} +  \dfs{u}{\xi} - 2 \dfss{u}{\xi}{\eta} \right)\\ 
+	\end{aligned}
+\]
+\[
+	\dfs{u}{x} - \frac{1}{v^2} \dfs{u}{t} = 4 \dfss{u}{\xi}{\eta} = 0
+\]
+\[
+	\dff{u}{\eta} = U_1(\eta)
+\]
+\[
+	u = U(\eta) + V(\xi)
+\]
+\[
+	\begin{aligned}
+	& u(0, x) = U(x) + V(x) = f(x) \\
+	& \dff{u}{t} \Big|_{(0, x)} = v \left(U'(x) - V'(x)\right) = g(x)
+	\end{aligned}
+	\Rightarrow
+	\begin{aligned}
+	& U(x) + V(x) = f(x) \\
+	& U(x) - V(x) = \frac{1}{v} \int g(x) dx = \frac{G(x)}{v}
+	\end{aligned}
+\]
+\[
+	u = \frac{f(x + v t) + f(x - v t)}{2} + \frac{G(x + v t) - G(x - v t)}{2 v} = \frac{f(x + v t) + f(x - v t)}{2} + \frac{1}{2 v} \int\limits_{x - v t}^{x + v t} g(x) dx
+\]
+
+\subsection{Метод преобразования Фурье для неоднородного одномерного волнового уравнения в бесконечной среде с нулевыми начальными условиями}
+
+\[
+\dfs{u}{x} - \frac{1}{v^2} \dfs{u}{t} = s(x, t)
+\]
+$v = const$. Начальные условия:
+\[
+	\begin{aligned}
+	& u(0, x) = 0 \\
+	& \dff{u}{t} \Big|_{(0, x)} = 0
+	\end{aligned}
+\]
+Только координата $x$ меняется от $-\infty$ до $\infty$, поэтому преобразование Фурье будет иметь вид:
+\[
+	\begin{aligned}
+	& u(x, t) = \int\limits_{-\infty}^{\infty} U(k, t) e^{-ikx} dk \qquad\Leftrightarrow \qquad  U(k, t) = \frac{1}{2\pi}\int\limits_{-\infty}^{\infty} u(x, t) e^{ikx} dx\\
+	& s(x, t) = \int\limits_{-\infty}^{\infty} S(k, t) e^{-ikx} dk
+	\qquad\Leftrightarrow \qquad
+	S(k, t) = \frac{1}{2\pi}\int\limits_{-\infty}^{\infty} s(x, t) e^{ikx} dx
+	\end{aligned}
+\]
+Выполняем преобразование Фурье исходного уравнения:
+\[
+	\frac{1}{2\pi} \int\limits_{-\infty}^{\infty}\dfs{u}{x} e^{ikx} dx = 
+	\frac{1}{2\pi} \dff{u}{x} e^{ikx} \Big|_{-\infty}^{\infty} - 
+	\frac{ik}{2\pi} \int\limits_{-\infty}^{\infty}\dff{u}{x} e^{ikx} dx =
+	\frac{1}{2\pi} \left(\dff{u}{x} - ik u \right) e^{ikx} \Big|_{-\infty}^{\infty}
+	- k^2 U
+\]
+При условии, что:
+\[
+	 \lim\limits_{x \to \pm \infty }\left(\dff{u}{x} - ik u \right) = 0
+\]
+получаем преобразованное уравнение:
+\[
+	- k^2 U - \frac{1}{v^2} \Dfs{U}{t} = S(k, t)
+\]
+И начальные условия:
+\[
+	\begin{aligned}
+	& U(k, 0) = 0 \\
+	& \Dff{U}{t} \Big|_{(k, 0)} = 0
+	\end{aligned}
+\]
+Решение этого уравнения:
+\[
+	U(k, t) = - \frac{v}{k} \int\limits_{0}^{t} \sin(vk (t - t')) S(k, t') dt'
+\]
+\[
+	\begin{gathered}
+	u(x, t) = -\int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \frac{v}{k} \sin(vk (t - t')) S(k, t') e^{-ikx}  dk\, dt' =
+	-\int\limits_{0}^{t} \frac{v \pi}{2} ( \sign (v (t - t') - x) - \sign (-(v(t - t') + x)) ) S(0, t') dt' = \\ =
+	-\frac{v \pi}{2} \int\limits_{0}^{t}  [ \sign (x + v(t - t')) - \sign (x - v (t - t')) ] S(0, t') dt' = \\ =
+	-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (x + v(t - t')) - \sign (x - v (t - t')) ] s(x', t') dt' dx' 
+	= \\ =
+	-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (x + v \tau) - \sign (x - v\tau) ] s(x', t - \tau) d\tau dx' 
+	\end{gathered}
+\]
+\[
+	\sign (x + v \tau) - \sign (x - v\tau) = 
+	\begin{cases}
+	0 & x > v\tau \\
+	2 & -v \tau < x < v\tau \\
+	0 & x < - v\tau
+	\end{cases} =
+	\begin{cases}
+	0 & |x|>v\tau \\
+	2 & |x|<v\tau
+	\end{cases} =
+	\begin{cases}
+	0 & \tau<|x|/v \\
+	2 & \tau>|x|/v
+	\end{cases} =
+	2 \eta(\tau - |x|/v)
+\]
+\[
+	u(x, t) =
+	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \eta(\tau - |x|/v) s(x', t - \tau) d\tau dx' 
+\]
+
+\subsection{Пример}
+
+Пусть:
+\[
+	s(x, t) = \begin{cases}
+	0 & x \notin [x_1, x_2] \\
+	S_0/(x_2 - x_1) & x \in [x_1, x_2]
+	\end{cases}
+\]
+что соответствует, например, постоянной силе действующей на участок струны.
+\[
+\begin{gathered}
+	u(x, t) =
+	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \eta(\tau - |x|/v) s(x', t - \tau) d\tau dx' =
+	-\frac{v}{2} \int\limits_{0}^{t} \eta(\tau - |x|/v) S_0 d\tau = 
+	\\ =
+	\begin{cases}
+	0 & t < |x|/v \\
+	- v S_0 (t - |x|/v)/2 & t> |x|/v
+	\end{cases} =
+	- v S_0 (t - |x|/v) \eta(t - |x|/v) /2
+\end{gathered}
+\]
