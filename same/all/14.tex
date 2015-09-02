@@ -106,55 +106,362 @@ $v = const$. Начальные условия:
 \[
 	\begin{gathered}
 	u(x, t) = -\int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \frac{v}{k} \sin(vk (t - t')) S(k, t') e^{-ikx}  dk\, dt' =
-	-\int\limits_{0}^{t} \frac{v \pi}{2} ( \sign (v (t - t') - x) - \sign (-(v(t - t') + x)) ) S(0, t') dt' = \\ =
-	-\frac{v \pi}{2} \int\limits_{0}^{t}  [ \sign (x + v(t - t')) - \sign (x - v (t - t')) ] S(0, t') dt' = \\ =
-	-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (x + v(t - t')) - \sign (x - v (t - t')) ] s(x', t') dt' dx' 
-	= \\ =
-	-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (x + v \tau) - \sign (x - v\tau) ] s(x', t - \tau) d\tau dx' 
+	-\int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \! \int\limits_{-\infty}^{\infty} \frac{v}{2k\pi} \sin(vk (t - t')) s(x', t') e^{-ik(x - x')}  dk\, dt'\, dx' = \\ =
+	-\frac{v}{4} \int\limits_{0}^{t}  \! \int\limits_{-\infty}^{\infty} [ \sign (x - x' + v(t - t')) - \sign (x - x' - v (t - t')) ] s(x', t') dt' dx' = \\ =
+	-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (\xi + v \tau) - \sign (\xi - v\tau) ] s(x - \xi, t - \tau) d\tau d\xi 
 	\end{gathered}
 \]
 \[
-	\sign (x + v \tau) - \sign (x - v\tau) = 
+	\begin{aligned}
+	\sign (x + a) - \sign (x - a) = 
 	\begin{cases}
-	0 & x > v\tau \\
-	2 & -v \tau < x < v\tau \\
-	0 & x < - v\tau
-	\end{cases} =
+	\left\{
+	\begin{aligned}
+	& 0, & x > a, \\
+	& 1, & x = a, \\
+	& 2, & -a < x < a, \\
+	& 1, & x = - a, \\
+	& 0, & x < - a.
+	\end{aligned}
+	\right\},
+	& a > 0, \\
+	0,
+	& a = 0, \\
+	\left\{
+	\begin{aligned}
+	& 0, & x > - a, \\
+	& -1, & x = - a, \\
+	& -2, & a < x < -a, \\
+	& -1, & x = a, \\
+	& 0, & x < a.
+	\end{aligned}
+	\right\},
+	& a < 0. \\
+	\end{cases}
+	=
 	\begin{cases}
-	0 & |x|>v\tau \\
-	2 & |x|<v\tau
-	\end{cases} =
-	\begin{cases}
-	0 & \tau<|x|/v \\
-	2 & \tau>|x|/v
-	\end{cases} =
-	2 \eta(\tau - |x|/v)
+	0, & |x|>|a|, \\ 
+	\sign(a), & |x|=|a|, \\ 
+	2 \sign(a), & |x| < |a|.
+	\end{cases}
+	=
+	2 \eta(|a| - |x|) \sign(a)
+	\end{aligned}
 \]
 \[
+	 \sign (\xi + v \tau) - \sign (\xi - v\tau) = 2 \eta(v|\tau| - |\xi|) \sign(v\tau)
+\]
+\[
+	\begin{aligned}
 	u(x, t) =
-	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \eta(\tau - |x|/v) s(x', t - \tau) d\tau dx' 
+	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \eta(v|\tau| - |\xi|) \sign(v\tau) s(x - \xi, t - \tau) d\tau\, d\xi = \\ =
+	[\text{если, $s(x - \xi, t - \tau)$ не имеет $\delta$-образных разывов}] = \\ =
+	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-v\tau}^{v\tau} s(x - \xi, t - \tau) d\tau\, d\xi
+	\end{aligned}
+\]
+%Проверим, что найденное решение удовлетворяет уравнению:
+%\[
+%	\begin{gathered}
+%	\dfs{u}{x} - \frac{1}{v^2} \dfs{u}{t} =
+%	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \eta(\tau - |\xi|/v)
+%	\left(\dfs{}{x} - \frac{1}{v^2} \dfs{}{t}\right) s(x - \xi, t - \tau) d\tau\, d\xi = \\ =
+%	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \eta(\tau - |\xi|/v)
+%	\left(\dfs{}{\xi} - \frac{1}{v^2} \dfs{}{\tau}\right) s(x - \xi, t - \tau) d\tau\, d\xi
+%	\end{gathered}
+%\]
+
+\subsection{Примеры}
+
+\textbf{1. Пусть:}
+\[
+s(x, t) = \delta(x - x_0) \delta (t - t_0) 
+\]
+что соответствует импульсу, мгновенно переданному отдельной точке струны.
+\[
+\begin{gathered}
+u(x, t) =
+-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (\xi + v \tau) - \sign (\xi - v\tau) ] s(x - \xi, t - \tau) d\tau d\xi =
+\\ =
+-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (\xi + v \tau) - \sign (\xi - v\tau) ] \delta(x - x_0 - \xi) \delta (t - t_0 - \tau)  d\tau d\xi =
+\\ =
+-\frac{v}{4} \int\limits_{0}^{t}  [ \sign (x - x_0 + v \tau) - \sign (x - x_0 - v\tau) ] \delta (t - t_0 - \tau)  d\tau = 
+\\ =
+-\frac{v}{4} [ \sign (x - x_0 + v (t - t_0)) - \sign (x - x_0 - v(t - t_0)) ] \eta(t - t_0)
+\end{gathered}
+\]
+Проверяем:
+\[
+\dfs{u}{x} = - \frac{v}{2} [\delta' (x - x_0 + v (t - t_0)) - \delta' (x - x_0 - v(t - t_0))]\eta(t - t_0)
+\]
+\[
+\begin{gathered}
+\dfs{u}{t} = -\frac{v}{4} \left\{
+2 v^2 [\delta' (x - x_0 + v (t - t_0)) - \delta' (x - x_0 - v(t - t_0)) ] \eta(t - t_0) +
+\right.\\ + \left.
+4 v [\delta (x - x_0 + v (t - t_0)) + \delta (x - x_0 - v(t - t_0))]\delta(t - t_0) +
+\right.\\ + \left.
+[ \sign (x - x_0 + v (t - t_0)) - \sign (x - x_0 - v(t - t_0)) ] \delta'(t - t_0)
+\right\}
+\end{gathered}
+\]
+Воспользуемся тождествами:
+\[
+f(x)\delta(x - x_0) + [F(x) - F(x_0)] \delta'(x - x_0) = 0, \qquad F(x) = \int f(x) dx
+\]
+\[
+f(x) \delta(x -x_0) = f(x_0) \delta(x - x_0)
+\]
+Кое-что подсократилось:
+\[
+\begin{gathered}
+\dfs{u}{t} = -\frac{v}{4} \left\{
+2 v^2 [\delta' (x - x_0 + v (t - t_0)) - \delta' (x - x_0 - v(t - t_0)) ] \eta(t - t_0) +
+\right.\\ + \left.
+4 v \delta (x - x_0) \delta(t - t_0)
+\right\}
+\end{gathered}
+\]
+\[
+\Rightarrow
+\dfs{u}{x} - \frac{1}{v^2} \dfs{u}{t} = \delta (x - x_0) \delta(t - t_0)
+\]
+На рисунке показан профиль струны в различные моменты времени:
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{images/png/for_delta_force.png}
+\end{center}
+
+\textbf{Одно тождество}
+
+Рассмотрим функцию вида:
+\[
+	u(x, t) = \eta(t - t_0) \eta(\xi) f(\xi), \text{ если } \xi = t - t_0 - |x - x_0|/v 
+\]
+\[
+	\begin{gathered}
+	u''_{tt} = 
+	\delta'(t - t_0) \eta(\xi) f(\xi) + 
+	2 \delta(t - t_0) (\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \dff{\xi}{t} + 
+	\\ +
+	\eta(t - t_0) (\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi)) \left(\dff{\xi}{t}\right)^2 +
+	\eta(t - t_0) (\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \dfs{\xi}{t} =
+	\\ =
+	\delta'(t - t_0) \eta(\xi) f(\xi) + 
+	2 \delta(t - t_0) (\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) +
+	\eta(t - t_0) (\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi))
+	\end{gathered}
+\]
+\[
+	\begin{gathered}
+	u''_{xx} = 
+	\eta(t - t_0) 
+	\left(
+	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \dff{\xi}{x} 
+	\right)'_x = 
+	\\ =
+	\eta(t - t_0)
+	(\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi)) \left(\dff{\xi}{x}\right)^2 
+	+
+	\eta(t - t_0)
+	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \dfs{\xi}{x} =
+	\\ =
+	\eta(t - t_0)
+	(\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi)) \frac{\sign^2(x - x_0)}{v^2}
+	-
+	\eta(t - t_0)
+	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \frac{2 \delta(x - x_0)}{v}
+	\\ =
+	\eta(t - t_0)
+	(\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi)) \frac{1 - 2 \eta(- | x - x_0 |)}{v^2}
+	-
+	\eta(t - t_0)
+	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \frac{2 \delta(x - x_0)}{v}
+	\end{gathered}
+\]
+\[
+	\begin{gathered}
+	u''_{xx} - u''_{tt}/v^2 = 
+	- \frac{1}{v^2} \delta'(t - t_0) \eta(\xi) f(\xi) - 
+	\frac{2}{v^2} \delta(t - t_0) (\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) - 
+	\\ -
+	\frac{2}{v^2} \eta(t - t_0)
+	(\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi))\eta(- | x - x_0 |)  - 
+	\eta(t - t_0)
+	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \frac{2 \delta(x - x_0)}{v}
+	\end{gathered}
+\]
+\[
+	\begin{gathered}
+	\delta'(t - t_0) \eta(\xi) f(\xi) = \delta'(t - t_0) \eta(- | x - x_0 |/v) f(\xi) - \delta(t - t_0) \delta(\xi) f(\xi)
+	\end{gathered}
 \]
 
-\subsection{Пример}
+\textbf{2. Пусть:}
+\[
+s(x, t) = \delta(x - x_0) \eta(t - t_0)
+\]
+что соответствует постоянной во времени силе, действующей в фиксированной точке струны, начиная с некоторого момента.
+\[
+\begin{gathered}
+u(x, t) =
+-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (\xi + v \tau) - \sign (\xi - v\tau) ]  \delta(x - x_0 - \xi) \eta(t - t_0 - \tau) d\tau d\xi =
+\\ =
+-\frac{v}{4} \int\limits_{0}^{t} [ \sign (x - x_0 + v \tau) - \sign (x - x_0 - v\tau) ] \eta (t - t_0 - \tau)  d\tau =
+\\ =
+-\frac{v}{4} \eta(t - t_0) \int\limits_{0}^{t - t_0} [ \sign (x - x_0 + v \tau) - \sign (x - x_0 - v\tau) ] d\tau = 
+-\frac{v}{4} \eta(t - t_0) \int\limits_{0}^{t - t_0} 2 \eta(v|\tau| - |x - x_0|) d\tau =
+\\ =
+-\frac{v}{4} \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v) \int\limits_{|x - x_0|/v}^{t - t_0} 2 \eta(v\tau - |x - x_0|) d\tau = 
+-\frac{v}{2} \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v) \int\limits_{|x - x_0|/v}^{t - t_0} d\tau =
+\\ =
+-\frac{v}{2} \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v) (t - t_0 - |x - x_0|/v) 
+\end{gathered}
+\]
+Проверяем:
+\[
+u'_x = \frac{1}{2} \eta(t - t_0) (\delta(t - t_0 - |x - x_0|/v)(t - t_0 - |x - x_0|/v) + \eta(t - t_0 - |x - x_0|/v) )\sign(x - x_0) =
+\frac{1}{2} \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v) \sign(x - x_0)
+\]
+\[
+\begin{aligned}
+& u''_{xx} = \frac{1}{2v} \eta(t - t_0) (- \delta(t - t_0 - |x - x_0|/v) \sign^2(x - x_0) + 2 v \eta(t - t_0 - |x - x_0|/v) \delta(x - x_0)) = \\
+\qquad\qquad\qquad&
+= \frac{1}{2v} \eta(t - t_0) (- \delta(t - t_0 - |x - x_0|/v) + 2 \delta(t - t_0 - |x -x_0|/v)\eta(-|x - x_0|/v)  + 2 v \eta(t - t_0) \delta(x - x_0))
+= \\
+\qquad\qquad\qquad&
+= \frac{1}{2v} \eta(t - t_0) (- \delta(t - t_0 - |x - x_0|/v) + 2 \delta(t - t_0 - |x -x_0|/v)\eta(t_0 - t)  + 2 v \eta(t - t_0) \delta(x - x_0))
+\end{aligned}
+\]
+\[
+ 2 \delta(t - t_0 - |x -x_0|/v)\eta(t_0 - t)\eta(t - t_0) = \delta(t - t_0 - |x -x_0|/v)\eta(-|t -t_0|) = v \delta(x -x_0)\eta(-|t -t_0|) = \delta(t - t_0)\eta(- |x -x_0|/v)
+\]
+\[
+\begin{aligned}
+& u'_{t} = -\frac{v}{2} (\delta(t - t_0) \eta(t - t_0 - |x - x_0|/v) (t - t_0 - |x - x_0|/v) + 
+\\ \qquad\qquad\qquad& + 
+\eta(t - t_0) \delta(t - t_0 - |x - x_0|/v) (t - t_0 - |x - x_0|/v) + \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v)) = \\
+\qquad\qquad\qquad&
+=  -\frac{v}{2} \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v)
+\end{aligned}
+\]
+\[
+\begin{aligned}
+& u''_{tt} = -\frac{v}{2} (\delta(t - t_0) \eta(t - t_0 - |x - x_0|/v) + \eta(t - t_0) \delta(t - t_0 - |x - x_0|/v)) = 
+\\ =
+&-\frac{v}{2} (\delta(t - t_0) \eta(- |x - x_0|/v) + \eta(t - t_0) \delta(t - t_0 - |x - x_0|/v)) 
+\end{aligned}
+\]
+\[
+\begin{aligned}
+& \Rightarrow
+\dfs{u}{x} - \frac{1}{v^2} \dfs{u}{t} = \frac{1}{v}\delta(t - t_0) \eta(- |x - x_0|/v) + \eta^2(t - t_0) \delta(x - x_0) =
+\delta(x -x_0)\eta(-|t -t_0|) + \eta^2(t - t_0) \delta(x - x_0) = \\
+& =
+\delta(x -x_0)\eta(-|t -t_0|) + (\eta(t - t_0) - \eta(-|t - t_0|)/2) \delta(x - x_0) = \\
+& = (\eta(t - t_0) + \eta(-|t -t_0|)) \delta(x - x_0)
+\end{aligned}
+\]
+То есть найденное решение применимо при $t > t_0$, а при $t = t_0$ получается бред. Форма струны в различные моменты времени показана на рисунке:
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{images/png/for_deltac_force.png}
+\end{center}
 
-Пусть:
+\textbf{3. Пусть:}
 \[
 	s(x, t) = \begin{cases}
-	0 & x \notin [x_1, x_2] \\
-	S_0/(x_2 - x_1) & x \in [x_1, x_2]
-	\end{cases}
+	0, & x \notin [-l/2, l/2] \\
+	S_0\eta(t - t_0)/l, & x \in [-l/2, l/2]
+	\end{cases} =
+	\frac{S_0}{l} [ \eta(x + l/2) - \eta(x - l/2)] \eta(t - t_0)
 \]
-что соответствует, например, постоянной силе действующей на участок струны.
+что соответствует постоянной силе, действующей на участок струны.
 \[
 \begin{gathered}
 	u(x, t) =
-	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} \eta(\tau - |x|/v) s(x', t - \tau) d\tau dx' =
-	-\frac{v}{2} \int\limits_{0}^{t} \eta(\tau - |x|/v) S_0 d\tau = 
+	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-v\tau}^{v\tau} s(x - \xi, t - \tau) d\tau\, d\xi = 
 	\\ =
-	\begin{cases}
-	0 & t < |x|/v \\
-	- v S_0 (t - |x|/v)/2 & t> |x|/v
-	\end{cases} =
-	- v S_0 (t - |x|/v) \eta(t - |x|/v) /2
+	-\frac{v}{2} \int\limits_{0}^{t} \! \int\limits_{-v\tau}^{v\tau} \frac{S_0}{l} [ \eta(x + l/2 - \xi) - \eta(x - l/2 - \xi)]\eta(t - t_0 - \tau) d\tau\, d\xi = 
+	\\ =
+	-\frac{v}{2} \int\limits_{0}^{t - t_0} \! \int\limits_{-v\tau}^{v\tau} \frac{S_0}{l} [ \eta(x + l/2 - \xi) - \eta(x - l/2 - \xi)] d\tau\, d\xi = 
+	-\frac{v}{2}\frac{S_0}{l} \int\limits_{S} d\tau\, d\xi
 \end{gathered}
+\]
+Область интегрирования $S$ приведена на рисунке, и представляет собой пересечение полосы шириной $l$ и треугольника, ограниченного кривыми $y = v(t - t_0)$, $y = x$, $y = -x$.
+\begin{center}
+	\includegraphics{images/png/for_example3.png}
+	%\input{images/tikz/for_example3.tex}
+\end{center}
+Решение можно представить с помощью функций, определяющих площадь пересечения треугольника с левой полуплоскостью, заданной прямой параллельной оси ординат:
+\[
+\begin{aligned}
+& S_+(x, x_A, x_B, x_C, y_B) =  
+\frac{1}{2} y_B \frac{(x - x_A)^2}{x_B - x_A} \eta(x - x_A) \eta(x_B - x)  + \\ & +
+\frac{1}{2} y_B \left[(x_B - x_A) + \frac{2 x_C - x - x_B}{x_C - x_B} (x - x_B)\right] \eta(x - x_B) \eta(x_C - x) +
+\frac{1}{2} y_B (x_C - x_A) \eta(x - x_C)
+\end{aligned}
+\]
+\[
+	\begin{aligned}
+	u(x, t) & = -\frac{v}{2}\frac{S_0}{l} [S_+(x + l/2, -v(t - t_0), 0, v(t-t_0), v(t - t_0)) - S_+(x - l/2, -v(t - t_0), 0, v(t-t_0), v(t - t_0))]
+	\end{aligned}
+\]
+К сожалению, выражение слишком громоздко, и его трудно проверить. На рисунке приведена форма струны в различные моменты времени:
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{images/png/for_const_force.png}
+\end{center}
+Примечательно, что сначала график пологий, но со временем приобретает более параболическую форму.
+
+\textbf{4. Пусть:}
+
+\[
+s(x, t) = \delta(x - x_0) e^{i\omega t} \eta(t - t_0)
+\]
+что соответствует силе действующей в точке по синусоидальному закону.
+\[
+\begin{gathered}
+u(x, t) =
+-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (\xi + v \tau) - \sign (\xi - v\tau) ] s(x - \xi, t - \tau) d\tau d\xi =
+\\ =
+-\frac{v}{4} \int\limits_{0}^{t} \! \int\limits_{-\infty}^{\infty} [ \sign (\xi + v \tau) - \sign (\xi - v\tau) ] \delta(x - x_0 - \xi) e^{i\omega(t - \tau)} \eta(t - t_0 - \tau) d\tau d\xi =
+\\ =
+-\frac{v}{2} \eta(t - t_0) \int\limits_{0}^{t - t_0} \eta(v\tau - |x - x_0|) e^{i\omega(t - \tau)} d\tau =
+-\frac{v}{2} \eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega t} \int\limits_{|x - x_0|/v}^{t - t_0} e^{-i\omega\tau} d\tau =
+\\ =
+\frac{v}{2i\omega} \eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega t} e^{-i\omega(t - t_0 - |x - x_0|/v)} =
+\frac{v}{2i\omega} \eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) \left(e^{i\omega t_0} - e^{i\omega(t - |x - x_0|/v)} \right)
+\end{gathered}
+\]
+Проверяем:
+\[
+\begin{aligned}
+& (\eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v})'_x = 
+\eta(t - t_0) (-\delta(t - t_0 - |x - x_0|/v) + i \omega )e^{i\omega|x - x_0|/v}\sign(x -x_0)/v
+\end{aligned}
+\]
+\[
+\begin{aligned}
+& (\eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v})''_{xx} = 
+\eta(t - t_0) \delta'(t - t_0 - |x - x_0|/v) e^{i\omega|x - x_0|/v} \sign^2(x -x_0)/v^2 +
+\\ & +
+\eta(t - t_0) (-\delta(t - t_0 - |x - x_0|/v) + i \omega ) e^{i\omega|x - x_0|/v} i\omega \sign^2(x -x_0)/v^2 +
+\\ & +
+\eta(t - t_0) (-\delta(t - t_0 - |x - x_0|/v) + i \omega ) e^{i\omega|x - x_0|/v} 2\delta(x - x_0)/v
+\end{aligned}
+\]
+\[
+\begin{aligned}
+& (\eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v})'_{t} = 
+\eta(t - t_0) \delta(t - t_0 - |x - x_0|/v) e^{i\omega|x - x_0|/v} +  
+\\ & +
+\eta(t - t_0 - |x - x_0|/v) \delta(t - t_0)e^{i\omega|x - x_0|/v} =
+\eta(t - t_0) \delta(t - t_0 - |x - x_0|/v) e^{i\omega|x - x_0|/v} + \eta(- |x - x_0|/v)\delta(t - t_0)
+\end{aligned}
+\]
+\[
+\begin{aligned}
+& (\eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v})''_{tt} = 
+\\ & = 
+\eta(t - t_0) \delta'(t - t_0 - |x - x_0|/v) e^{i\omega|x - x_0|/v} + \delta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v} + 
+\\ & +
+\eta(- |x - x_0|/v)\delta'(t - t_0)
+\end{aligned}
 \]

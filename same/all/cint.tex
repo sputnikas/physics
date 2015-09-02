@@ -14,7 +14,7 @@
 	1 
 	&
 	
-	$f(z)$ ограничена по модулю:
+	$f(z)$ -- аналитическая функция без особых точек и ограничена по модулю:
 	\[
 	|f(z)| < M
 	\]
@@ -49,22 +49,40 @@
 	\]
 	\[
 	\begin{gathered}
-	\fint\limits_{-\infty}^{\infty} \frac{e^{-ia z}}{z} f(z) dz =
+	\fint\limits_{-\infty}^{\infty} \frac{e^{-ia x}}{x} f(x) dx =
 	- i f(0) \pi
 	\end{gathered}
 	\]
 	Можно показать, что при изменении знака $a$ изменится контур (будет вверху), направление обхода и как следствие знак результата.
 	\[
 	\begin{gathered}
-	\fint\limits_{-\infty}^{\infty} \frac{e^{ia z}}{z} f(z) dz =
+	\fint\limits_{-\infty}^{\infty} \frac{e^{ia x}}{x} f(x) dx =
 	i f(0) \pi \sign a
 	\end{gathered}
 	\]
 	Отсюда можно получить более общее выражение:
 	\[
 	\begin{gathered}
-	\fint\limits_{-\infty}^{\infty} \frac{e^{ia z}}{z - z_0} f(z) dz =
-	i e^{iaz_0} f(z_0) \pi \sign a
+	\fint\limits_{-\infty}^{\infty} \frac{e^{ia x}}{x - x_0} f(x) dx =
+	i e^{iax_0} f(x_0) \pi \sign a
+	\end{gathered}
+	\]
+	Внимание! Следует всегда помнить об ограничении на функцию $f(x)$ на всей комплексной плоскости. Вот хороший пример:
+	\[
+	f(x) = e^{ikx}
+	\]
+	Функция неограниченна, формула даёт ответ:
+	\[
+	\begin{gathered}
+	\fint\limits_{-\infty}^{\infty} \frac{e^{ia x}}{x} e^{ikx} dx =
+	i \pi \sign a
+	\end{gathered}
+	\]
+	Однако с другой стороны(и это правильный ответ):
+	\[
+	\begin{gathered}
+	\fint\limits_{-\infty}^{\infty} \frac{e^{ia x}}{x} e^{ikx} dx =
+	i \pi \sign (a + k)
 	\end{gathered}
 	\]
 	\\ 

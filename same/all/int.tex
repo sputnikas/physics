@@ -1,5 +1,5 @@
 \section{Весёлые интегралы}
-
+Произвольные постоянные в неопределённых интегралах далее опущены.
 \begin{enumerate}
 	\item 
 	\[
@@ -29,5 +29,22 @@
 		\frac{1}{\sqrt{p}} \int \frac{\Big(x - \cfrac{a}{2p} + \cfrac{a}{2p}\Big)\,dx}{\sqrt{\Big(x - \cfrac{a}{2p}\Big)^2 - \Big(\cfrac{a^2}{4p^2} + \cfrac{b}{p}\Big)}}
 		= \frac{1}{\sqrt{p}} \sqrt{\Big(x - \cfrac{a}{2p}\Big)^2 - \Big(\cfrac{a^2}{4p^2} + \cfrac{b}{p}\Big)} + 
 		\frac{1}{\sqrt{p}} \cfrac{a}{2p} \,\mathrm{arch\,} \frac{x - \cfrac{a}{2p}}{\sqrt{\cfrac{a^2}{4p^2} + \cfrac{b}{p}}}
+	\]
+	\item
+	\[
+		\int\limits_a^b |x| dx = 
+		\begin{cases}
+		\frac{b^2 - a^2}{2}, & 0 < a < b \\
+		\frac{a^2 + b^2}{2}, & a < 0 < b \\
+		\frac{a^2 - b^2}{2}, & a < b < 0
+		\end{cases}
+		=
+		\frac{\sign(b) b^2 - \sign(a) a^2}{2}
+	\]
+	\[
+		\int |x| dx = \int x \sign (x) dx = \sign (x) \frac{x^2}{2}
+	\]
+	\[
+		\int x^n \sign (x) dx = \sign (x) \frac{x^{n+1}}{n + 1}
 	\]
 \end{enumerate}
