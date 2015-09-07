@@ -234,65 +234,98 @@ f(x) \delta(x -x_0) = f(x_0) \delta(x - x_0)
 
 Рассмотрим функцию вида:
 \[
-	u(x, t) = \eta(t - t_0) \eta(\xi) f(\xi), \text{ если } \xi = t - t_0 - |x - x_0|/v 
+	u(x, t) = \eta(t - t_0) \eta(\xi) f(\xi) = g(\xi, t) f(\xi), \text{ если } \xi = |t - t_0| - |x - x_0|/v 
 \]
 \[
 	\begin{gathered}
 	u''_{tt} = 
-	\delta'(t - t_0) \eta(\xi) f(\xi) + 
-	2 \delta(t - t_0) (\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \dff{\xi}{t} + 
-	\\ +
-	\eta(t - t_0) (\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi)) \left(\dff{\xi}{t}\right)^2 +
-	\eta(t - t_0) (\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \dfs{\xi}{t} =
-	\\ =
-	\delta'(t - t_0) \eta(\xi) f(\xi) + 
-	2 \delta(t - t_0) (\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) +
-	\eta(t - t_0) (\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi))
+	\dfs{g}{t} f + 2 \dff{g}{t} \dff{f}{\xi} \dff{\xi}{t} + g \dfs{f}{t} 
 	\end{gathered}
 \]
 \[
 	\begin{gathered}
 	u''_{xx} = 
-	\eta(t - t_0) 
-	\left(
-	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \dff{\xi}{x} 
-	\right)'_x = 
-	\\ =
-	\eta(t - t_0)
-	(\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi)) \left(\dff{\xi}{x}\right)^2 
-	+
-	\eta(t - t_0)
-	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \dfs{\xi}{x} =
-	\\ =
-	\eta(t - t_0)
-	(\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi)) \frac{\sign^2(x - x_0)}{v^2}
-	-
-	\eta(t - t_0)
-	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \frac{2 \delta(x - x_0)}{v}
-	\\ =
-	\eta(t - t_0)
-	(\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi)) \frac{1 - 2 \eta(- | x - x_0 |)}{v^2}
-	-
-	\eta(t - t_0)
-	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \frac{2 \delta(x - x_0)}{v}
+	\dfs{g}{x} f + 2 \dff{g}{x} \dff{f}{\xi} \dff{\xi}{x} + g \dfs{f}{x} 
 	\end{gathered}
 \]
 \[
 	\begin{gathered}
-	u''_{xx} - u''_{tt}/v^2 = 
-	- \frac{1}{v^2} \delta'(t - t_0) \eta(\xi) f(\xi) - 
-	\frac{2}{v^2} \delta(t - t_0) (\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) - 
-	\\ -
-	\frac{2}{v^2} \eta(t - t_0)
-	(\delta'(\xi) f(\xi) + 2 \delta(\xi) f'(\xi) + \eta(\xi) f''(\xi))\eta(- | x - x_0 |)  - 
-	\eta(t - t_0)
-	(\delta(\xi) f(\xi) + \eta(\xi) f'(\xi)) \frac{2 \delta(x - x_0)}{v}
+	u''_{xx} - \frac{1}{v^2} u''_{tt} = 
+	f\left(\dfs{g}{x} - \frac{1}{v^2} \dfs{g}{t} \right) + 
+	2 \dff{f}{\xi} \dff{g}{\xi} \left[\left(\dff{\xi}{x}\right)^2 - \frac{1}{v^2} \left(\dff{\xi}{t}\right)^2 \right] -
+	\frac{2}{v^2} \delta(t - t_0) \eta (\xi) \dff{f}{\xi} \dff{\xi}{t} + 
+	\\ +
+	g\left[\df{x} \left(\dff{f}{\xi} \dff{\xi}{x} \right) - \frac{1}{v^2} \df{t} \left(\dff{f}{\xi} \dff{\xi}{t} \right)  \right]
+	= 
+	\\ =
+	f\left(\dfs{g}{x} - \frac{1}{v^2} \dfs{g}{t} \right) + 
+	2 \dff{f}{\xi} \dff{g}{\xi} \left[\left(\dff{\xi}{x}\right)^2 - \frac{1}{v^2} \left(\dff{\xi}{t}\right)^2 \right] -
+	\frac{2}{v^2} \delta(t - t_0) \eta (\xi) \dff{f}{\xi} \dff{\xi}{t} + 
+	\\ +
+	g\dfs{f}{\xi} \left[\left(\dff{\xi}{x}\right)^2 - \frac{1}{v^2} \left(\dff{\xi}{t}\right)^2 \right] +
+	g \dff{f}{\xi} \left(\dfs{\xi}{x} - \frac{1}{v^2} \dfs{\xi}{t} \right)
+	\end{gathered}
+\]
+\[
+	\dfs{g}{x} - \frac{1}{v^2} \dfs{g}{t} = - \frac{2}{v} \delta(t - t_0) \delta(x - x_0) \quad \text{(см. пред. пример)}
+\]
+\[
+	\begin{aligned}
+	& \dff{\xi}{t} = \sign(t - t_0) & \dff{\xi}{x} = - \sign(x - x_0) \frac{1}{v} \\
+	& \dfs{\xi}{t} = 2\delta(t - t_0) & \dfs{\xi}{x} = - 2\delta(x - x_0) \frac{1}{v} \\
+	\end{aligned}
+\]
+\[
+	 \begin{gathered}
+	 \dff{g}{\xi} \left[\left(\dff{\xi}{x}\right)^2 - \frac{1}{v^2} \left(\dff{\xi}{t}\right)^2 \right] =
+	 \eta(t - t_0) \delta(\xi) \frac{1 - 2 \eta(-|x - x_0|) - 1 + 2 \eta(-|t - t_0|)}{v^2} =
+	 \\ =
+	 \frac{2\eta(t - t_0)}{v^2} (\delta(-|x - x_0|/v) \eta(-|t - t_0|) - \delta(\xi) \eta(-v|t - t_0|) ) = 0
+	 \end{gathered}
+\]
+\[
+	\delta(t - t_0) \dff{\xi}{t} = \delta(t - t_0) \sign(t - t_0)  = 0
+\]
+\[
+	\begin{gathered}
+	g\left[\left(\dff{\xi}{x}\right)^2 - \frac{1}{v^2} \left(\dff{\xi}{t}\right)^2 \right] =
+	\frac{2\eta(t - t_0)}{v^2} (\eta(-|x - x_0|/v) \eta(-|t - t_0|) - \eta(|t - t_0|) \eta(-|x - x_0|) ) =
+	\\ =
+	- \frac{2\eta(t - t_0)}{v^2} \eta(-|x - x_0|/v) \sign^2(t - t_0)
 	\end{gathered}
 \]
 \[
 	\begin{gathered}
-	\delta'(t - t_0) \eta(\xi) f(\xi) = \delta'(t - t_0) \eta(- | x - x_0 |/v) f(\xi) - \delta(t - t_0) \delta(\xi) f(\xi)
+	g \left(\dfs{\xi}{x} - \frac{1}{v^2} \dfs{\xi}{t} \right) = 
+	- \eta(t - t_0) \eta(\xi) \frac{2}{v^2} \left(\delta((x - x_0)/v) + \delta(t - t_0) \right) =
+	\\ =
+	- \frac{2}{v^2} \left(\eta^2(t - t_0) \delta((x - x_0)/v) + \frac{1}{2} \eta(-|x - x_0|/v)\delta(t - t_0) \right) =
+	\\ =
+	- \frac{2}{v^2} \left(\eta(t - t_0) \delta((x - x_0)/v) - \frac{1}{2} \eta(-|t - t_0|) \delta((x - x_0)/v)  + \frac{1}{2} \eta(-|x - x_0|/v)\delta(t - t_0) \right) =
+	\\ =
+	[\text{чуть выше такое уже встречалось}] =
+	- \frac{2}{v} \eta(t - t_0) \delta(x - x_0)
 	\end{gathered}
+\]
+В результате:
+\[
+	u''_{xx} - \frac{1}{v^2} u''_{tt}  = - \frac{2}{v} f(0) \delta(t - t_0) \delta(x - x_0) -
+	f''(|t - t_0|) \frac{\eta(t - t_0)}{v^2} \sign^2(t - t_0) \eta(-|x - x_0|) -
+	\frac{2}{v} f'(|t - t_0|) \eta(t - t_0) \delta(x - x_0)
+\]
+
+Здесь следует отметить одну деталь: результат имеет вид:
+\[
+	A\delta(x) + B\eta(-|x|)
+\]
+Из интегрального определения $\delta-$функции:
+\[
+	A\delta(x) + B\eta(-|x|) = A\delta(x)
+\]
+И
+\[
+	u''_{xx} - \frac{1}{v^2} u''_{tt}  = - \frac{2}{v} f(0) \delta(t - t_0) \delta(x - x_0) -
+	\frac{2}{v} f'(|t - t_0|) \eta(t - t_0) \delta(x - x_0)
 \]
 
 \textbf{2. Пусть:}
@@ -316,51 +349,7 @@ u(x, t) =
 -\frac{v}{2} \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v) (t - t_0 - |x - x_0|/v) 
 \end{gathered}
 \]
-Проверяем:
-\[
-u'_x = \frac{1}{2} \eta(t - t_0) (\delta(t - t_0 - |x - x_0|/v)(t - t_0 - |x - x_0|/v) + \eta(t - t_0 - |x - x_0|/v) )\sign(x - x_0) =
-\frac{1}{2} \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v) \sign(x - x_0)
-\]
-\[
-\begin{aligned}
-& u''_{xx} = \frac{1}{2v} \eta(t - t_0) (- \delta(t - t_0 - |x - x_0|/v) \sign^2(x - x_0) + 2 v \eta(t - t_0 - |x - x_0|/v) \delta(x - x_0)) = \\
-\qquad\qquad\qquad&
-= \frac{1}{2v} \eta(t - t_0) (- \delta(t - t_0 - |x - x_0|/v) + 2 \delta(t - t_0 - |x -x_0|/v)\eta(-|x - x_0|/v)  + 2 v \eta(t - t_0) \delta(x - x_0))
-= \\
-\qquad\qquad\qquad&
-= \frac{1}{2v} \eta(t - t_0) (- \delta(t - t_0 - |x - x_0|/v) + 2 \delta(t - t_0 - |x -x_0|/v)\eta(t_0 - t)  + 2 v \eta(t - t_0) \delta(x - x_0))
-\end{aligned}
-\]
-\[
- 2 \delta(t - t_0 - |x -x_0|/v)\eta(t_0 - t)\eta(t - t_0) = \delta(t - t_0 - |x -x_0|/v)\eta(-|t -t_0|) = v \delta(x -x_0)\eta(-|t -t_0|) = \delta(t - t_0)\eta(- |x -x_0|/v)
-\]
-\[
-\begin{aligned}
-& u'_{t} = -\frac{v}{2} (\delta(t - t_0) \eta(t - t_0 - |x - x_0|/v) (t - t_0 - |x - x_0|/v) + 
-\\ \qquad\qquad\qquad& + 
-\eta(t - t_0) \delta(t - t_0 - |x - x_0|/v) (t - t_0 - |x - x_0|/v) + \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v)) = \\
-\qquad\qquad\qquad&
-=  -\frac{v}{2} \eta(t - t_0) \eta(t - t_0 - |x - x_0|/v)
-\end{aligned}
-\]
-\[
-\begin{aligned}
-& u''_{tt} = -\frac{v}{2} (\delta(t - t_0) \eta(t - t_0 - |x - x_0|/v) + \eta(t - t_0) \delta(t - t_0 - |x - x_0|/v)) = 
-\\ =
-&-\frac{v}{2} (\delta(t - t_0) \eta(- |x - x_0|/v) + \eta(t - t_0) \delta(t - t_0 - |x - x_0|/v)) 
-\end{aligned}
-\]
-\[
-\begin{aligned}
-& \Rightarrow
-\dfs{u}{x} - \frac{1}{v^2} \dfs{u}{t} = \frac{1}{v}\delta(t - t_0) \eta(- |x - x_0|/v) + \eta^2(t - t_0) \delta(x - x_0) =
-\delta(x -x_0)\eta(-|t -t_0|) + \eta^2(t - t_0) \delta(x - x_0) = \\
-& =
-\delta(x -x_0)\eta(-|t -t_0|) + (\eta(t - t_0) - \eta(-|t - t_0|)/2) \delta(x - x_0) = \\
-& = (\eta(t - t_0) + \eta(-|t -t_0|)) \delta(x - x_0)
-\end{aligned}
-\]
-То есть найденное решение применимо при $t > t_0$, а при $t = t_0$ получается бред. Форма струны в различные моменты времени показана на рисунке:
+Проверка по формуле выше показывает, что это правильный ответ. Форма струны в различные моменты времени показана на рисунке:
 \begin{center}
 	\includegraphics[width=0.5\textwidth]{images/png/for_deltac_force.png}
 \end{center}
@@ -430,38 +419,66 @@ u(x, t) =
 \frac{v}{2i\omega} \eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) \left(e^{i\omega t_0} - e^{i\omega(t - |x - x_0|/v)} \right)
 \end{gathered}
 \]
-Проверяем:
+Как легко видеть, ответ правильный. Действительная часть:
 \[
-\begin{aligned}
-& (\eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v})'_x = 
-\eta(t - t_0) (-\delta(t - t_0 - |x - x_0|/v) + i \omega )e^{i\omega|x - x_0|/v}\sign(x -x_0)/v
-\end{aligned}
+	u(x, t) = \frac{v}{2\omega} \eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) \left(\sin (\omega t_0) - \sin(\omega(t - |x - x_0|/v)) \right)
+\]
+Форма в различные моменты времени представлена на рисунке:
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{images/png/for_sin_force.png}
+\end{center}
+
+\subsection{Вариационный принцип}
+
+Рассмотрим функционал:
+\[
+	J(u) = \int\limits_{R^2} \left[\frac{1}{v^2} \left(\dff{u}{t}\right)^2 - \left(\dff{u}{x}\right)^2 \right] dx\, dt  
 \]
 \[
-\begin{aligned}
-& (\eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v})''_{xx} = 
-\eta(t - t_0) \delta'(t - t_0 - |x - x_0|/v) e^{i\omega|x - x_0|/v} \sign^2(x -x_0)/v^2 +
-\\ & +
-\eta(t - t_0) (-\delta(t - t_0 - |x - x_0|/v) + i \omega ) e^{i\omega|x - x_0|/v} i\omega \sign^2(x -x_0)/v^2 +
-\\ & +
-\eta(t - t_0) (-\delta(t - t_0 - |x - x_0|/v) + i \omega ) e^{i\omega|x - x_0|/v} 2\delta(x - x_0)/v
-\end{aligned}
+	\begin{gathered}
+	\delta \left[\frac{1}{v^2} \left(\dff{u}{t}\right)^2 - \left(\dff{u}{x}\right)^2 \right] = 
+	2 \left[\frac{1}{v^2} \dff{u}{t} \dff{\delta u}{t}  - \dff{u}{x} \dff{\delta u}{x} \right] =
+	2 \left[\frac{1}{v^2} \df{t} \left(\dff{u}{t} \delta u \right)  - \df{x} \left(\dff{u}{x} \delta u \right) \right] -
+	2 \left[\frac{1}{v^2} \dfs{u}{t} - \dfs{u}{x}\right] \delta u
+	\end{gathered}
 \]
 \[
-\begin{aligned}
-& (\eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v})'_{t} = 
-\eta(t - t_0) \delta(t - t_0 - |x - x_0|/v) e^{i\omega|x - x_0|/v} +  
-\\ & +
-\eta(t - t_0 - |x - x_0|/v) \delta(t - t_0)e^{i\omega|x - x_0|/v} =
-\eta(t - t_0) \delta(t - t_0 - |x - x_0|/v) e^{i\omega|x - x_0|/v} + \eta(- |x - x_0|/v)\delta(t - t_0)
-\end{aligned}
+	\Rightarrow \quad \frac{1}{v^2} \dfs{u}{t} - \dfs{u}{x} = 0
+\]
+Для функционала:
+\[
+	J(u) = \int\limits_{R^2} \left[\frac{1}{v^2} \left(\dff{u}{t}\right)^2 - \left(\dff{u}{x}\right)^2 - 2 s(x, t) u \right] dx\, dt
 \]
 \[
-\begin{aligned}
-& (\eta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v})''_{tt} = 
-\\ & = 
-\eta(t - t_0) \delta'(t - t_0 - |x - x_0|/v) e^{i\omega|x - x_0|/v} + \delta(t - t_0) \eta(t - t_0 - |x -x_0|/v) e^{i\omega|x - x_0|/v} + 
-\\ & +
-\eta(- |x - x_0|/v)\delta'(t - t_0)
-\end{aligned}
+	\frac{1}{v^2} \dfs{u}{t} - \dfs{u}{x} = s(x, t)
+\]
+Выполним преобразование Фурье:
+\[
+	u = u^* = \int\limits_{R^2} U(k, \omega) e^{i(\omega t - k x)} dk\, d\omega
+	\qquad
+	s = s^* = \int\limits_{R^2} S(k, \omega) e^{i(\omega t - k x)} dk\, d\omega
+\]
+\[
+	\begin{gathered}
+	J(U) = 
+	\\ =
+	\int\limits_{R^2} 
+	\int\limits_{R^2}
+	\int\limits_{R^2}
+	\left[\frac{1}{v^2} \omega \omega' U^*(k, \omega) U(k', \omega') - k k' U^*(k, \omega) U(k', \omega') - 2 S^*(k, \omega) U(k', \omega') \right]
+	e^{i((\omega' - \omega) t - (k' - k) x)}  dk\, d\omega\, dk'\, d\omega'\, dx\, dt
+	=
+	\\ =
+	2\pi 
+	\int\limits_{R^2} 
+	\int\limits_{R^2}
+	\left[\frac{1}{v^2} \omega \omega' U^*(k, \omega) U(k', \omega') - k k' U^*(k, \omega) U(k', \omega') - 2 S^*(k, \omega) U(k', \omega') \right]
+	\delta(\omega' - \omega) \delta(k' - k) dk\, d\omega\, dk'\, d\omega'
+	=
+	\\ =
+	2\pi 
+	\int\limits_{R^2} 
+	\left[\frac{1}{v^2} \omega^2 U^*(k, \omega) U(k, \omega) - k^2 U^*(k, \omega) U(k, \omega) - 2 S^*(k, \omega) U(k, \omega) \right]
+	dk\, d\omega
+	\end{gathered}
 \]
