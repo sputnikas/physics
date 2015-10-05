@@ -1,0 +1,33 @@
+\begin{tikzpicture}[
+declare function={
+	U(\x) = -0.1/(\x - 1.5)^2 - 0.1/(\x - 0)^2 -0.1/(\x - 3.0)^2 -0.1/(\x - 4.5)^2;
+},
+]
+
+\draw[-stealth] (-1.2,0) -- (5.8,0) node[right] {$x$};
+\draw[-stealth] (0,-2.6) -- (0,0.2) node[above] {$U$};
+\draw[thick,parametric,domain=0.2:1.3,samples=200] 
+	plot (\x, {U(\x)});
+\draw[thick,parametric,domain=1.7:2.8,samples=200] 
+	plot (\x, {U(\x)});
+\draw[thick,parametric,domain=3.2:4.3,samples=200] 
+	plot (\x, {U(\x)});
+\draw[thick,parametric,domain=-0.9:-0.2,samples=200] 
+	plot (\x, {U(\x)});
+\draw[thick,parametric,domain=4.7:5.3,samples=200] 
+	plot (\x, {U(\x)});
+\draw[double] (-0.8, {U(-0.8)}) -- (5.2, {U(5.2)}) ;
+\draw[double] (-0.3, {U(-0.3)}) -- (0.3, {U(-0.3)}) ;
+\draw[double] (1.2, {U(1.2)}) -- (1.8, {U(1.8)}) ;
+\draw[double] (2.7, {U(2.7)}) -- (3.3, {U(3.3)}) ;
+\draw[double] (4.2, {U(4.2)}) -- (4.8, {U(4.2)}) ;
+
+\draw[->] (2, -2.8) -- (0, {U(-0.3)});
+\draw[->] (2, -2.8) -- (1.5, {U(1.2)});
+\draw[->] (2, -2.8) -- (3, {U(2.7)});
+\draw[->] (2, -2.8) -- (4.5, {U(4.2)});
+
+\node (a) at (2, -2.8) [below] {Уровни валентной зоны};
+
+\end{tikzpicture}
+\end{document}
