@@ -47,4 +47,66 @@
 	\[
 		\int x^n \sign (x) dx = \sign (x) \frac{x^{n+1}}{n + 1}
 	\]
+	\item
+	\[
+		\int\limits_{-\infty}^\infty\int\limits_{-\infty}^\infty e^{-x^2 - y^2} dx dy =
+		2\pi \int\limits_0^\infty r e^{-r^2} dr = - \pi e^{-r^2} \Big|_0^\infty = \pi 	
+	\]
+	\[
+		\int\limits_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+	\]
+	\item 
+	\[
+		\Gamma(s) = \int\limits_0^\infty x^{s - 1} e^{-x} dx = 
+		-x^{s-1} e^{-x} \Big|_0^\infty + (s - 1) \int\limits_0^\infty x^{s - 2} e^{-x} dx = (s - 1) \Gamma (s - 1)
+	\]
+	\[
+		\Gamma(n) = (n - 1)!
+	\]
+	\[
+		\Gamma(1/2) = \int\limits_0^\infty x^{-1/2} e^{-x} dx = 2 \int\limits_0^\infty e^{-x} dx^{1/2} =
+		2 \int\limits_0^\infty e^{-t^2} dt = \int\limits_{-\infty}^\infty e^{-t^2} dt = \sqrt{\pi}
+	\]
+	\[
+		\Gamma((n + 1)/2) = \frac{(n - 1)(n - 3)...(n - 2p - 1)}{2^{p+1}} \Gamma((n - 2p - 1)/2) =
+		\begin{cases}
+		\frac{(n - 1)!!}{2^{n/2}} \sqrt{\pi} & \text{$n$ -- чётное} \\
+		\frac{(n - 1)!!}{2^{(n - 1)/2}} & \text{$n$ -- нечётное}
+		\end{cases} 
+	\]
+	\[
+		\frac{\Gamma\left(\frac{n + 1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)}
+		=
+		\begin{cases}
+		\frac{(n - 1)!! 2^{(n - 2)/2}}{(n - 2)!! 2^{n/2}} \sqrt{\pi} & \text{$n$ -- чётное} \\
+		\frac{(n - 1)!! 2^{(n - 1)/2}}{(n - 2)!! 2^{(n - 1)/2}} \frac{1}{\sqrt{\pi}} & \text{$n$ -- нечётное}
+		\end{cases}
+		=
+		\begin{cases}
+		\frac{(n - 1)!!}{(n - 2)!!} \frac{\sqrt{\pi}}{2} & \text{$n$ -- чётное} \\
+		\frac{(n - 1)!!}{(n - 2)!!} \frac{1}{\sqrt{\pi}} & \text{$n$ -- нечётное}
+		\end{cases}
+	\]
+	\[
+		\frac{\Gamma\left(\frac{n + 1}{2}\right)}{\Gamma\left(\frac{n + 2}{2}\right)}
+		=
+		\begin{cases}
+		\frac{(n - 1)!!}{n!!} \sqrt{\pi} & \text{$n$ -- чётное} \\
+		\frac{(n - 1)!!}{n!!} \frac{2}{\sqrt{\pi}} & \text{$n$ -- нечётное}
+		\end{cases}
+	\]
+	\item
+	\[
+		I_n = \int\limits_0^\pi \sin^n x \, dx = - \cos x \sin^{n - 1} x \Big|_0^\pi + (n - 1) \int\limits_0^\pi \sin^{n - 2} x \cos^2 x \, dx = 
+		(n - 1) I_{n - 1} - (n - 1) I_n 
+	\] 
+	\[
+		I_n = \frac{n - 1}{n} I_{n - 2} = \frac{(n - 1)(n - 3)...(n - 2p +  1)}{n(n - 2)...(n - 2p + 2)} I_{n - 2p} =
+		\begin{cases}
+		\frac{(n - 1)!!}{n!!} \pi  & \text{$n$ -- чётное}\\
+		\frac{(n - 1)!!}{n!!} 2 & \text{$n$ -- нечётное}
+		\end{cases}
+		=
+		\frac{\Gamma\left(\frac{n + 1}{2}\right)}{\Gamma\left(\frac{n + 2}{2}\right)} \sqrt{\pi}
+	\]
 \end{enumerate}

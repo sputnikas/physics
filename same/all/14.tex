@@ -482,3 +482,52 @@ u(x, t) =
 	dk\, d\omega
 	\end{gathered}
 \]
+
+\subsection{Решение n-мерного волнового уравнения с дельтообразной правой частью}
+
+Волновое уравнение с дельтообразной правой частью в бесконечном пространстве-времени чудесная вещь:
+\[
+	\Delta u - \frac{\partial^2 u}{\partial t^2} = \delta(t - t')\delta(\vec{r} - \vec{r}') 
+\]
+Выполняем преобразование Фурье:
+\[
+	u = \int U(\vec{k}, \omega) e^{i(\vec{k}\cdot\vec{r} - \omega t)} dV_k dt
+\]
+Введём обозначения:
+\[
+	\vec{R} = \vec{r} - \vec{r}' \quad T = t - t'
+\]
+\[
+	\delta(\vec{R}) \delta(T) = \frac{1}{(2\pi)^{n + 1}} \int e^{i(\vec{k}\cdot\vec{R} - \omega T)} dV_k d\omega
+\]
+Решение уравнения:
+\[
+	u = \frac{1}{(2\pi)^{n + 1}} \int \frac{e^{i(\vec{k}\cdot\vec{R} - \omega T)}}{\omega^2 - k^2} dV_k d\omega =  
+	\frac{\pi^{(- n - 3)/2}}{2^n\Gamma\left(\frac{n - 1}{2}\right)} 
+	\int\limits_{-\infty}^{\infty}\!
+	\int\limits_{0}^{\infty}\!
+	\int\limits_{0}^{\pi}
+	 \frac{e^{i(k R \cos \theta - \omega T)}}{\omega^2 - k^2} k^{n - 1} \sin^{n - 2} \theta\, d\theta\, dk\, d\omega = (*)
+\]
+\[
+	\frac{1}{\omega^2 - k^2} = \frac{1}{2k} \left(\frac{1}{\omega - k} - \frac{1}{\omega + k} \right)
+\]
+\[
+	\begin{gathered}
+	(*) =
+	\frac{i \pi^{(- n - 1)/2}}{2^{n + 1}\Gamma\left(\frac{n - 1}{2}\right)} 
+	\int\limits_{-\infty}^{\infty}\!
+	\int\limits_{0}^{\infty}\!
+	\int\limits_{0}^{\pi}
+	\left(e^{ - i k T}  - e^{i k T} \right) \sign(-T)
+	e^{i(k R \cos \theta)} 
+	k^{n - 2} \sin^{n - 2} \theta\, d\theta\, dk\, d\omega 
+	= \\ =
+	\frac{\pi^{(- n - 1)/2}}{2^{n}\Gamma\left(\frac{n - 1}{2}\right)} 
+	\int\limits_{0}^{\infty}\!
+	\int\limits_{0}^{\pi}
+	\sin (kT) \sign(-T)
+	e^{i(k R \cos \theta)} 
+	k^{n - 2} \sin^{n - 2} \theta\, d\theta\, dk
+	\end{gathered} 
+\]

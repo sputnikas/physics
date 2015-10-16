@@ -1,0 +1,69 @@
+\section{Энергия, передаваемая от молекулы к молекуле в одноатомном идеальном газе}
+
+Вопрос интересен тем, что позволяет оценить насколько велика по отношению к энергии молекулы энергия передаваемая другой молекуле. Будем считать, что молекула при соударении просто переходит из одной группы молекул с энергией в данном диапазоне в другую группу с энергией в другом диапазоне. Передаваемая в этом процессе энергия будет характеризоваться величиной:
+\[
+	\frac{p_1'^2}{2M} - \frac{p_1^2}{2M}
+\] 
+Функция распределения в равновесном состоянии для идеального газа:
+\[
+	f(p_1, p_1') = 
+	A \exp \left(
+	- \frac{p_1^2 + p_1'^2}{2MkT}
+	\right)	p_1^2 p_1'^2
+\]
+Найдём нормировочную константу:
+\[
+	\int\limits_0^\infty \! \int\limits_0^\infty 
+	A \exp \left(
+	- \frac{p_1^2 + p_1'^2}{2MkT}
+	\right)	p_1^2 p_1'^2 dp_1\,dp_1'
+\]
+\[
+	\int\limits_0^\infty e^{- \alpha p^2} p^2 dp = 
+	- \frac{\partial}{\partial \alpha} \int\limits_0^\infty e^{- \alpha p^2} dp
+	= - \frac{1}{2} \frac{\partial}{\partial \alpha} \sqrt{\frac{\pi}{\alpha}}
+	= \frac{\sqrt{\pi}}{4\alpha^{3/2}}
+\]
+\[
+	\int\limits_0^\infty \! \int\limits_0^\infty 
+	A \exp \left(
+	- \frac{p_1^2 + p_1'^2}{2MkT}
+	\right)	p_1^2 p_1'^2 dp_1\,dp_1'
+	=
+	A \frac{8M^3k^3T^3\pi}{16} = 1
+\]
+\[
+	A = \frac{2}{M^3k^3T^3\pi}
+\]
+Очевидно, что среднее значение рассматриваемой характеристики равно 0. Найдём дисперсию:
+\[
+	\int\limits_0^\infty \! \int\limits_0^\infty 
+	A \left(\frac{p_1'^2}{2M} - \frac{p_1^2}{2M}\right)^2\exp \left(
+	- \frac{p_1^2 + p_1'^2}{2MkT}
+	\right)	p_1^2 p_1'^2 dp_1\,dp_1' = (*)
+\]
+Найдём вспомогательные интегралы:
+\[
+	\int\limits_0^\infty e^{- \alpha p^2} p^4 dp = 
+	\frac{1}{2} \frac{\partial^2}{\partial \alpha^2} \sqrt{\frac{\pi}{\alpha}} =
+	\frac{3\sqrt{\pi}}{8\alpha^{5/2}}
+\]
+\[
+	\int\limits_0^\infty e^{- \alpha p^2} p^6 dp = 
+	\frac{1}{2} \frac{\partial^3}{\partial \alpha^3} \sqrt{\frac{\pi}{\alpha}} =
+	\frac{15\sqrt{\pi}}{16\alpha^{7/2}}
+\]
+\[
+	(*) = \frac{A}{4M^2} \frac{30\sqrt{\pi}}{16\alpha^{7/2}} \frac{\sqrt{\pi}}{4\alpha^{3/2}} -
+	2\frac{A}{4M^2} \frac{3\sqrt{\pi}}{8\alpha^{5/2}}\frac{3\sqrt{\pi}}{8\alpha^{5/2}}
+	=
+	\frac{A}{4M^2}  \frac{(15 - 9)\pi}{32\alpha^{5}} = 
+	\frac{16\alpha^{3}}{4M^2\pi} \frac{3\pi}{16\alpha^{5}} =
+	\frac{3}{4M^2\alpha^{2}} = 
+	\frac{3M^2k^2T^2}{M^2} = 3 k^2 T^2
+\]
+Стандартное отклонение:
+\[
+	\sigma = \sqrt{3} kT
+\]
+Данная величина превосходит среднее значение энергии отдельной молекулы одноатомного идеального газа!
