@@ -109,4 +109,37 @@
 		=
 		\frac{\Gamma\left(\frac{n + 1}{2}\right)}{\Gamma\left(\frac{n + 2}{2}\right)} \sqrt{\pi}
 	\]
+	\item
+	\[
+		\delta(x) = \frac{1}{2\pi} \int\limits_{-\infty}^{\infty} e^{ikx} dk = \frac{1}{\pi} \int\limits_{0}^{\infty} \cos (kx) dk
+	\]
+	\[
+		\int\limits_{0}^{\infty} \cos (kx) dk = \pi \delta(x)
+	\]
+	\[
+		\int\limits_{0}^{\infty} \sin (kx) dk = [kx = k'x + \pi/2] = \int\limits_{-\frac{\pi}{2x}}^{\infty} \cos (k'x) dk' =
+		\pi \delta(x) - \int\limits_{-\frac{\pi}{2x}}^{0} \cos (k'x) dk' = 
+		\pi \delta(x) - \frac{\sin (k'x)}{x} \Big|_{-\frac{\pi}{2x}}^0 = 
+		\pi \delta(x) - \frac{1}{x}
+	\]
+	\item 
+	\[
+		\pi \delta^{(2n+1)}(x) = (-1)^{n + 1} \int\limits_{0}^{\infty} k^{2n + 1} \sin (kx) dk
+	\]
+	\[
+		\pi \delta^{(2n)}(x) - (2n)! \frac{1}{x^{2n+1}} = (-1)^{n} \int\limits_{0}^{\infty} k^{2n} \sin (kx) dk
+	\]
+	\[
+		\int\limits_{0}^{\infty} k^{2n + 1} \sin (kx) dk = (-1)^{n + 1} \pi \delta^{(2n+1)}(x)
+	\]
+	\[
+		\int\limits_{0}^{\infty} k^{2n} \sin (kx) dk = (-1)^{n} \pi \delta^{(2n)}(x) - (-1)^{n} (2n)! \frac{1}{x^{2n+1}}
+	\]
+	\[
+		\int\limits_0^\infty e^{ikx} dk = \pi (1 + i) \delta(x) - \frac{i}{x}
+	\]
+	\[
+		\int\limits_0^\infty k^n e^{ikx} dk = \pi \frac{(1 + i)}{i^n} \delta^{(n)}(x) - \frac{i(-1)^n}{i^n} \frac{n!}{x^{n+1}} =
+		\pi (1 + i) (-i)^n \delta^{(n)}(x) - i^{n+1} \frac{n!}{x^{n+1}}
+	\]
 \end{enumerate}

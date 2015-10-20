@@ -1,0 +1,105 @@
+\section{Решение уравнения Лапласа}
+
+Рассмотрим задачу:
+\[
+	\Delta u = s(\vec{r})
+\]
+
+Граничные условия пока не приводятся, так как теорема единственности неизвестна.
+
+\subsection{Теорема единственности}
+
+Пусть $u$ и $v$ удовлетворяют уравнениям:
+\[
+	\Delta u = s(\vec{r}) \quad \Delta v = s(\vec{r})
+\]
+Рассмотрим интеграл:
+\[
+	\int\limits_V (u \Delta v - v \Delta u) dV = \int\limits_V (u - v) s(\vec{r}) dV
+\]
+\[
+	u \Delta v = u \nabla \cdot \nabla v = \nabla \cdot (u \nabla v) - (\nabla u) \cdot (\nabla v)
+\]
+\[
+	u \Delta v - v \Delta u = \div (u \nabla v - v \nabla u)
+\]
+\[
+	\int\limits_V \div (u \nabla v - v \nabla u) dV = 
+	\oint\limits_S \left(u \frac{\partial v}{\partial n} - v \frac{\partial u}{\partial n}\right) dS =
+	\int\limits_V (u - v) s(\vec{r}) dV
+\]
+Следовательно для единственности решения достаточно задать на некоторой поверхности или совокупности поверхностей:
+\[
+	u = f(\vec{r}) \quad \frac{\partial u}{\partial n} = g(\vec{r}) \text{ на } S
+\]
+В самом деле в этом случае из интеграла следует:
+\[
+	\int\limits_V (u - v) s(\vec{r}) dV
+\]
+И из произвольности функции $s$ получаем:
+\[
+	u = v
+\]
+
+\subsection{Решение $n$-мерного уравнения Лапласа с $\delta$-образной правой частью}
+
+\[
+	\Delta G = \delta (\vec{r} - \vec{r}')
+\]
+
+В интегральной форме:
+\[
+	\oint\limits_S \grad G \cdot d\vec{S} = \int\limits_V \delta (\vec{r} - \vec{r}') dV
+\]
+
+Задача обладает сферической симметрией и относительно $\vec{R} = \vec{r} - \vec{r}'$, когда $S$ это сфера радиуса $R$:
+\[
+	S_n \frac{\partial G}{\partial r} = 1
+\]
+\[
+	\frac{\partial G}{\partial r} = \frac{\Gamma(n/2)}{2 \pi^{n/2}} \frac{1}{R^{n - 1}}
+\]
+\[
+	G = 
+	\begin{cases}
+	\frac{\Gamma(n/2)}{2(n - 2) \pi^{n/2}} \frac{1}{R^{n - 2}} + C & n \ne 2 \\
+	\frac{1}{2\pi} \ln R + C & n = 2
+	\end{cases}
+\]
+
+\subsection{Общее решение уравнения Лапласа}
+
+Уравнение:
+\[
+	\Delta u = s(\vec{r})
+\]
+При граничных условиях:
+\[
+	u = f(\vec{r}) \quad \frac{\partial u}{\partial n} = g(\vec{r}) \text{ на } S
+\]
+Рассмотрим интеграл:
+\[
+	\int\limits_V (u \Delta G - G \Delta u) dV = 
+	\oint\limits_S \left(u \frac{\partial G}{\partial n} - G \frac{\partial u}{\partial n}\right) dS
+\]
+С учётом:
+\[
+	\Delta G(\vec{r}, \vec{r}') = \delta (\vec{r} - \vec{r}')
+\]
+Получаем:
+\[
+	u(\vec{r}') = \int\limits_V G(\vec{r}, \vec{r}') s(\vec{r}) dV + \oint\limits_S \left(f(\vec{r}) \frac{\partial G(\vec{r}, \vec{r}')}{\partial n} - G(\vec{r}, \vec{r}') g(\vec{r}) \right) dS
+\]
+\[
+	\begin{aligned}
+	&
+	\int\limits_V G(\vec{r}, \vec{r}') s(\vec{r}) dV
+	\text{ -- объёмный потенциал}
+	\\
+	& - \oint\limits_S G(\vec{r}, \vec{r}') g(\vec{r}) dS 
+	\text{ -- потенциал простого слоя}
+	\\
+	& \oint\limits_S f(\vec{r}) \frac{\partial G(\vec{r}, \vec{r}')}{\partial n} dS
+	\text{ -- потенциал двойного слоя}
+	\end{aligned}
+\]

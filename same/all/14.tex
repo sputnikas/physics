@@ -521,12 +521,25 @@ u(x, t) =
 	\left(e^{ - i k T}  - e^{i k T} \right) \sign(-T)
 	e^{i(k R \cos \theta)} 
 	k^{n - 2} \sin^{n - 2} \theta\, d\theta\, dk
-	= \\ =
-	\frac{\pi^{(- n - 1)/2}}{2^{n}\Gamma\left(\frac{n - 1}{2}\right)} 
-	\int\limits_{0}^{\infty}\!
+	= \\ 
+	=
+%	\frac{\pi^{(- n - 1)/2}}{2^{n}\Gamma\left(\frac{n - 1}{2}\right)} 
+%	\int\limits_{0}^{\infty}\!
+%	\int\limits_{0}^{\pi}
+%	\sin (kT) \sign(-T)
+%	e^{i(k R \cos \theta)} 
+%	k^{n - 2} \sin^{n - 2} \theta\, d\theta\, dk = 
+	\frac{i \pi^{(- n - 1)/2}}{2^{n + 1}\Gamma\left(\frac{n - 1}{2}\right)} 
 	\int\limits_{0}^{\pi}
-	\sin (kT) \sign(-T)
-	e^{i(k R \cos \theta)} 
-	k^{n - 2} \sin^{n - 2} \theta\, d\theta\, dk
+	\left[
+	\pi (-i)^{n - 2} (1 + i) \left(\delta^{(n - 2)}(R \cos \theta - T)  - \delta^{(n - 2)}(R \cos \theta + T) \right)
+	-
+	\right.
+	\\ -
+	\left.
+	i^{n - 1} (n - 2)! \left(\frac{1}{(R \cos \theta - T)^{n - 1}} - \frac{1}{(R \cos \theta + T)^{n - 1}}\right)
+	\right]
+	\sign(-T) 
+	\sin^{n - 2} \theta\, d\theta
 	\end{gathered} 
 \]
