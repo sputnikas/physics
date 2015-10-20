@@ -41,7 +41,7 @@
 	u = v
 \]
 
-\subsection{Решение $n$-мерного уравнения Лапласа с $\delta$-образной правой частью}
+\subsection{Решение $N$-мерного уравнения Лапласа с $\delta$-образной правой частью}
 
 \[
 	\Delta G = \delta (\vec{r} - \vec{r}')
@@ -54,18 +54,19 @@
 
 Задача обладает сферической симметрией и относительно $\vec{R} = \vec{r} - \vec{r}'$, когда $S$ это сфера радиуса $R$:
 \[
-	S_n \frac{\partial G}{\partial r} = 1
+	S_N \frac{\partial G}{\partial R} = 1
 \]
 \[
-	\frac{\partial G}{\partial r} = \frac{\Gamma(n/2)}{2 \pi^{n/2}} \frac{1}{R^{n - 1}}
+	\frac{\partial G}{\partial R} = \frac{\Gamma(N/2)}{2 \pi^{N/2}} \frac{1}{R^{N - 1}}
 \]
 \[
 	G = 
 	\begin{cases}
-	\frac{\Gamma(n/2)}{2(n - 2) \pi^{n/2}} \frac{1}{R^{n - 2}} + C & n \ne 2 \\
-	\frac{1}{2\pi} \ln R + C & n = 2
+	- \frac{\Gamma(N/2)}{2(N - 2) \pi^{N/2}} \frac{1}{R^{N - 2}} + C & N \ne 2 \\
+	\frac{1}{2\pi} \ln R + C & N = 2
 	\end{cases}
 \]
+При $N > 2$ будем считать $C = 0$.
 
 \subsection{Общее решение уравнения Лапласа}
 
@@ -103,3 +104,4 @@
 	\text{ -- потенциал двойного слоя}
 	\end{aligned}
 \]
+
