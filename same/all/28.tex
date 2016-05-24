@@ -1,0 +1,295 @@
+\section{Электродинамические системы}
+
+\subsection{Однородно-заряженные объекты}
+
+\subsubsection{Однородно-заряженная линия}
+
+\[
+	2\pi r h E = \frac{\lambda}{\varepsilon_0} h 
+	\quad \Rightarrow \quad
+	E = \frac{\lambda}{2 \pi \varepsilon_0 r}
+\]
+С потенциалом в данном случае есть ряд проблем:
+\[
+	\varphi - \varphi_0 = - \int\limits_{r_0}^{r} \vec{E} \cdot d\vec{r} =
+	- \frac{\lambda}{2\pi\varepsilon_0} \ln \frac{r}{r_0}
+\]
+Чему равно $\varphi_0$ и $r_0$ не имеет значения.
+
+\subsubsection{Однородно-заряженный отрезок}
+
+\[
+	\begin{gathered}
+	\varphi 
+	= 
+	\frac{\lambda}{4\pi\varepsilon_0} \int\limits_{-l}^{l} \frac{dx}{\sqrt{(x - r \cos \theta)^2 + r^2 \sin^2 \theta}} 
+	=
+	\frac{\lambda}{4\pi\varepsilon_0} \mathrm{\,arsh\,} \frac{x - r \cos \theta}{r \sin \theta} \Big|_{-l}^{l} 
+	= \\ =
+	\frac{\lambda}{4\pi\varepsilon_0} \ln \frac{(l - r \cos \theta) + \sqrt{(l - r \cos \theta)^2 + r^2 \sin^2 \theta}}{- (l + r \cos \theta) + \sqrt{(l + r \cos \theta)^2 + r^2 \sin^2 \theta}}
+	= \\ =
+	\frac{\lambda}{4\pi\varepsilon_0} \ln \frac{\left[(l - r \cos \theta) + \sqrt{(l - r \cos \theta)^2 + r^2 \sin^2 \theta}\right]\left[(l + r \cos \theta) + \sqrt{(l + r \cos \theta)^2 + r^2 \sin^2 \theta}\right]}{r^2 \sin^2\theta}
+	= \\ =
+	\frac{\lambda}{4\pi\varepsilon_0} \ln \frac{(l - r \cos \theta + r_+)(l + r \cos \theta + r_-)}{r^2 \sin^2\theta}
+	\end{gathered}
+\]
+При больших $l$ легко видеть, что выражение с точностью до константы переходит к предыдущему случаю.
+
+\[
+	\begin{gathered}
+	E_r = - \frac{\partial \varphi}{\partial r} = 
+	- \frac{\lambda}{4\pi\varepsilon_0} 
+	\left[
+	\frac{- \cos \theta + \cfrac{r - l \cos \theta}{r_+}}{l - r \cos \theta + r_+} 
+	+
+	\frac{\cos \theta + \cfrac{r + l \cos \theta}{r_-}}{l + r \cos \theta + r_-} 
+	-
+	2 \frac{1}{r}
+	\right] 
+	= \\ =
+	- \frac{\lambda}{4\pi\varepsilon_0} 
+	\left[
+	\frac{r \sin^2 \theta}{l - r \cos \theta + r_+} \frac{1}{r_+} - \frac{\cos \theta}{r_+}
+	+
+	\frac{r \sin^2 \theta}{l + r \cos \theta + r_-} \frac{1}{r_-} + \frac{\cos \theta}{r_-}
+	-
+	2 \frac{1}{r}
+	\right] 
+	= \\ =
+	- \frac{\lambda}{4\pi\varepsilon_0} 
+	\left[
+	\frac{r \sin^2 \theta}{r^2 \sin^2 \theta} \frac{r_+ - l + r \cos \theta}{r_+} - \frac{\cos \theta}{r_+}
+	+
+	\frac{r \sin^2 \theta}{r^2 \sin^2 \theta} \frac{r_- - l - r \cos \theta}{r_-} + \frac{\cos \theta}{r_-}
+	-
+	2 \frac{1}{r}
+	\right] 
+	= \\ =
+	- \frac{\lambda}{4\pi\varepsilon_0} 
+	\left[
+	\frac{1}{r} \frac{- l}{r_+}
+	+
+	\frac{1}{r} \frac{- l}{r_-}
+	\right]
+	= 
+	\frac{\lambda l}{4\pi\varepsilon_0 r} 
+	\left[
+	\frac{1}{r_+}
+	+
+	\frac{1}{r_-}
+	\right]
+	=
+	\frac{q}{8\pi\varepsilon_0 r} 
+	\left[
+	\frac{1}{r_+}
+	+
+	\frac{1}{r_-}
+	\right]
+	\end{gathered}
+\]
+
+\[
+	\begin{gathered}
+	E_\theta = -\frac{1}{r} \frac{\partial \varphi}{\partial \theta} = 
+	- \frac{\lambda}{4\pi\varepsilon_0 r} 
+	\left[
+	\frac{r \sin \theta + \cfrac{r l \sin \theta}{r_+}}{l - r \cos \theta + r_+} 
+	+
+	\frac{- r \sin \theta + \cfrac{- r l \sin \theta}{r_-}}{l + r \cos \theta + r_-} 
+	-
+	2 \frac{\cos \theta}{\sin \theta}
+	\right] 
+	= \\ =
+	- \frac{\lambda}{4\pi\varepsilon_0 r} 
+	\left[
+	\frac{r (r_+ + l) \sin \theta}{r^2 \sin^2 \theta} \frac{r_+ - l + r \cos \theta}{r_+}
+	- \frac{r (r_- + l) \sin \theta}{r^2 \sin^2 \theta} \frac{r_- - l - r \cos \theta}{r_-}
+	- 2 \frac{\cos \theta}{\sin \theta}
+	\right] 
+	= \\ =
+	- \frac{\lambda}{4\pi\varepsilon_0 r} 
+	\left[
+	\frac{r_+ + l}{r\sin \theta} \frac{r_+ - l + r \cos \theta}{r_+}
+	- \frac{r_- + l}{r\sin \theta} \frac{r_- - l - r \cos \theta}{r_-}
+	- 2 \frac{\cos \theta}{\sin \theta}
+	\right] 
+	= \\ =
+	- \frac{\lambda}{4\pi\varepsilon_0 r} 
+	\left[
+	\frac{r_+^2 - l^2 + l r \cos \theta}{r\sin \theta} \frac{1}{r_+}
+	- \frac{r_-^2 - l^2 - l r \cos \theta}{r\sin \theta} \frac{1}{r_-}
+	\right] 
+	= \\ =
+	- \frac{\lambda}{4\pi\varepsilon_0 r} 
+	\left[
+	\frac{r^2 - l r \cos \theta}{r\sin \theta} \frac{1}{r_+}
+	- \frac{r^2 + l r \cos \theta}{r\sin \theta} \frac{1}{r_-}
+	\right] 
+	= 
+	- \frac{\lambda}{4\pi\varepsilon_0 r \sin \theta} 
+	\left[
+	\frac{r - l \cos \theta}{r_+}
+	- \frac{r + l \cos \theta}{r_-}
+	\right] 
+	= \\ =
+	- \frac{\lambda}{4\pi\varepsilon_0 r \sin \theta} 
+	\left[
+	\sqrt{1 - \frac{r^2}{r_+^2} \sin^2 \theta}
+	- \sqrt{1 - \frac{r^2}{r_-^2} \sin^2 \theta}
+	\right] 
+	= 
+	- \frac{\lambda}{4\pi\varepsilon_0 r \sin \theta} 
+	\left[
+	\frac{\frac{r^2 (r_+^2 - r_-^2) \sin^2 \theta}{r_-^2 r_+^2}}{\sqrt{1 - \frac{r^2}{r_+^2} \sin^2 \theta}
+	+ \sqrt{1 - \frac{r^2}{r_-^2} \sin^2 \theta}}
+	\right] 
+	= \\ =
+	\frac{4 \lambda r l \sin \theta \cos \theta}{4\pi\varepsilon_0} 
+	\left[
+	\frac{1}{r_- r_+ [r (r_- + r_+) + (r_+ - r_-) l \cos \theta]}
+	\right] 
+	\end{gathered}
+\]
+
+\[
+	\begin{gathered}
+	E^2 = E_\theta^2 + E_r^2 =
+	\frac{\lambda^2}{16\pi^2\varepsilon_0^2 r^2} 
+	\left\{\left[
+	\frac{1}{r_+^2}
+	+
+	\frac{1}{r_-^2}
+	+
+	\frac{2}{r_- r_+}
+	\right] l^2 +
+	\frac{1}{\sin^2 \theta}\left[
+	\frac{(r - l \cos \theta)^2}{r_+^2}
+	+ \frac{(r + l \cos \theta)^2}{r_-^2}
+	- 2 \frac{r^2 - l^2 \cos^2 \theta}{r_+ r_-}
+	\right]
+	\right\}
+	= \\ =
+	\frac{\lambda^2}{16\pi^2\varepsilon_0^2 r^2} 
+	\left\{\left[
+	\frac{1}{r_+^2}
+	+
+	\frac{1}{r_-^2}
+	+
+	\frac{2}{r_- r_+}
+	\right] l^2 +
+	\frac{1}{\sin^2 \theta}\left[
+	2 - \frac{r^2 \sin^2 \theta}{r_+^2}
+	- \frac{r^2 \sin^2 \theta}{r_-^2}
+	- 2 \frac{r^2 - l^2 \cos^2 \theta}{r_+ r_-}
+	\right]
+	\right\}
+	= \\ =
+	\frac{\lambda^2}{16\pi^2\varepsilon_0^2 r^2} 
+	\left\{
+	\left(\frac{1}{r_+} + \frac{1}{r_-} \right)^2 l^2 +
+	\frac{1}{\sin^2 \theta}\left[
+	2 - r^2 \sin^2 \theta \left(\frac{1}{r_+} + \frac{1}{r_-} \right)^2
+	- 2 \frac{r^2 - l^2}{r_+ r_-} \cos^2 \theta
+	\right]
+	\right\}
+	= \\ =
+	\frac{\lambda^2}{16\pi^2\varepsilon_0^2 r^2} 
+	\left\{
+	\left(\frac{1}{r_+} + \frac{1}{r_-} \right)^2 (l^2 - r^2) +
+	\frac{1}{\sin^2 \theta}\left[
+	2 
+	- 2 \frac{r^2 - l^2}{r_+ r_-} (1 - \sin^2 \theta)
+	\right]
+	\right\}
+	= \\ =
+	\frac{\lambda^2}{16\pi^2\varepsilon_0^2 r^2} 
+	\left\{
+	\left(\frac{1}{r_+^2} + \frac{1}{r_-^2} \right) (l^2 - r^2) +
+	\frac{1}{\sin^2 \theta}\left[
+	2 
+	- 2 \frac{r^2 - l^2}{r_+ r_-}
+	\right]
+	\right\}
+	\end{gathered}
+\]
+Учтём:
+\[
+	r_+ r_- = \sqrt{(r^2 + l^2) - 4 r^2 l^2 \cos^2 \theta} = \sqrt{(r^2 - l^2) + 4 r^2 l^2 \sin^2 \theta}
+\]
+В результате:
+\[
+	1 - \frac{r^2 - l^2}{r_+ r_-} = \frac{4 r^2 l^2 \sin^2 \theta}{r_+ r_- + r^2 - l^2} \frac{1}{r_+ r_-}
+\]
+\[
+	\begin{gathered}
+	E^2 = 
+	\frac{\lambda^2}{16\pi^2\varepsilon_0^2 r^2} 
+	\left\{
+	\left(\frac{1}{r_+^2} + \frac{1}{r_-^2} \right) (l^2 - r^2) +
+	\frac{4 r^2 l^2}{r_+ r_- + r^2 - l^2} \frac{1}{r_+ r_-}
+	\right\}
+	\end{gathered}
+\]
+\subsubsection{Однородно-заряженный луч}
+
+Воспользуемся результатами для отрезка, но несимметричного как выше, а от 0 до $l$:
+\[
+\begin{gathered}
+\varphi 
+= 
+\frac{\lambda}{4\pi\varepsilon_0} \int\limits_{0}^{l} \frac{dx}{\sqrt{(x - r \cos \theta)^2 + r^2 \sin^2 \theta}} 
+=
+\frac{\lambda}{4\pi\varepsilon_0} \mathrm{\,arsh\,} \frac{x - r \cos \theta}{r \sin \theta} \Big|_{0}^{l} 
+= \\ =
+\frac{\lambda}{4\pi\varepsilon_0} \ln \frac{(l - r \cos \theta) + \sqrt{(l - r \cos \theta)^2 + r^2 \sin^2 \theta}}{r(1 - \cos \theta)}
+\end{gathered}
+\]
+Вообще нужно бы устремить $l$ к $\infty$, но тогда и потенциал устремится к бесконечности, поэтому сначала найдём $E_r$, $E_\theta$:
+\[
+	E_r = - \frac{\partial \varphi}{\partial r} = 
+	- \frac{\lambda}{4\pi\varepsilon_0} \left[
+		\frac{- \cos \theta + \frac{- l \cos \theta + r}{\sqrt{(l - r \cos \theta)^2 + r^2 \sin^2 \theta}}}{l - r \cos \theta + \sqrt{(l - r \cos \theta)^2 + r^2 \sin^2 \theta}} - \frac{1}{r}
+	\right]
+\]
+\[
+	E_\theta = - \frac{1}{r}\frac{\partial \varphi}{\partial \theta} = 
+	- \frac{\lambda}{4\pi\varepsilon_0 r} \left[
+	\frac{r \sin \theta + \frac{l r \sin \theta}{\sqrt{(l - r \cos \theta)^2 + r^2 \sin^2 \theta}}}{l - r \cos \theta + \sqrt{(l - r \cos \theta)^2 + r^2 \sin^2 \theta}} - \frac{\sin \theta}{1 - \cos \theta}
+	\right]
+\]
+Тогда при $l \to \infty$:
+\[
+	E_r = \frac{\lambda}{4\pi\varepsilon_0 r}
+\]
+\[
+	E_\theta = \frac{\lambda}{4\pi\varepsilon_0 r} \frac{\sin \theta}{1 - \cos \theta} = \frac{\lambda}{4\pi\varepsilon_0 r} \mathrm{\,ctg\,} \frac{\theta}{2}
+\]
+Обозначим через $\rho$ расстояние до оси $x$ и найдём выражение для $\vec{E}$ в этих координатах:
+\[
+	E_\rho = E_r \sin \theta + E_\theta \cos \theta = \frac{\lambda}{4\pi \varepsilon_0 r} \frac{\sin \theta}{1 - \cos \theta} =
+	\frac{\lambda}{4\pi \varepsilon_0 \rho} (1 + \cos \theta) = \frac{\lambda}{4\pi \varepsilon_0 \rho} \left(1 + \frac{x}{\sqrt{x^2 + \rho^2}}\right)
+\]
+\[
+	E_x = E_r \cos \theta - E_\theta \sin \theta = - \frac{\lambda}{4\pi \varepsilon_0 r} =
+	- \frac{\lambda}{4\pi \varepsilon_0 \sqrt{x^2 + \rho^2}} 
+\]
+
+\subsubsection{Однородно-заряженный круговой виток}
+
+В качестве системы координат выберем сферическую систему $(r, \theta, \alpha)$. Найдём потенциал, считая, что радиус окружности $R$:
+\[
+	\begin{gathered}
+	\varphi = \frac{1}{4\pi\varepsilon_0} \int\limits_{0}^{2\pi} \frac{\lambda R d\alpha}{\sqrt{(R \cos \alpha - r \sin \theta)^2 + R^2 \sin^2 \alpha + r^2 \cos^2 \theta}} = 
+	\frac{\lambda R}{4\pi\varepsilon_0} \int\limits_{0}^{2\pi} \frac{d\alpha}{\sqrt{R^2 + r^2 - 2 r R \sin \theta \cos \alpha}}
+	\end{gathered}
+\]
+
+\subsubsection{Однородно-заряженная прямоугольная пластинка}
+\subsubsection{Однородно-заряженная круглая пластинка}
+\subsubsection{Однородно-заряженная полукруглая пластинка}
+\subsubsection{Однородно-заряженная плоскость}
+\subsubsection{Однородно-заряженная полуплоскость}
+\subsubsection{Однородно-заряженная сфера}
+\subsubsection{Однородно-заряженная полусфера}
+\subsubsection{Однородно-заряженный шар}
+\subsubsection{Однородно-заряженный полушар}

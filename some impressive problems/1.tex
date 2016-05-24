@@ -1,0 +1,41 @@
+\documentclass[a4paper,10pt]{article} %размер бумаги устанавливаем А4, шрифт 12пунктов
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}%включаем свою кодировку: koi8-r или utf8 в UNIX, cp1251 в 
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+\usepackage{hyperref}
+\renewcommand{\rmdefault}{ftm}
+
+\usepackage{geometry}
+\geometry{left=1cm}
+\geometry{right=1cm}
+\geometry{top=1cm}
+\geometry{bottom=1cm}
+
+\begin{document}
+	
+	Вспомним что:
+	$$
+		\sin x = A x \prod\limits_{n = 1}^{\infty} \left(1 - \frac{x^2}{\pi^2 n^2}\right) =
+		A x \left[
+		1 -
+		\frac{x^2}{\pi^2} \left(1 + \frac{1}{2^2} + \frac{1}{3^2} + \ldots \right) +
+		\frac{x^4}{\pi^4} \alpha_4 + 
+		\frac{x^6}{\pi^6} \alpha_6 + \ldots
+		\right]
+	$$
+	Теперь:
+	$$
+		\sin x = x - \frac{x^3}{6} + \frac{x^5}{120} - \ldots
+	$$
+	и финт ушами:
+	$$
+		\left(1 + \frac{1}{2^2} + \frac{1}{3^2} + \ldots \right)^2 = 
+		1 + \frac{1}{2^4} + \frac{1}{3^4} + \ldots + 2 \alpha_4
+	$$
+	Ба-бах:
+	$$
+		1 + \frac{1}{2^4} + \frac{1}{3^4} + \ldots = \frac{\pi^4}{36} - 2 \frac{\pi^4}{120} = \frac{\pi^4}{90}
+	$$
+
+\end{document}

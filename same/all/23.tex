@@ -1,0 +1,99 @@
+\section{Функции Матьё}
+
+%\subsection{Уравнение Матьё и преобразование Фурье}
+%
+%\[
+%	y'' + (a - 2 q \cos (2x)) y = 0
+%\]
+%Выполним преобразование:
+%\[
+%	x = \omega x'
+%\]
+%Уравнение перейдёт в:
+%\[
+%	y'' + \omega^2 ( a - 2 q \cos (2\omega^2 x')) y = 0
+%\]
+%Будем искать решение в виде:
+%\[
+%	y(x') = \int\limits_{-\infty}^{\infty} Y(k) e^{ikx'} dk
+%\]
+%В результате получаем относительно $Y(k)$:
+%\[
+%	\int\limits_{-\infty}^{\infty} \left(- k^2 \omega^2 Y(k) e^{ikx'} + a Y(k) e^{ikx'} - 2 q \frac{e^{i2\omega x'} + e^{-i2\omega x'}}{2} Y(k) e^{ikx'} \right)  dk = (*)
+%\]
+%\[
+%	\int\limits_{-\infty}^{\infty} Y(k) e^{i(k + 2\omega) x'} dk = \int\limits_{-\infty}^{\infty} Y(k - 2\omega) e^{ik x'} dk
+%\]
+%\[
+%	\int\limits_{-\infty}^{\infty} Y(k) e^{i(k - 2\omega) x'} dk = \int\limits_{-\infty}^{\infty} Y(k + 2\omega) e^{ik x'} dk
+%\]
+%\[
+%	(*) = \int\limits_{-\infty}^{\infty} \left((\omega^2 a - k^2) Y(k) e^{ikx'}  - \omega^2 q Y(k - 2 \omega) - \omega^2 q Y(k + 2 \omega) \right) e^{ikx'}  dk
+%\]
+%Убираем интеграл:
+%\[
+%	Y(k - 2\omega) + Y(k + 2\omega) = \frac{\omega^2 a - k^2}{\omega^2 q} Y(k)
+%\]
+%\[
+%	k \to 0 \quad Y(- 2\omega) + Y(2\omega) = \frac{a}{q} Y(0)
+%\]
+%\[
+%	\Rightarrow Y(k) = \frac{a}{2q} Y(0) + f(k)
+%	\quad f(k) \text{ -- нечётная функция}
+%\]
+%\[
+%	f(k - 2 \omega) + f(k + 2 \omega) = \frac{a^2}{2 q^2} Y(0) - \frac{a k^2}{2 \omega^2 q^2} Y(0) + \frac{\omega^2 a - k^2}{\omega^2 q} f(k)
+%\]
+%\[
+%	\Rightarrow Y(0) = 0
+%\]
+%Теперь немного о странностях. Отсюда следует, что:
+%\[
+%	Y(4\omega) = \frac{a - 4}{q} Y(2\omega)
+%\]
+%Но иных решений кроме $Y(k) = 0$ мне найти так и не удалось. Единственное решение данной проблемы, которое приходит на ум, заключается в том, что преобразование Фурье в данном случае делать нельзя.
+
+\subsection{Уравнение Матьё и его решение}
+
+\[
+	y'' + (a - 2 q \cos (2x)) y = 0
+\]
+Согласно теореме Флоке, его решение можно искать в виде:
+\[
+	e^{ikx} u(x)
+\]
+$k$ -- параметр, который пока не определён.
+Где $u(x)$ -- периодическая функция с периодом коэффициента, в данном случае $\pi$.
+%\[
+%	u(x) = a_0 + \sum\limits_{n = 1}^\infty a_n \cos (2 n x) + b_n \sin (2 n x)
+%\]
+%Подставляем:
+%\[
+%	u'' + 2 ik u' + (a - k^2 - 2 q \cos (2x)) u = 0
+%\]
+%\[
+%	\begin{gathered}
+%	- \sum\limits_{n = 1}^\infty 4 n^2 a_n \cos (2 n x) + 4 n^2 b_n \sin (2 n x) + 2 i k \sum\limits_{n = 1}^\infty - 2 n a_n \sin (2 n x) + 2 n b_n \cos (2 n x) + 
+%	\\ + (a - k^2 - 2 q \cos (2x)) a_0 +
+%	(a - k^2) \sum\limits_{n = 1}^\infty a_n \cos (2 n x) + b_n \sin (2 n x) - 
+%	\\ -
+%	2 q \sum\limits_{n = 1}^\infty a_n (\cos (2 (n + 1) x) + \cos (2 (n - 1) x))  + b_n (\sin (2 (n + 1) x) + \sin (2 (n - 1) x))	
+%	\end{gathered}
+%\]
+\[
+	u(x) = \sum\limits_{n = -\infty}^\infty a_n e^{2nxi}
+\]
+Подставляем:
+\[
+	\begin{gathered}
+	\sum\limits_{n = -\infty}^\infty a_n [a - (2n + k)^2 ] e^{(2n + k)xi} - 
+	q a_n \left[e^{(2n + 2 + k)xi} + e^{(2n - 2 + k)xi}\right] =
+	\\ =
+	\sum\limits_{n = -\infty}^\infty a_n [a - (2n + k)^2 ] e^{(2n + k)xi} - 
+	q (a_{n + 1} + a_{n - 1}) e^{(2n + k)xi}
+	\end{gathered}
+\]
+Получаем систему:
+\[
+	a_n [a - (2n + k)^2 ] - q (a_{n + 1} + a_{n - 1})  = 0
+\]

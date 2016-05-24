@@ -1,0 +1,40 @@
+\section{Система Молчанова-Селькова и всё что с ней связано}
+
+В организмах как известно протекают различные химические реакции. Представление о мозге как о большой автоколебательной системе привело меня к поиску простейшей модели связанной автоколебательной системы. Случайно мне встретилась простейшая из автоколебательных систем -- система Молчанова-Селькова (речь шла о химических реакциях, но здесь приводятся только уравнения):
+\[
+	\begin{cases}
+	\frac{\partial \xi}{\partial t} = \beta - \xi \eta^2 \\
+	\frac{\partial \eta}{\partial t} = \xi \eta^2 - \xi
+	\end{cases}
+\]
+Обычно $\beta$ -- внешний поток субстрата -- считается постоянным и ($\beta > 0$). Пока остановимся на этом случае.
+
+\subsection{Устойчивость по Ляпунову}
+
+\[
+	\begin{cases}
+	0 = \beta - \xi_0 \eta_0^2 \\
+	0 = \xi_0 \eta_0^2 - \xi_0
+	\end{cases}
+	\quad 
+	\Rightarrow
+	\quad
+	\begin{cases}
+	\eta_0 = \pm 1 \\
+	\xi_0 = \beta
+	\end{cases}
+\]
+Определим теперь характер точек:
+\[
+	\xi = \xi_0 + \delta \xi \quad \eta = \eta_0 + \delta \eta
+\]
+\[
+	\begin{cases}
+	\frac{\partial \delta\xi}{\partial t} = - 2 \xi_0 \eta_0 \delta \eta - \eta_0^2 \delta \xi = \mp 2 \beta \delta \eta - \delta \xi\\
+	\frac{\partial \delta\eta}{\partial t} = 2 \xi_0 \eta_0 \delta \eta + (\eta_0^2 - 1) \delta \xi = \pm 2 \beta \delta \eta
+	\end{cases}
+\]
+\[
+	\delta \eta = A_\eta e^{\pm 2 \beta t} \quad \delta \xi = A_\xi e^{-t} - A_\eta e^{\pm 2 \beta t}
+\]
+Откуда видно, что точка $(1, \beta)$ является седловой, точка $(-1, \beta)$ представляет собой устойчивый узел.

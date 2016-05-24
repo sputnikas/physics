@@ -98,7 +98,7 @@
 	\item
 	\[
 		I_n = \int\limits_0^\pi \sin^n x \, dx = - \cos x \sin^{n - 1} x \Big|_0^\pi + (n - 1) \int\limits_0^\pi \sin^{n - 2} x \cos^2 x \, dx = 
-		(n - 1) I_{n - 1} - (n - 1) I_n 
+		(n - 1) I_{n - 2} - (n - 1) I_n 
 	\] 
 	\[
 		I_n = \frac{n - 1}{n} I_{n - 2} = \frac{(n - 1)(n - 3)...(n - 2p +  1)}{n(n - 2)...(n - 2p + 2)} I_{n - 2p} =
@@ -141,5 +141,72 @@
 	\[
 		\int\limits_0^\infty k^n e^{ikx} dk = \pi \frac{(1 + i)}{i^n} \delta^{(n)}(x) - \frac{i(-1)^n}{i^n} \frac{n!}{x^{n+1}} =
 		\pi (1 + i) (-i)^n \delta^{(n)}(x) - i^{n+1} \frac{n!}{x^{n+1}}
+	\]
+	\item
+	\[
+		\begin{gathered}
+		I_n(\alpha) = \int\limits_0^\pi e^{i\alpha \cos \theta} \sin^n \theta \, d\theta = - \frac{1}{i\alpha} \int\limits_0^\pi  \sin^{n - 1} \theta \, de^{i\alpha \cos \theta} 
+		=
+		\frac{n - 1}{i\alpha} \int\limits_0^\pi  \sin^{n - 2} \theta \cos \theta \, e^{i\alpha \cos \theta} d\theta
+		= \\ =
+		- \frac{n - 1}{\alpha} \frac{\partial}{\partial \alpha} \int\limits_0^\pi  \sin^{n - 2} \theta \, e^{i\alpha \cos \theta} d\theta
+		=
+		- \frac{n - 1}{\alpha} \frac{\partial I_{n - 2}}{\partial \alpha} 
+		=
+		(-1)^k (n - 1)(n - 3)(n - 5)\cdot\ldots\cdot(n - (2k - 1)) \left(\frac{1}{\alpha} \frac{\partial}{\partial \alpha} \right)^k I_{n - 2k}
+		= \\ =
+		\begin{cases}
+			(-1)^k (2k)!! \left(\dfrac{1}{\alpha} \dfrac{\partial}{\partial \alpha} \right)^k I_{1} & n = 2k + 1 \\
+			(-1)^k (2k - 1)!! \left(\dfrac{1}{\alpha} \dfrac{\partial}{\partial \alpha} \right)^k I_{0} & n = 2k
+		\end{cases}
+		\end{gathered}
+	\]
+	\[
+		\begin{gathered}
+		I_1(\alpha) =
+		\int\limits_0^\pi e^{i\alpha \cos \theta} \sin \theta \, d\theta
+		=
+		\int\limits_0^\pi 
+		\left(
+			J_0(\alpha) + 2\sum_{p = 1}^{\infty} i^p J_p(\alpha) \cos (p\theta) 
+		\right)\sin \theta \, d\theta
+		= \\ =
+		\int\limits_0^\pi 
+		\left(
+			J_0(\alpha) \sin \theta + \sum_{p = 1}^{\infty} i^p J_p(\alpha) [\sin ((p + 1)\theta) - \sin ((p - 1) \theta)]
+		\right)\, d\theta
+		=
+		2 J_0(\alpha) + \sum_{p = 1}^{\infty} i^p J_p(\alpha) \left[\frac{1 - (-1)^{p + 1}}{p + 1} - \frac{1 - (-1)^{p - 1}}{p - 1}\right]
+		= \\ =
+		2 J_0(\alpha) - 4 \sum_{p = 1}^{\infty} (-1)^p J_{2p}(\alpha) \frac{1}{4 p^2 - 1}
+		= 
+		-\frac{e^{i\alpha \cos \theta}}{i\alpha} \Bigg|_0^\pi = \frac{2 \sin \alpha}{\alpha}
+		\end{gathered}
+	\]
+	\[
+		I_0 (\alpha) = \int\limits_0^\pi e^{i\alpha \cos \theta} d\theta = \pi J_0(\alpha)
+	\]
+	Удивительно, но факт -- результат приводится к общему виду. Воспользуемся соотношениями:
+	\[
+		J_{k + 1/2} (\alpha) = \frac{(-1)^k \alpha^{k + 1/2}}{\sqrt{2\pi}} \left(\dfrac{1}{\alpha} \dfrac{\partial}{\partial \alpha} \right)^k \dfrac{2 \sin \alpha}{\alpha}
+		\qquad
+		J_{k} (\alpha) = (-1)^k \alpha^k \left(\dfrac{1}{\alpha} \dfrac{\partial}{\partial \alpha} \right)^k J_0(\alpha)
+	\]
+	\[
+		\Gamma \left(\dfrac{n + 1}{2}\right) = 
+		\begin{cases}
+		\dfrac{(2k - 1)!!}{2^k} \sqrt{\pi} & n = 2k \\
+		\dfrac{(2k)!!}{2^k} & n = 2k + 1
+		\end{cases}
+	\]
+	Получаем:
+	\[
+		I_n(\alpha) = 
+		\begin{cases}
+		\Gamma \left(\dfrac{n + 1}{2}\right) 2^{k} \frac{\sqrt{2\pi}}{\alpha^{n/2}} J_{k + 1/2} (\alpha) & n = 2k + 1 \\
+		\Gamma \left(\dfrac{n + 1}{2}\right) 2^{k} \frac{\sqrt{\pi}}{\alpha^{n/2}}  J_{k} (\alpha)  & n = 2k
+		\end{cases}
+		=
+		\Gamma \left(\dfrac{n + 1}{2}\right) 2^{n/2} \sqrt{\pi} \frac{J_{n/2} (\alpha)}{\alpha^{n/2}}  
 	\]
 \end{enumerate}

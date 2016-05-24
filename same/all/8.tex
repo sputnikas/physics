@@ -1,4 +1,6 @@
-\section{Гипергеометрическая функция}
+\section{Гипергеометрические функции}
+
+\subsection{Гипергеометрическая функция (функция Гаусса)}
 
 Сумма бесконечной геометрической прогрессии:
 \[
@@ -13,9 +15,204 @@
 	\frac{\alpha(\alpha + 1)(\alpha + 2) \beta (\beta + 1)(\beta + 2)}{\gamma (\gamma + 1)(\gamma + 2)} \frac{x^3}{3!} +
 	\ldots
 \]
+Ряд сходится только при $|x| < 1$.
 Некоторые очевидные соотношения:
 \[
 	F'(\alpha, \beta; \gamma; x) = 
 	\frac{\partial F(\alpha, \beta; \gamma; x)}{\partial x} = 
 	\frac{\alpha \beta}{\gamma} F(\alpha+1, \beta + 1; \gamma + 1; x)
+\]
+
+Она является частным решением дифференциального уравнения Эйлера:
+\[
+	x(x - 1) y'' + [(\alpha + \beta + 1)x - \gamma] y' + \alpha \beta y = 0
+\]
+Общее решение уравнения Эйлера:
+\[
+	y = C_1 F(\alpha, \beta; \gamma; x) + C_2 x^{1 - \gamma} F(\alpha - \gamma + 1, \beta - \gamma + 1; 2 - \gamma; x)
+\]
+Из определения гипергеометрической функции следует:
+\[
+	\gamma \ne 0, -1, -2, \ldots
+\]
+Интегральное представление:
+\[
+	F(\alpha, \beta; \gamma; x) =
+	\frac{\Gamma(\gamma)}{\Gamma(\beta) \Gamma(\gamma - \beta)}
+	\int\limits_0^1 t^{\beta-1}(1 - t)^{\gamma - \beta - 1} (1 - tx)^{-\alpha} dt
+\]
+Как следствие:
+\[
+	F(\alpha, \beta; \gamma; 1) = \frac{\Gamma(\gamma)\Gamma(\gamma - \alpha - \beta)}{\Gamma(\gamma - \alpha)\Gamma(\gamma - \beta)}
+\]
+Другая форма дифференциального уравнения Эйлера:
+\[
+	\frac{d}{dx}
+	\left[x^\gamma(x - 1)^{\alpha + \beta + 1 - \gamma} y'\right] + \alpha \beta x^{\gamma - 1}(x - 1)^{\alpha + \beta - \gamma} y = 0
+\]
+
+\subsection{Преобразование уравнения Эйлера}
+
+\[
+	x(x - 1) y''_{xx} + [(\alpha + \beta + 1)x - \gamma] y'_{x} + \alpha \beta y = 0
+\]
+Выполняем замену:
+\[
+	x = f(t) \quad y = g(t) z(t)
+\]
+\[
+	\begin{aligned}
+	& y''_{xx} = \frac{1}{f'} \frac{d}{dt} \left(\frac{y'}{f'}\right) = 
+	\frac{1}{f'^2} y'' - \frac{f''}{f'^3} y'
+	= \frac{1}{f'^2} (g z'' + 2 g' z' + g'' z) - \frac{f''}{f'^3} (gz' + g'z)
+	\\
+	& y'_x = \frac{1}{f'} (gz' + g'z)
+	\end{aligned}
+\]
+\[
+	\begin{aligned}
+	\frac{f(f - 1)}{f'^2} g z'' + &
+	\left(
+		\frac{2g'f(f - 1)}{f'^2} + \frac{(\alpha + \beta + 1)f - \gamma}{f'} g - \frac{f''f(f - 1)}{f'^3} g
+	\right) z' + \\ & +
+	\left(
+		\frac{f(f - 1)}{f'^2} g'' + \frac{(\alpha + \beta + 1)f - \gamma}{f'} g' - \frac{f''f(f - 1)}{f'^3} g' + \alpha \beta
+	\right) z = 0
+	\end{aligned}
+\]
+\[
+	z'' + 
+	\left(
+		\frac{2g'}{g} + \frac{(\alpha + \beta + 1)f - \gamma}{f(f - 1)} f' - \frac{f''}{f'}
+	\right) z' +
+	\left(
+		\frac{g''}{g}  + \frac{(\alpha + \beta + 1)f - \gamma}{f(f - 1)} \frac{g'}{g} - \frac{f''}{f'} \frac{g'}{g} + \alpha \beta
+	\right) z = 0
+\]
+Накладываем дополнительное условие:
+\[
+	\frac{2g'}{g} + \frac{(\alpha + \beta + 1)f - \gamma}{f(f - 1)} f' - \frac{f''}{f'} = 0
+\]
+\[
+	\frac{2g'}{g} + \frac{\alpha + \beta + 1}{f - 1} f' - \gamma \left(\frac{1}{f - 1} - \frac{1}{f}\right) f'- \frac{f''}{f'} = 0
+\]
+\[
+	\frac{2g'}{g} + \frac{\alpha + \beta + 1 - \gamma}{f - 1} f' + \frac{\gamma}{f} f'- \frac{f''}{f'} = 0
+\]
+\[
+	\ln g^2 + \ln (f - 1)^{\alpha + \beta + 1 - \gamma} + \ln f^\gamma - \ln f' = const = \ln C
+\]
+\[
+	g^2 (f - 1)^{\alpha + \beta + 1 - \gamma} f^\gamma = C f'
+\]
+\[
+	\int g^2 dt = C \int (f - 1)^{\gamma - \alpha - \beta - 1} f^{-\gamma} df \text{ даёт связь между $f(t)$ и $g(t)$}
+\]
+Учёт условия даёт:
+\[
+	z'' + 
+	\left(
+		\frac{g''}{g}  - 2 \frac{g'^2}{g^2} + \alpha \beta
+	\right) z = 0	
+\]
+Если ввести функцию:
+\[
+	h(t) = \frac{1}{g}
+\]
+\[
+	\frac{z''}{z} - 
+	\frac{h''}{h} + \alpha \beta
+	 = 0	
+\]
+
+\subsection{Вырожденная гипергеометрическая функция (функция Куммера)}
+
+Уравнение Куммера:
+\[
+	x y'' + (\gamma - x) y' - \alpha y = 0
+\]
+Его можно получить заменой в уравнении Эйлера $x$ на $x/\beta$ и устремив $\beta \to \infty$. Функция Куммера:
+\[
+	F(\alpha; \gamma; x) = 1+
+	\frac{\alpha}{\gamma} \frac{x}{1!} + 
+	\frac{\alpha(\alpha + 1)}{\gamma (\gamma + 1)} \frac{x^2}{2!} +
+	\frac{\alpha(\alpha + 1)(\alpha + 2)}{\gamma (\gamma + 1)(\gamma + 2)} \frac{x^3}{3!} +
+	\ldots
+\]
+Ряд сходится при любых значениях $x$. Общее решение уравнения Куммера:
+\[
+	y = C_1 F(\alpha; \gamma; x) + C_2 x^{1 - \gamma} F(\alpha - \gamma + 1; 2 - \gamma; x)
+\]
+Интегральное представление:
+\[
+	F(\alpha; \gamma; x) = 
+	\frac{\Gamma(\gamma)}{\Gamma(\alpha) \Gamma(\gamma - \alpha)}
+	\int\limits_0^1 t^{\alpha-1}(1 - t)^{\gamma - \alpha - 1} e^{tx} dt
+\]
+Отсюда можно получить:
+\[
+	F(\alpha; \gamma; x) = 
+	e^x F(\gamma - \alpha; \gamma; -x) 
+\]
+Очевидное соотношение:
+\[
+	\frac{d F(\alpha; \gamma; x)}{dx} = \frac{\alpha}{\gamma} F(\alpha + 1; \gamma + 1; x)
+\]
+
+\subsection{Преобразование уравнения Куммера}
+
+\[
+	x y''_{xx} + (\gamma - x) y'_x - \alpha y = 0
+\]
+Выполняем замену:
+\[
+	x = f(t) \quad y = g(t) z(t)
+\]
+\[
+	\begin{aligned}
+	& y''_{xx} = \frac{1}{f'^2} (g z'' + 2 g' z' + g'' z) - \frac{f''}{f'^3} (gz' + g'z)
+	\\
+	& y'_x = \frac{1}{f'} (gz' + g'z)
+	\end{aligned}
+\]
+\[
+	\frac{f g}{f'^2} z'' +
+	\left(
+		\frac{2 g' f}{f'^2} - \frac{f'' f g}{f'^3}  +\frac{\gamma - f}{f'} g 
+	\right) z' +
+	\left(
+	\frac{g'' f}{f'^2} - \frac{f'' f g'}{f'^3}  +\frac{\gamma - f}{f'} g' - \alpha
+	\right) z = 0
+\]
+\[
+	z'' +
+	\left(
+	\frac{2 g'}{g} - \frac{f''}{f'}  +\frac{\gamma - f}{f} f' 
+	\right) z' +
+	\left(
+	\frac{g''}{g} - \frac{f''}{f'} \frac{g'}{g} +\frac{\gamma - f}{f'} \frac{g'}{g}  - \alpha
+	\right) z = 0
+\]
+Добавляем одно условие:
+\[
+	\frac{2 g'}{g} - \frac{f''}{f'}  +\frac{\gamma - f}{f} f' = 0
+\]
+\[
+	\ln g^2 - \ln f'  + \ln f^\gamma - f = \ln C
+\]
+\[
+	g^2 = C f^{-\gamma} e^{f} f'
+\]
+\[
+	\int g^2 dt = C \int f^{-\gamma} e^{f} df
+\]
+Вводим функцию:
+\[
+	h(t) = \frac{1}{g(t)}
+\]
+Получаем уравнение:
+\[
+	\frac{z''}{z} - 
+	\frac{h''}{h} - \alpha
+	= 0	
 \]

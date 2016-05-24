@@ -1,0 +1,70 @@
+\section{Уравнение Больцмана в $\tau$-приближении}
+
+Уравнение Больцмана (Лиувилля) в $\tau$-приближении:
+\[
+	\frac{d f}{d t} = \frac{\partial f}{\partial t} + \vec{v} \cdot \frac{\partial f}{\partial \vec{r}} + \vec{F} \cdot \frac{\partial f}{\partial \vec{p}} = \frac{f_0 - f}{\tau}
+\]
+Вдоль характеристики:
+\[
+	\begin{aligned}
+	& \frac{d \vec{r}}{d t} = \vec{v} \\
+	& \frac{d \vec{p}}{d t} = \vec{F} \\
+	& \frac{d f}{d t} = \frac{f_0 - f}{\tau}
+	\end{aligned}
+\]
+Пусть 
+\[
+	f = GV
+\]
+\[
+	\frac{d G}{d t} + \frac{G}{\tau} = 0 \quad \Rightarrow \quad G = A e^{-t/\tau}
+\]
+\[
+	\frac{d V}{d t} = \frac{1}{A \tau} e^{t/\tau} f_0 \quad \Rightarrow \quad V = \frac{1}{A \tau} \int\limits_{a}^t e^{t'/\tau}f_0(t', \vec{r}'(t'), \vec{p}'(t')) dt'  + V_0 
+\]
+\[
+	f(t, \vec{r}, \vec{p})  = GV = \left(\frac{1}{\tau} \int\limits_{a}^t e^{t'/\tau}f_0(t', \vec{r}'(t'), \vec{p}'(t')) dt'  + V_0 A \right) e^{-t/\tau}
+\]
+Решение должно быть конечно при любых $t$, в том числе и при $t \to -\infty$. Отсюда следует:
+\[
+	V_0 A = \frac{1}{\tau} \int\limits_{-\infty}^{a} e^{t'/\tau}f_0(t', \vec{r}'(t'), \vec{p}'(t')) dt'
+\]
+Окончательно:
+\[
+	f(t, \vec{r}, \vec{p}) = \frac{1}{\tau} \int\limits_{-\infty}^t \exp \left(\frac{t' - t}{\tau}\right) f_0(t', \vec{r}'(t'), \vec{p}'(t')) dt'
+\]
+где $\vec{p}(t')$, $\vec{r}(t')$ удовлетворяют системе:
+\[
+	\begin{aligned}
+	& \frac{d \vec{r}'}{d t'} = \vec{v} \\
+	& \frac{d \vec{p}'}{d t'} = \vec{F}
+	\end{aligned} 
+\]
+с начальными условиями:
+\[
+	\vec{r}'(t) = \vec{r} \quad \vec{p}'(t) = \vec{p}
+\]
+Рассмотрим систему с гамильтонианом:
+\[
+	H = H(\vec{p}, \vec{r}) = E(\vec{p}) + U(\vec{r})
+\]
+то есть явно не зависящую от времени. Уравнения движения в гамильтоновой форме:
+\[
+	\begin{aligned}
+	& \frac{d \vec{r}}{d t} = \frac{\partial H}{\partial \vec{p}} \\
+	& \frac{d \vec{p}}{d t} = - \frac{\partial H}{\partial \vec{r}}
+	\end{aligned}
+\]
+В этом случае энергия сохраняется вдоль траектории-характеристики:
+\[
+	\frac{d H}{d t} = 
+	\frac{\partial H}{\partial t} + \frac{\partial H}{\partial \vec{p}} \cdot \frac{\partial H}{\partial \vec{r}} - \frac{\partial H}{\partial \vec{r}} \cdot \frac{\partial H}{\partial \vec{p}} = 0
+\]
+Выберем 
+\[
+	f_0 = \frac{1}{N} \exp \left(- \frac{E}{kT}\right)
+\]
+И найдём плотность тока:
+\[
+	\vec{j}(t) = \int \vec{v}(\vec{p}) f(t) d^3r\, d^3p = \int \frac{\vec{v}(\vec{p})}{N \tau} \int\limits_{-\infty}^t \exp \left(\frac{t' - t}{\tau}\right) \exp \left(- \frac{E(\vec{p'}(t'))}{kT}\right) dt'\, d^3r\, d^3p
+\]

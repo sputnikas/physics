@@ -503,43 +503,176 @@ u(x, t) =
 Решение уравнения:
 \[
 	u = \frac{1}{(2\pi)^{n + 1}} \int \frac{e^{i(\vec{k}\cdot\vec{R} - \omega T)}}{\omega^2 - k^2} dV_k d\omega =  
-	\frac{\pi^{(- n - 3)/2}}{2^n\Gamma\left(\frac{n - 1}{2}\right)} 
+	\frac{1}{(2\pi)^{n + 1}} \frac{2 \pi^{(n - 1)/2}}{\Gamma((n - 1)/2)} 
 	\int\limits_{-\infty}^{\infty}\!
 	\int\limits_{0}^{\infty}\!
 	\int\limits_{0}^{\pi}
 	 \frac{e^{i(k R \cos \theta - \omega T)}}{\omega^2 - k^2} k^{n - 1} \sin^{n - 2} \theta\, d\theta\, dk\, d\omega = (*)
 \]
+Учитываем соотношения:
 \[
 	\frac{1}{\omega^2 - k^2} = \frac{1}{2k} \left(\frac{1}{\omega - k} - \frac{1}{\omega + k} \right)
 \]
 \[
+	\int\limits_{-\infty}^{\infty} \frac{e^{ia x}}{x - x_0} f(x) dx =
+	i e^{iax_0} f(x_0) \pi \sign a
+\]
+\[
+	\int\limits_0^\pi e^{i\alpha \cos \theta} \sin^n \theta \, d\theta
+	=
+	\Gamma \left(\dfrac{n + 1}{2}\right) 2^{n/2} \sqrt{\pi} \frac{J_{n/2} (\alpha)}{\alpha^{n/2}}  
+\]
+Получаем:
+\[
+	\int\limits_{-\infty}^{\infty} \frac{e^{ - i\omega T}}{\omega^2 - k^2} d\omega 
+	=
+	\frac{1}{2k} \int\limits_{-\infty}^{\infty} \frac{e^{ - i\omega T}}{\omega - k} d\omega
+	-
+	\frac{1}{2k} \int\limits_{-\infty}^{\infty} \frac{e^{ - i\omega T}}{\omega + k} d\omega
+	= \\ =
+	\frac{i\pi \sign (-T)}{2k} \left[e^{-i k T} - e^{ikT}\right]
+	=
+	- \frac{\pi \sign (T)}{k} \sin (kT)
+\]
+\[
 	\begin{gathered}
 	(*) =
-	\frac{i \pi^{(- n - 1)/2}}{2^{n + 1}\Gamma\left(\frac{n - 1}{2}\right)} 
+	- \frac{1}{(2\pi)^{n}} \frac{\pi^{(n - 1)/2}}{\Gamma((n - 1)/2)} 
+	\int\limits_{0}^{\infty}
+	\sin (kT) \sign(T) k^{n - 2} 
+	\int\limits_{0}^{\pi}
+	e^{i(k R \cos \theta)} 
+	\sin^{n - 2} \theta\, d\theta\, dk
+	= \\ =
+	- \frac{1}{(2\pi)^{n}} \frac{\pi^{(n - 1)/2}}{\Gamma((n - 1)/2)} 
+	\Gamma((n - 1)/2) 2^{(n - 2)/2} \pi^{1/2}
+	\int\limits_{0}^{\infty}
+	\sin (kT) \sign(T) k^{n - 2} 
+	\frac{J_{(n - 2)/2} (kR)}{(kR)^{(n - 2)/2}}   dk
+	= \\ =
+	- \frac{1}{2^{(n + 2)/2} \pi^{n/2}} \frac{\sign(T)}{R^{n - 1}}
+	\int\limits_{0}^{\infty}
+	\sin (xT/R) x^{(n - 2)/2} 
+	J_{(n - 2)/2} (x)   dx
+	\end{gathered} 
+\]
+
+
+\subsection{Решение 3-мерного волнового уравнения с дельтообразной правой частью}
+
+\[
+	\Delta G - \frac{\partial^2 G}{\partial t^2} = \delta(t - t')\delta(\vec{r} - \vec{r}') 
+\]
+Решение уравнения:
+\[
+	G = \frac{1}{(2\pi)^{4}} \int \frac{e^{i(\vec{k}\cdot\vec{R} - \omega T)}}{\omega^2 - k^2} dV_k d\omega =  
+	\frac{\pi^{-3}}{2^3} 
+	\int\limits_{-\infty}^{\infty}\!
+	\int\limits_{0}^{\infty}\!
+	\int\limits_{0}^{\pi}
+	\frac{e^{i(k R \cos \theta - \omega T)}}{\omega^2 - k^2} k^{2} \sin \theta\, d\theta\, dk\, d\omega = (*)
+	\]
+	\[
+	\frac{1}{\omega^2 - k^2} = \frac{1}{2k} \left(\frac{1}{\omega - k} - \frac{1}{\omega + k} \right)
+	\]
+	\[
+	\begin{gathered}
+	(*) =
+	\frac{i \pi^{-2}}{2^{4}} 
 	\int\limits_{0}^{\infty}\!
 	\int\limits_{0}^{\pi}
 	\left(e^{ - i k T}  - e^{i k T} \right) \sign(-T)
 	e^{i(k R \cos \theta)} 
-	k^{n - 2} \sin^{n - 2} \theta\, d\theta\, dk
-	= \\ 
-	=
-%	\frac{\pi^{(- n - 1)/2}}{2^{n}\Gamma\left(\frac{n - 1}{2}\right)} 
-%	\int\limits_{0}^{\infty}\!
-%	\int\limits_{0}^{\pi}
-%	\sin (kT) \sign(-T)
-%	e^{i(k R \cos \theta)} 
-%	k^{n - 2} \sin^{n - 2} \theta\, d\theta\, dk = 
-	\frac{i \pi^{(- n - 1)/2}}{2^{n + 1}\Gamma\left(\frac{n - 1}{2}\right)} 
-	\int\limits_{0}^{\pi}
-	\left[
-	\pi (-i)^{n - 2} (1 + i) \left(\delta^{(n - 2)}(R \cos \theta - T)  - \delta^{(n - 2)}(R \cos \theta + T) \right)
+	k \sin \theta\, d\theta\, dk
+	= \\ =
+	\frac{\pi^{-2}}{2^{4} R} 
+	\int\limits_{0}^{\infty}
+	\left(e^{ - i k T}  - e^{i k T} \right) \sign(-T)
+	\left(e^{-i k R} - e^{i k R} \right)
+	\,dk =
+	-\frac{1}{4\pi^2 R} 
+	\int\limits_{0}^{\infty}
+	\sin(kT) \sign(-T)
+	\sin(kR)
+	\,dk
+	= \\ =
+	\frac{1}{4\pi^{2} R} 
+	\int\limits_{0}^{\infty}
+	\sin(k|T|)
+	\sin(kR)
+	\,dk
+	= 
+	\frac{1}{8\pi R} 
+	\left(\delta(R - |T|)
 	-
-	\right.
-	\\ -
-	\left.
-	i^{n - 1} (n - 2)! \left(\frac{1}{(R \cos \theta - T)^{n - 1}} - \frac{1}{(R \cos \theta + T)^{n - 1}}\right)
-	\right]
-	\sign(-T) 
-	\sin^{n - 2} \theta\, d\theta
+	\delta(R + |T|) \right)
 	\end{gathered} 
+\]
+Здесь следует отметить тот факт, что данное решение должно удовлетворять нулевым начальным условиям. Что проверяется непосредственно подстановкой значения $T = 0 (t = t')$ в предпоследний интеграл. Условия:
+\[
+	G \Big|_{t = t'} = 0, \frac{\partial G}{\partial t} \Big|_{t = t'} = 0
+\]
+На этом фокусы не заканчиваются. Посмотрим на поведение функции в точке с "частицей" $R \to 0$:
+\[
+	G = - \frac{1}{4\pi} \delta'(|T|)
+\]
+Что также легко получить, поменяв предел и интеграл местами в предпоследнем интеграле. Представим решение в другом виде:
+\[
+	\begin{gathered}
+	G = 
+	\begin{cases}
+	\frac{1}{8\pi R} \delta(R - |T|), & R \ne 0, \quad T \ne 0 \\
+	- \frac{1}{4\pi} \delta'(|T|), & R = 0, \quad T \ne 0 \\
+	0, & T = 0
+	\end{cases}
+	= 
+	\begin{cases}
+	\frac{1}{8\pi R} (\delta(R - T) + \delta(R + T)), & R \ne 0, \quad T \ne 0 \\
+	- \frac{1}{4\pi} \delta'(|T|), & R = 0, \quad T \ne 0 \\
+	0, & T = 0
+	\end{cases}
+	= \\ =
+	\begin{cases}
+	\frac{1}{4\pi} \delta(R^2 - T^2), & R \ne 0, \quad T \ne 0 \\
+	- \frac{1}{4\pi} \delta'(|T|), & R = 0, \quad T \ne 0 \\
+	0, & T = 0
+	\end{cases}
+	\end{gathered}
+\]
+
+\subsection{Решение неоднородного 3-мерного волнового уравнения}
+
+Рассмотрим следующее уравнение:
+\[
+	\Delta u - \frac{\partial^2 u}{\partial t^2} = s(\vec{r}, t)
+\]
+По принципу суперпозиции:
+\[
+	s(\vec{r}, t) = \int\limits_{-\infty}^{\infty} \int\limits_V s(\vec{r}', t') \delta(t - t')\delta(\vec{r} - \vec{r}') dt' dV'	
+\]
+В результате решение с нулевыми начальными условиями в бесконечном пространстве:
+\[
+	\begin{gathered}
+	u(\vec{r}, t) = 
+	\int\limits_{-\infty}^{\infty} \int\limits_V s(\vec{r}', t') G(\vec{r}, \vec{r}', t, t') dV' dt' 
+	=
+	\int\limits_V \frac{1}{8 \pi R} \int\limits_{-\infty}^{\infty} (\delta(R - (t - t')) + \delta(R + (t - t'))) s(\vec{r}', t')  dt' dV'
+	= \\ =
+	\int\limits_V \frac{1}{8 \pi R} (s(\vec{r}', t - R) + s(\vec{r}', t + R) dV'
+	\end{gathered}
+\]
+
+\subsection{О поле произвольно движущейся частицы}
+
+Рассмотрим следующее уравнение:
+\[
+	\Delta u - \frac{\partial^2 u}{\partial t^2} = \delta(\vec{r} - \vec{a}(t)) = s(\vec{r}, t)
+\]
+По прежнему будем искать решение при нулевых начальных условиях.
+\[
+	s(\vec{r}, t) = \int\limits_{-\infty}^{\infty} \int\limits_V s(\vec{r}', t') \delta(t - t')\delta(\vec{r} - \vec{r}') dt' dV' 
+\]
+\[
+	u(\vec{r}, t) = \int\limits_{-\infty}^{\infty} \int\limits_V s(\vec{r}', t') G(\vec{r}, \vec{r}', t, t') dV' dt' 
+	= \int\limits_{-\infty}^{\infty} \int\limits_V \delta(\vec{r}' - \vec{a}(t')) G(\vec{r}, \vec{r}', t, t') dV' dt'
 \]

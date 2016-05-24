@@ -1,0 +1,98 @@
+\section{Принцип наименьшего действия для электромагнитных полей преобразованнных по Фурье по времени}
+
+В класической форме действие имеет вид:
+\[
+	S = \int (\rho \varphi - \vec{j}\cdot\vec{A}) dV dt- \frac{1}{2\mu_0c^2} \int (E^2 - B^2 c^2) dV dt
+\]
+Кто не верит может проверить, главное не забывать дополнительное условие:
+\[
+	\vec{E} = - \frac{\partial \vec{A}}{\partial t} - \nabla \varphi
+	\qquad
+	\vec{B} = \rot \vec{A}
+\]
+Выполним преобразование Фурье:
+\[
+\begin{aligned}
+	& \rho = \int\limits_{-\infty}^{\infty} \rho_\omega e^{i\omega t} d\omega \\
+	& \varphi = \int\limits_{-\infty}^{\infty} \varphi_\omega e^{i\omega t} d\omega \\
+	& \vec{E} = \int\limits_{-\infty}^{\infty} \vec{E}_\omega e^{i\omega t} d\omega
+\end{aligned}
+\qquad
+\begin{aligned}
+	& \vec{j} = \int\limits_{-\infty}^{\infty} \vec{j}_\omega e^{i\omega t} d\omega \\
+	& \vec{A} = \int\limits_{-\infty}^{\infty} \vec{A}_\omega e^{i\omega t} d\omega \\
+	& \vec{B} = \int\limits_{-\infty}^{\infty} \vec{B}_\omega e^{i\omega t} d\omega
+\end{aligned}
+\]
+При этом:
+\[
+	\vec{E}_\omega = - i \omega \vec{A}_\omega - \nabla \varphi_\omega
+	\qquad
+	\vec{B}_\omega = \rot \vec{A}_\omega
+\]
+Индекс $\omega$ означает и то, что это преобразованная компонента, и одновременно зависимость от $\omega$. Но все поля действительны. Какой кошмар! Что делать, кто виноват? Действительно кошмар, ведь теперь они подчиняются дополнительным условиям. Чтобы их получить рассмотрим тождество:
+\[
+	\rho = (1 - \alpha) \int\limits_{-\infty}^{\infty} \rho_\omega e^{i\omega t} d\omega + \alpha \int\limits_{-\infty}^{\infty} \rho^*_\omega e^{- i\omega t} d\omega = 
+	\int\limits_{-\infty}^{\infty} [(1 - \alpha) \rho_\omega + \alpha \rho^*_{- \omega}] e^{- i\omega t} d\omega
+	= \int\limits_{-\infty}^{\infty} \rho_\omega e^{- i\omega t} d\omega
+\]
+Данное тождество выполняется при любом параметре $\alpha$, отсюда автоматически следует:
+\[
+	\rho^*_{- \omega} = \rho_{\omega}
+\]
+Аналогичные условия справедливы и для всех остальных функций и нужны для правильного варьирования. Учтём теперь, что для произведения функций справедливо:
+\[
+	\int\limits_{-\infty}^{\infty} f^*(t) g(t) dt = 
+	\int\limits_{-\infty}^{\infty} f^*_\omega(\omega)  \int\limits_{-\infty}^{\infty} g(t) e^{- i\omega t} dt d\omega =
+	2\pi \int\limits_{-\infty}^{\infty} f^*_\omega(\omega) g_\omega(\omega) d\omega
+\]
+Получаем действие в виде:
+\[
+	S = 2\pi \left[ \int (\rho^*_\omega \varphi_\omega - \vec{j}^*_\omega\cdot\vec{A}_\omega) dV d\omega- \frac{1}{2\mu_0c^2} \int (\vec{E}^*_\omega\cdot\vec{E}_\omega - c^2 \vec{B}^*_\omega \cdot \vec{B}_\omega) dV d\omega \right]
+\]
+Как тяжела была бы жизнь, если бы не было закона сохранения заряда:
+\[
+	i\omega \rho_\omega + \div \vec{j}_\omega = 0
+\]
+Подставляем $\rho$ отсюда в действие и учитываем тождество:
+\[
+	\div u \vec{a} = \vec{a} \cdot \nabla u + u \div \vec{a}
+\]
+Наслаждаемся результатом:
+\[
+	S = \int\limits_{-\infty}^{\infty}\oint \frac{1}{i\omega} \varphi_\omega \vec{j}^*_\omega \cdot d\vec{S} d\omega +
+	\int \frac{\vec{j}^*_\omega}{i\omega}  \cdot (- \nabla\varphi_\omega - i\omega\vec{A}_\omega) dV d\omega - \frac{1}{2\mu_0c^2} \int \left(\vec{E}^*_\omega\cdot\vec{E}_\omega - \frac{c^2}{\omega^2} \rot\vec{E}^*_\omega \cdot \rot\vec{E}_\omega\right) dV d\omega
+\]
+
+\[
+\boxed{
+	S = \int\limits_{-\infty}^{\infty}\oint \frac{1}{i\omega} \varphi_\omega \vec{j}^*_\omega \cdot d\vec{S} d\omega +
+	\int \frac{1}{i\omega}  \vec{j}^*_\omega \cdot \vec{E}_\omega dV d\omega - \frac{1}{2\mu_0c^2} \int \left(\vec{E}^*_\omega\cdot\vec{E}_\omega - \frac{c^2}{\omega^2} \rot\vec{E}^*_\omega \cdot \rot\vec{E}_\omega\right) dV d\omega
+}
+\]
+Покажем как отсюда получить уравнения Максвелла для резонаторов. Варьируем по неизвестному полю $\vec{E}_\omega$. Нас будет интересовать только третий кусок действия:
+\[
+	\begin{gathered}
+	\delta \int \left(\vec{E}^*_\omega\cdot\vec{E}_\omega - \frac{c^2}{\omega^2} \rot\vec{E}^*_\omega \cdot \rot\vec{E}_\omega\right) dV d\omega 
+	= \\ =
+	\int \left(\delta\vec{E}^*_\omega\cdot\vec{E}_\omega + \vec{E}^*_\omega\cdot\delta\vec{E}_\omega - \frac{c^2}{\omega^2} \rot\delta \vec{E}^*_\omega \cdot \rot\vec{E}_\omega - \frac{c^2}{\omega^2} \rot \vec{E}^*_\omega \cdot \rot\delta\vec{E}_\omega \right) dV d\omega
+	= \\ =
+	\int \left(\delta\vec{E}^*_{-\omega}\cdot\vec{E}_{-\omega} + \vec{E}^*_\omega\cdot\delta\vec{E}_\omega - \frac{c^2}{\omega^2} \rot\delta \vec{E}^*_{-\omega} \cdot \rot\vec{E}_{-\omega} - \frac{c^2}{\omega^2} \rot \vec{E}^*_\omega \cdot \rot\delta\vec{E}_\omega \right) dV d\omega
+	= \\ =
+	2 \int \left(\vec{E}^*_\omega\cdot\delta\vec{E}_\omega - \frac{c^2}{\omega^2} \rot \vec{E}^*_\omega \cdot \rot\delta\vec{E}_\omega \right) dV d\omega
+	\end{gathered}
+\]
+Здесь учтены условия, указанные выше. Воспользуемся тождеством:
+\[
+	\rot \vec{a} \cdot \rot \vec{b} = \div (\vec{b} \times \rot \vec{a}) + \vec{b} \cdot \rot \rot \vec{a}
+\]
+Получаем уравнения для резонаторов с идеально-проводящими стенками:
+\[
+	\frac{1}{i\omega} \vec{j}^*_\omega - \frac{1}{\mu_0 c^2} \left(\vec{E}^*_\omega - \frac{c^2}{\omega^2} \rot\rot\vec{E}^*_\omega \right) = 0
+\]
+\[
+	\mu_0 \vec{j}^*_\omega - \frac{i\omega}{c^2} \vec{E}^*_\omega - \rot\vec{B}^*_\omega = 0
+\]
+\[
+	 \rot\vec{B}_\omega = \mu_0 \vec{j}_\omega + \frac{i\omega}{c^2} \vec{E}_\omega
+\]

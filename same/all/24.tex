@@ -1,0 +1,109 @@
+\section{О проводниках}
+
+Классическая теория проводимости основана на уравнении движения электрона, записанном в следующем виде:
+\[
+	\frac{d\vec{p}}{dt} = - \nu \vec{p} + q\vec{E} + q\vec{v} \times \vec{B}
+\]
+Трудный вопрос будет ли работать это уравнение в релятивистском случае, поэтому оставим его пока в покое и рассмотрим нерелятивистский случай (тем более, что трудно представить себе среду с релятивистскими электронами и кристаллической формой). Поэтому:
+\[
+	\vec{p} = m \vec{v}
+\]
+\[
+	\vec{j} = q n \vec{v}
+\]
+Для классического проводника:
+\[
+	\frac{d\vec{p}}{dt} = 0
+\]
+\[
+	- \nu m \vec{v} + q \vec{E} + q\vec{v} \times \vec{B} = 0
+\]
+\[
+	\nu m \vec{v} + q \vec{B} \times \vec{v} = q \vec{E} 
+\]
+Для простоты выкладок обозначим:
+\[
+	\lambda = \frac{\nu m}{q}
+\]
+\[
+	\begin{pmatrix}
+	\lambda & B_z & -B_y \\
+	-B_z & \lambda & B_x \\
+	B_y & -B_x & \lambda
+	\end{pmatrix}
+	\begin{pmatrix}
+	v_x \\
+	v_y \\
+	v_z
+	\end{pmatrix}
+	= 
+	\begin{pmatrix}
+	E_x \\
+	E_y \\
+	E_z
+	\end{pmatrix}
+\]
+Добавим ещё немного обозначений: $\hat{I}$ -- единичная матрица,
+\[
+	\hat{B} = 
+	\begin{pmatrix}
+	0 & B_z & -B_y \\
+	-B_z & 0 & B_x \\
+	B_y & -B_x & 0
+	\end{pmatrix}
+	\quad
+	\hat{B}^2 = 
+	\begin{pmatrix}
+	- B_z^2 - B_y^2	& B_x B_y 			& B_x B_z \\
+	B_x B_y 		& - B_z^2 - B_x^2 	& B_y B_z \\
+	B_x B_z 		& B_y B_z  			& - B_x^2 - B_y^2
+	\end{pmatrix}
+	\quad
+	B^2 = B_x^2 + B_y^2 + B_z^2
+\]
+Уравнение:
+\[
+	(\lambda \hat{I} + \hat{B}) \vec{v} = \vec{E}
+\]
+\[
+	(\lambda \hat{I} + \hat{B})^{-1} = \frac{1}{\lambda(\lambda^2 + B^2)} 
+	\begin{pmatrix}
+	B_x^2 + \lambda^2   	 & B_x B_y - \lambda B_z 	& B_x B_z + \lambda B_y 	\\
+	B_x B_y + \lambda B_z	 & B_y^2 + \lambda^2    	& B_y B_z - \lambda B_x 	\\
+	B_x B_z - \lambda B_y	 & B_y B_z + \lambda B_x    & B_z^2 + \lambda^2		 	\\
+	\end{pmatrix} =
+	\frac{1}{\lambda(\lambda^2 + B^2)}  ((\lambda^2 + B^2) \hat{I} + \hat{B}^2 - \lambda \hat{B})
+\]
+\[
+	\vec{v} = \frac{\vec{E}}{\lambda} + \frac{1}{\lambda(\lambda^2 + B^2)} (\hat{B}^2 - \lambda \hat{B}) \vec{E}
+	=
+	\frac{\vec{E}}{\lambda} + \frac{1}{\lambda(\lambda^2 + B^2)} (\vec{B}\times(\vec{B} \times \vec{E}) + \lambda \vec{E} \times \vec{B})
+	= 
+	\frac{\lambda\vec{E}}{\lambda^2 + B^2} + \frac{1}{\lambda(\lambda^2 + B^2)} (\vec{B} (\vec{E} \cdot \vec{B} ) + \lambda \vec{E} \times \vec{B})
+\]
+Отсюда следует один интересный вывод, если изложенный механизм действительно имеет место, то проводимость вдоль направления $\vec{E}$, когда $\vec{E} \perp \vec{B}$:
+\[
+	\sigma = \frac{qn \lambda}{\lambda^2 + B^2} = \frac{q^2 n}{m\nu \left(1 + \frac{m^2\nu^2 B^2}{q^2}\right)}
+\]
+и также существуют токи в направлении перпендикулярном $\vec{E}$ и $\vec{B}$.
+Если $\vec{E} \parallel \vec{B}$:
+\[
+	\vec{v} = 
+	\frac{\lambda\vec{E}}{\lambda^2 + B^2} + \frac{B^2 \vec{E}}{\lambda(\lambda^2 + B^2)} = \frac{\vec{E}}{\lambda}
+\]
+\[
+	\sigma = \frac{qn}{\lambda} = \frac{q^2 n}{m\nu}
+\]
+Найдём параметр $\lambda$ для меди:
+\[
+	\lambda = \frac{qn}{\sigma} = qn\rho_e = -\frac{ k e N_A \rho\rho_e}{M} = -\frac{ 1\cdot 1{,}6\cdot 10^{-19} \cdot 6{,}02\cdot 10^{23} \cdot  1{,}75 \cdot 10^{-8} \cdot  8{,}9\cdot 10^3 }{63{,}5\cdot 10^{-3}} \approx - 2{,}4 \cdot 10^2 \text{ Тл}
+\]
+Лучшим чем медь проводником является серебро. Для него:
+\[
+	\lambda = -\frac{ 1\cdot 1{,}6\cdot 10^{-19} \cdot 6{,}02\cdot 10^{23} \cdot  1{,}5 \cdot 10^{-8} \cdot  8{,}9\cdot 10^3 }{63{,}5\cdot 10^{-3}} \approx - 2{,}0 \cdot 10^2 \text{ Тл}
+\]
+Для всех остальных веществ этот параметр существенно больше и как следствие:
+\[
+	\vec{v} \approx
+	\frac{\vec{E}}{\lambda} + \frac{1}{\lambda^3} (\vec{B} (\vec{E} \cdot \vec{B} ) + \lambda \vec{E} \times \vec{B}) \approx \frac{\vec{E}}{\lambda} 
+\]

@@ -53,7 +53,7 @@
 \[
 	\begin{gathered}
 	J = r^{N - 1} J_N(\theta_1, \ldots, \theta_{N - 1}) = 
-	r^{N - 1} [\cos^2 \theta_1 \sin^{N - 2} \theta_1 J_{N - 1}(\theta_2, \ldots, \theta_{N - 1}) + \sin^2 \theta_1 J_{N - 1}(\theta_2, \ldots, \theta_{N - 1})]  =  
+	r^{N - 1} [\cos^2 \theta_1 \sin^{N - 2} \theta_1 J_{N - 1}(\theta_2, \ldots, \theta_{N - 1}) + \sin^N \theta_1 J_{N - 1}(\theta_2, \ldots, \theta_{N - 1})]  =  
 	\\ =
 	r^{N - 1} \sin^{N - 2} \theta_1 J_{N - 1}(\theta_2, \ldots, \theta_{N - 1})
 	\\ =
@@ -77,4 +77,13 @@
 \[
 	V_N = \int\limits_0^r S_N dr = \frac{2 \pi^{N/2}}{N\Gamma\left(N/2\right)} r^{N} =
 	\frac{\pi^{N/2}}{\Gamma\left((N + 2)/2\right)} r^{N}
+\]
+Элемент площади в случае цилиндрической симметрии для гиперсферы:
+\[
+	\begin{gathered}
+	dS_N = r^{N - 1} \sin^{N - 2} \theta \, d\theta \int\limits_{\theta} \sin^{N - 3} \theta_2 \cdot \ldots \cdot \sin \theta_{N - 2} d\theta_2 \ldots d\theta_{N - 1} 
+	= \\ = 
+	2 \pi \frac{\pi^{(N - 3)/2}}{\Gamma((N - 1)/2)} r^{N - 1} \sin^{N - 2} \theta \, d\theta =
+	\frac{2 \pi^{(N - 1)/2}}{\Gamma((N - 1)/2)} r^{N - 1} \sin^{N - 2} \theta \, d\theta
+	\end{gathered}
 \]
