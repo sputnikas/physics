@@ -31,7 +31,7 @@
 \]
 Тело при этом пусть будет эллиптической формы, центр масс на оси симметрии системы. Тело лежит на подложке, которая действует на него моментом сил трения $\vec{M}_{fr}$ в направлении перпендикулярном подложке и противоположно компоненте угловой скорости в данном направлении. Неподвижные оси $x', y', z'$ направим как показано на рисунке. Подвижные оси будут представлять собой оси симметрии эллипсоида $x, y, z$. В подвижной системе жёстко связанной с телом на систему будут действовать силы трения (будем считать, что они приводят только к наличию момента $\vec{M}_{fr}$ в направлении перпендикулярном подложке и противоположно проекции угловой скорости на данное направление), сила реакции опоры, направленная перпендикулярно подложке $\vec{N}$, сила инерции, так как центр масс движется вообще говоря ускоренно (но она постоянна по величине и не создаёт относительно центра масс момента, в чём также легко убедиться с помощью интегрирования), центробежная сила (приводит к знаменитым эйлеровым уравнениям -- момент равен $-\vec{\omega}\times\vec{L}$), а вот сила Кориолиса равна 0, так как скорость движения точек тела в подвижной системе координат связанной с телом равна 0. Уравнения динамики вращательного движения:
 \[
-	\hat{J} \frac{d\vec{\omega}}{dt} + \vec{\omega}\times(\hat{J}\vec{\omega}) = \vec{N}\times\vec{R} + \vec{M}_{fr}
+	\hat{J} \frac{d\vec{\omega}}{dt} + \vec{\omega}\times(\hat{J}\vec{\omega}) = \vec{R}\times\vec{N} + \vec{M}_{fr}
 \]
 Введём эйлеровы углы $(\psi, \theta, \phi)$. Для полного счастья нам понадобятся орты подвижной системы координат, выраженные через неподвижные. С помощью вспомогательного единичного вектора $\vec{n}$, получим:
 \[
@@ -69,7 +69,7 @@
 Зачем он нужен? Во-первых вдоль него направлен момент сил трения, а во-вторых с его помощью можно найти нормаль к эллипсоиду, который повернули на произвольные эйлеровы углы в точке соприкосновения с подложкой и как следствие найти эту точку.
 Нормаль в точке эллипсоида $(x_a, y_a, z_a)$ (ещё 10-30 минут утомительных вычислений) коллинеарна вектору:
 \[
-	\left\{
+	\vec{A} = \left\{
 		\frac{x_a}{a^2},  \frac{y_a}{b^2}, \frac{z_a}{c^2}
 	\right\}
 \]
@@ -117,3 +117,92 @@
 	\theta(0) = \phi(0) = \psi(0) = 0 
 \]
 Но легко видеть, что этот случай неинтересен и ни к чему особенному приводить не должен. Более интересный случай связан с небольшими отклонениями от 0 в начальных условиях. В принципе осталось разобраться с силой реакции опоры. Из-за ускоренного движения центра масс эллипсоида она может принимать, вообще говоря значения отличные от $mg$, однако если по сравнению с $g$ добавкой можно пренебречь, то осталось перейти к моделированию. Но мне лень.
+
+Попробуем всё-таки учесть ускоренное движение центра. Существуют множество вариантов того, как это можно сделать. Например, можно считать, что движение происходит без скольжения. В этом случае момент сил трения будет создавать дополнительную силу, действующую на объект, что может вызвать проблемы при решении.
+
+Самый простой способ -- считать, что движение центра масс происходит только вниз-вверх. Тогда:
+\[
+	z_c = \vec{R}\cdot\vec{e}'_z = \frac{1}{A}
+\]
+\[
+	\frac{d\vec{R}}{dt} = \frac{dR}{dt} \frac{\vec{R}}{R} + \vec{\omega} \times \vec{R}
+\]
+Вспомним:
+\[
+	\vec{R}\cdot\vec{A} = \frac{x_a^2}{a^2} + \frac{y_a^2}{b^2} + \frac{z_a^2}{c^2} = 1
+\]
+и 
+\[
+	\vec{A} \cdot \frac{d\vec{R}}{dt} = 0
+\]
+Откуда:
+\[
+	\frac{dR}{dt} \frac{1}{R} = \vec{\omega} \cdot (\vec{A} \times \vec{R})
+\]
+\[
+	\frac{d\vec{R}}{dt} = \vec{R}(\vec{\omega} \cdot (\vec{A} \times \vec{R})) + \vec{\omega} \times \vec{R}
+\]
+\[
+	\frac{d\vec{A}}{dt} = \vec{A}(\vec{\omega} \cdot (\vec{R} \times \vec{A})) + \vec{\omega} \times \vec{A}
+\]
+\[
+	\frac{d z_c}{dt} = - \frac{1}{A^2} \frac{dA}{dt} = \frac{1}{A} \vec{\omega} \cdot (\vec{A} \times \vec{R})
+\]
+\[
+	\begin{gathered}
+	\frac{d^2 z_c}{dt^2} = 
+	\frac{1}{A} \dot{\vec{\omega}} \cdot (\vec{A} \times \vec{R}) + 
+	\frac{1}{A} [\vec{\omega} \cdot (\vec{A} \times \vec{R})]^2 + 
+	\frac{1}{A} \vec{\omega} \cdot \left( \left[ \vec{A}(\vec{\omega} \cdot (\vec{R} \times \vec{A})) + \vec{\omega} \times \vec{A} \right] \times \vec{R}\right) + \\ +
+	\frac{1}{A} \vec{\omega} \cdot (\vec{A} \times \left(\vec{R}\left[\vec{\omega} \cdot (\vec{A} \times \vec{R}))+ \vec{\omega} \times \vec{R}\right] \right)) = \\ =
+	\frac{1}{A} \dot{\vec{\omega}} \cdot (\vec{A} \times \vec{R}) + 
+	\frac{1}{A} [\vec{\omega} \cdot (\vec{A} \times \vec{R})]^2 + 
+	\frac{1}{A} \vec{\omega} \cdot ( ( \vec{\omega} \times \vec{A}) \times \vec{R}) +
+	\frac{1}{A} \vec{\omega} \cdot (\vec{A} \times ( \vec{\omega} \times \vec{R} )) = \\ =
+	\frac{1}{A} \dot{\vec{\omega}} \cdot (\vec{A} \times \vec{R}) + 
+	\frac{1}{A} [\vec{\omega} \cdot (\vec{A} \times \vec{R})]^2 - 
+	\frac{1}{A} ( \vec{\omega} \times \vec{A}) \cdot ( \vec{\omega}  \times \vec{R}) -
+	\frac{1}{A} ( \vec{\omega} \times \vec{R} ) \cdot (\vec{A} \times \vec{\omega} )
+	= \\ =
+	\frac{1}{A} \dot{\vec{\omega}} \cdot (\vec{A} \times \vec{R}) + 
+	\frac{1}{A} [\vec{\omega} \cdot (\vec{A} \times \vec{R})]^2
+	\end{gathered}
+\]
+
+Итак, завершающие штрихи:
+\[
+	N - M_c g = M_c \ddot{z}_c
+\]
+\[
+	\hat{J} \frac{d\vec{\omega}}{dt} +
+	M_c \frac{\vec{A}\times\vec{R}}{A^2} \left[(\vec{A} \times \vec{R}) \cdot \frac{d\vec{\omega}}{dt} \right] + 
+	\vec{\omega}\times\hat{J}\vec{\omega} + 
+	M_c \frac{\vec{A}\times\vec{R}}{A^2} [\vec{\omega} \cdot (\vec{A} \times \vec{R})]^2 = - mg \frac{\vec{A}\times\vec{R}}{A} + \vec{M}_{fr}
+\]
+Смотришь на это и диву даёшься -- не выражение, а страшилище, ... но ведь красивое страшилище. Рассмотрим первые 2 слагаемых:
+\[
+	\left( J_{ij} +
+	\frac{M_c}{A^2} \epsilon_{ikl} A_k R_l \epsilon_{jps} A_p R_s \right) \frac{d\omega_j}{dt}
+\]
+Таким образом можно ввести новый тензор:
+\[
+	J'_{ij} = J_{ij} +
+	\frac{M_c}{A^2} \epsilon_{ikl} A_k R_l \epsilon_{jps} A_p R_s
+\]
+\[
+	\begin{gathered}
+	J'_{ij} \frac{d\omega_j}{dt} + 
+	\epsilon_{ijk} \omega_j J'_{kl} \omega_l -
+	\epsilon_{ijk} \omega_j \frac{M_c}{A^2} \epsilon_{kuv} A_u R_v \epsilon_{lps} A_p R_s \omega_l + 
+	M_c \frac{\epsilon_{ikp} A_k R_p}{A^2} \omega_j \epsilon_{jrs} A_r R_s \omega_l \epsilon_{luv} A_u R_v 
+	= \\ =
+	J'_{ij} \frac{d\omega_j}{dt} + 
+	\epsilon_{ijk} J'_{kl} \omega_l \omega_j  -
+	\frac{M_c}{A^2} \omega_j \omega_l \left( \epsilon_{ijk} \epsilon_{uvk} \epsilon_{lps} A_u R_v A_p R_s - 
+	\epsilon_{jrv} \epsilon_{iku} \epsilon_{lps}  A_k R_u A_r R_v A_p R_s \right) = \\ =
+	J'_{ij} \frac{d\omega_j}{dt} + 
+	\epsilon_{ijk} J'_{kl} \omega_l \omega_j  -
+	\frac{M_c}{A^2} \omega_j \omega_l \left( \epsilon_{lps} A_i R_j A_p R_s - \epsilon_{lps} A_j R_i A_p R_s - 
+	\epsilon_{jrv} \epsilon_{iku} \epsilon_{lps}  A_k R_u A_r R_v A_p R_s \right) 
+	\end{gathered}
+\]
