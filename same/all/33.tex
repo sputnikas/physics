@@ -1,0 +1,52 @@
+\section{Немного об ОТО}
+
+\subsection{Базисы}
+
+Произвольный базис -- ковариантный:
+\[
+	\vec{e}_i
+\]
+Для данного ковариантного базиса можно построить контрвариантный базис:
+\[
+	\vec{e}^j \cdot \vec{e}_i = \delta^j_i
+\] 
+
+\subsection{Метрический тензор}
+
+\[
+	g_{ij} = \vec{e}_i \cdot \vec{e}_j
+	\quad
+	g^{ij} = \vec{e}^i \cdot \vec{e}^j
+\]
+С точки зрения данного определения метрический тензор представляет собой компоненты векторов ко-(контр-) вариантного базиса в разложении по контр-(ко-)  вариантному базису:
+\[
+	g^{ip} g_{pj} = g^{ip} \vec{e}_p \cdot \vec{e}_j = \vec{e}^i \cdot \vec{e}_j = \delta^i_j
+\]
+С точки зрения такого определения метрический тензор выглядит симметричным, но:
+\[
+	g_{ij} = g^*_{ji}
+\]
+Представить себе другой случай пространства с кручением я не могу. Далее метрика везде будет действительной.
+
+\subsection{Символы Кристоффеля}
+
+Определение для 2 рода:
+\[
+	\frac{\partial \vec{e}_i}{\partial q^j} = \frac{\partial^2 \vec{r}}{\partial q^j \partial q^i} = \Gamma^k_{ij} \vec{e}_k
+\]
+1 род:
+\[
+	\Gamma_{p, ij} = g_{pk} \Gamma^{k}_{ij}
+\]
+\[
+	\vec{e}_p \cdot \frac{\partial \vec{e}_i}{\partial q^j} + 
+	\frac{\partial \vec{e}_p}{\partial q^j} \cdot \vec{e}_p =
+	\Gamma_{ij}^k g_{pk} + \Gamma^k_{pj} g_{ki}
+\]
+\[
+	\begin{aligned}
+	& \frac{\partial g_{pi}}{\partial q^j} = \Gamma_{p,ij} + \Gamma_{i,pj} \\
+	& \frac{\partial g_{ij}}{\partial q^p} = \Gamma_{i,jp} + \Gamma_{j,ip} \\
+	& \frac{\partial g_{jp}}{\partial q^i} = \Gamma_{j,pi} + \Gamma_{p,ji}
+	\end{aligned}
+\]

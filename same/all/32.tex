@@ -1,0 +1,51 @@
+\section{Полиномы Лагерра}
+
+Определение:
+\[
+	L_n(x, \alpha) = \frac{1}{n!} e^x x^{-\alpha} \frac{d^n}{dx^n} \left(e^{-x} x^{\alpha + n}\right)
+\]
+\[
+	L_0(x, \alpha) = 1
+\]
+\[
+	L_1(x, \alpha) = 1 + \alpha - x
+\]
+Производящая функция:
+\[
+	w(x, z) = \sum\limits_{n = 0}^{\infty} L_n (x, \alpha) z^n = (1 - z)^{- \alpha - 1} \exp \left(\frac{xz}{z - 1}\right)
+\]
+Вес:
+\[
+	h(x) = x^\alpha e^{-x}
+\]
+Дифференциальное уравнение:
+\[
+	xy'' + (\alpha - x + 1) y' + ny = 0
+\]
+Для функций:
+\[
+	v = x^{m} e^{- x/2} L_n(x, \alpha)
+\]
+справедливо уравнение:
+\[
+	x^2 v'' + (\alpha + 1 - 2m) x v'  + \left[m - \frac{1}{4} x^2 + m^2 + (\alpha + 1)\left(\frac{1}{2} x - m \right) + nx \right] v = 0
+\]
+при $\alpha = 2m + 1$:
+\[
+	x^2 v'' + 2 x v'  + \left[- \frac{x^2}{4}  + (m + n + 1)x - m(m + 1) \right] v = 0
+\]
+Важные свойства:
+\[
+	\begin{gathered}
+	\sum\limits_{n = 0}^{\infty} \sum\limits_{k = 0}^{\infty} u^k v^n \int\limits_0^\infty x^{\alpha + p} L_n(x, \alpha) L_k(x, \alpha) e^{- x} dx 
+	= 
+	(1 - u)^{- \alpha - 1} (1 - v)^{- \alpha - 1} \int\limits_0^\infty x^{\alpha + p} \exp\left[- \left(1 - \frac{u}{u - 1} - \frac{v}{v - 1}\right)x\right] dx 
+	= \\ =
+	\dfrac{[(1 - u)(1 - v)]^{- \alpha - 1}}{\left(1 - \dfrac{u}{u - 1} - \dfrac{v}{v - 1}\right)^{\alpha + p + 1}} \Gamma(\alpha + p + 1)
+	=
+	\dfrac{[(1 - u)(1 - v)]^p}{(1 - uv)^{\alpha + p + 1}} \Gamma(\alpha + p + 1)
+	= \\ =
+	\Gamma(\alpha + p + 1)
+	\sum\limits_{n = 0}^{\infty} \sum\limits_{k = 0}^{p} \sum\limits_{s = 0}^{p} \frac{\Gamma(\alpha + n)}{\Gamma(\alpha)\Gamma(n + 1)} u^{n + s} v^{n + k} \frac{p!}{k!(p - k)!} \frac{p!}{s!(p - s)!} (-1)^{k + s} 
+	\end{gathered}
+\]
